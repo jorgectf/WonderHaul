@@ -1,0 +1,4 @@
+io\github\winterbear\wintercore\SetCreativeSlotFilter\ItemStackFilter.class
+io\github\winterbear\wintercore\SetCreativeSlotFilter\CreativeSlotPacketListener.class
+io\github\winterbear\wintercore\SetCreativeSlotFilter\PacketReader.class
+io\github\winterbear\wintercore\CommandHandler.class
