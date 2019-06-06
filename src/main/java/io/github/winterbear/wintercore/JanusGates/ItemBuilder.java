@@ -7,7 +7,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -15,11 +14,11 @@ import java.util.stream.Collectors;
  */
 public class ItemBuilder {
 
-    public static ItemStack createGuiItem(String name, Material mat){
-        return createGuiItem(name, null, mat);
+    public static ItemStack createItem(String name, Material mat){
+        return createItem(name, null, mat);
     }
 
-    public static ItemStack createGuiItem(String name, String lore, Material mat) {
+    public static ItemStack createItem(String name, String lore, Material mat) {
         ItemStack i = new ItemStack(mat, 1);
         ItemMeta iMeta = i.getItemMeta();
         iMeta.setDisplayName(name);

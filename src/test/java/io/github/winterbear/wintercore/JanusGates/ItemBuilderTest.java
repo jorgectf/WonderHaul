@@ -18,7 +18,7 @@ public class ItemBuilderTest extends SpigotTest{
     public void testBuildItem_nameAndMat(){
         String expectedName = "Thermal Indicator";
         Material expectedMaterial = Material.TRIPWIRE_HOOK;
-        ItemStack result = ItemBuilder.createGuiItem(expectedName, expectedMaterial);
+        ItemStack result = ItemBuilder.createItem(expectedName, expectedMaterial);
 
         SoftAssertions softly = new SoftAssertions();
 
@@ -35,7 +35,7 @@ public class ItemBuilderTest extends SpigotTest{
         Material expectedMaterial = Material.TRIPWIRE_HOOK;
         String lore1 = "Test1";
         String lore2 = "Test2";
-        ItemStack result = ItemBuilder.createGuiItem(expectedName,  lore1 + "||" + lore2, expectedMaterial);
+        ItemStack result = ItemBuilder.createItem(expectedName,  lore1 + "||" + lore2, expectedMaterial);
 
         SoftAssertions softly = new SoftAssertions();
 
@@ -53,7 +53,7 @@ public class ItemBuilderTest extends SpigotTest{
         Material expectedMaterial = Material.TRIPWIRE_HOOK;
         String lore1 = "§bTest1";
         String lore2 = "§cTest2";
-        ItemStack result = ItemBuilder.createGuiItem(expectedName, "&bTest1||&cTest2", expectedMaterial);
+        ItemStack result = ItemBuilder.createItem(expectedName, "&bTest1||&cTest2", expectedMaterial);
         assertThat(result.getItemMeta().getLore()).contains(lore1, lore2);
     }
 

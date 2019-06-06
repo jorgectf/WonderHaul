@@ -1,10 +1,14 @@
 package io.github.winterbear.wintercore.SpigotTesting;
 
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.mockito.Mock;
-import sun.security.x509.AttributeNameEnumeration;
+import org.bukkit.inventory.meta.tags.CustomItemTagContainer;
+import org.bukkit.persistence.PersistentDataContainer;
 
 import java.util.*;
 
@@ -13,7 +17,7 @@ import static org.mockito.Mockito.mock;
 /**
  * Created by WinterBear on 30/09/2018.
  */
-public class MockItemMeta implements ItemMeta{
+public class MockItemMeta implements ItemMeta, Damageable {
 
     private String displayName;
     private String localisedName;
@@ -83,6 +87,21 @@ public class MockItemMeta implements ItemMeta{
     }
 
     @Override
+    public boolean hasCustomModelData() {
+        return false;
+    }
+
+    @Override
+    public int getCustomModelData() {
+        return 0;
+    }
+
+    @Override
+    public void setCustomModelData(Integer integer) {
+
+    }
+
+    @Override
     public boolean hasEnchants() {
         return enchants != null;
     }
@@ -148,7 +167,77 @@ public class MockItemMeta implements ItemMeta{
     }
 
     @Override
-    public ItemMeta clone() {
+    public boolean hasAttributeModifiers() {
+        return false;
+    }
+
+    @Override
+    public com.google.common.collect.Multimap<Attribute, AttributeModifier> getAttributeModifiers() {
+        return null;
+    }
+
+    @Override
+    public com.google.common.collect.Multimap<Attribute, AttributeModifier> getAttributeModifiers(EquipmentSlot equipmentSlot) {
+        return null;
+    }
+
+    @Override
+    public Collection<AttributeModifier> getAttributeModifiers(Attribute attribute) {
+        return null;
+    }
+
+    @Override
+    public boolean addAttributeModifier(Attribute attribute, AttributeModifier attributeModifier) {
+        return false;
+    }
+
+    @Override
+    public void setAttributeModifiers(com.google.common.collect.Multimap<Attribute, AttributeModifier> multimap) {
+
+    }
+
+    @Override
+    public boolean removeAttributeModifier(Attribute attribute) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAttributeModifier(EquipmentSlot equipmentSlot) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAttributeModifier(Attribute attribute, AttributeModifier attributeModifier) {
+        return false;
+    }
+
+    @Override
+    public CustomItemTagContainer getCustomTagContainer() {
+        return null;
+    }
+
+    @Override
+    public void setVersion(int i) {
+
+    }
+
+    @Override
+    public boolean hasDamage() {
+        return false;
+    }
+
+    @Override
+    public int getDamage() {
+        return 0;
+    }
+
+    @Override
+    public void setDamage(int i) {
+
+    }
+
+    @Override
+    public MockItemMeta clone() {
         return new MockItemMeta(this.displayName, this.localisedName, this.lore, this.enchants, this.unbreakable, this.itemFlags);
     }
 
@@ -159,6 +248,11 @@ public class MockItemMeta implements ItemMeta{
 
     @Override
     public Map<String, Object> serialize() {
+        return null;
+    }
+
+    @Override
+    public PersistentDataContainer getPersistentDataContainer() {
         return null;
     }
 }
