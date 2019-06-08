@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore;
 
+import io.github.winterbear.wintercore.Tags.TagGenerator;
 import io.github.winterbear.wintercore.servercore.DevTools;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -12,5 +13,6 @@ public class WinterCore extends JavaPlugin {
     @Override
     public void onEnable() {
         CommandRegistry.register(this, DevTools.setHealth());
+        CommandRegistry.register(this, TagGenerator.getTag());
     }
 }

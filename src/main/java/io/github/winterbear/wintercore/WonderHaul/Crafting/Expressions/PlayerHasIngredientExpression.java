@@ -1,6 +1,6 @@
 package io.github.winterbear.wintercore.WonderHaul.Crafting.Expressions;
 
-import javafx.util.Pair;
+
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

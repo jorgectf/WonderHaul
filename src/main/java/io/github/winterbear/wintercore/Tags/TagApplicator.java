@@ -65,7 +65,7 @@ public class TagApplicator implements Listener {
                 .withTagItem(item)
                 .build();
         TagRegister.register(player, application);
-        ChatUtils.send(player, tag.getDisplayName() + "&8: &7You selected a " + tag.getDisplayName() + "&7." + tag.getInstructions());
+        ChatUtils.send(player, tag.getDisplayName() + "&8: &7You selected a " + tag.getDisplayName() + "&7. " + tag.getInstructions());
         RepeatingTaskUtils.everySeconds(1, () -> TagRegister.countdown(player), plugin);
     }
 

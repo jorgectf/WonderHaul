@@ -19,6 +19,8 @@ public class TagParser {
     private static Map<String, Tag> createTagMap(){
         Map<String, Tag> map = new HashMap<>();
         map.put("Repair Tag", new RepairTag());
+        map.put("Boost Tag", new BoostTag());
+        map.put("Mimic Tag", new MimicTag());
         return map;
     }
 
@@ -31,6 +33,11 @@ public class TagParser {
             return Optional.of(tagMap.get(tagName));
         }
         return Optional.empty();
+    }
+
+
+    public static Optional<Tag> parse(String tagName){
+        return Optional.ofNullable(tagMap.get(tagName));
     }
 
 }

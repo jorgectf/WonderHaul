@@ -221,19 +221,21 @@ public class MockItemMeta implements ItemMeta, Damageable {
 
     }
 
+    int damage = 0;
+
     @Override
     public boolean hasDamage() {
-        return false;
+        return damage > 0;
     }
 
     @Override
     public int getDamage() {
-        return 0;
+        return damage;
     }
 
     @Override
     public void setDamage(int i) {
-
+        this.damage = i;
     }
 
     @Override
