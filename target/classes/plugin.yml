@@ -1,5 +1,0 @@
-name: WinterCore
-main: io.github.winterbear.wintercore.WinterCore
-version: 2.0
-commands:
-depend: [Skript, ProtocolLib]
