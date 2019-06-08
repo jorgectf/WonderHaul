@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.Tags;
+package io.github.winterbear.wintercore.WonderHaul.Tags;
 
 import com.frequal.romannumerals.Converter;
 import io.github.winterbear.wintercore.utils.CollectionUtils;

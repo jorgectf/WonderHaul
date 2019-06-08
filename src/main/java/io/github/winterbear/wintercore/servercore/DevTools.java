@@ -77,7 +77,7 @@ public class DevTools {
                     return;
                 }
                 LoreUtils.clearlore(mainHandItem);
-                ChatUtils.send(player, "Cleared the lore of your tool.");
+                ChatUtils.send(player, "Cleared the lore.yml of your tool.");
                 return;
             }
         });
@@ -92,7 +92,7 @@ public class DevTools {
                     return;
                 }
                 LoreUtils.removeLoreLine(mainHandItem, Integer.valueOf(args[0]));
-                ChatUtils.send(player, "Cleared the lore of your tool.");
+                ChatUtils.send(player, "Cleared the lore.yml of your tool.");
                 return;
             }
 

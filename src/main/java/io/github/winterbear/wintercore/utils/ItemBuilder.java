@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.JanusGates;
+package io.github.winterbear.wintercore.utils;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

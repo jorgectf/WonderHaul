@@ -1,6 +1,6 @@
-package io.github.winterbear.wintercore.Tags;
+package io.github.winterbear.wintercore.WonderHaul.Tags;
 
-import io.github.winterbear.wintercore.JanusGates.ItemBuilder;
+import io.github.winterbear.wintercore.utils.ItemBuilder;
 import io.github.winterbear.wintercore.SpigotTesting.SpigotTest;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -12,8 +12,6 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.Damageable;
 import org.junit.Test;
 
-import javax.print.attribute.HashAttributeSet;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 

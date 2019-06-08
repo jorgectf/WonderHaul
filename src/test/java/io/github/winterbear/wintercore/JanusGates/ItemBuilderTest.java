@@ -1,6 +1,7 @@
 package io.github.winterbear.wintercore.JanusGates;
 
 import io.github.winterbear.wintercore.SpigotTesting.SpigotTest;
+import io.github.winterbear.wintercore.utils.ItemBuilder;
 import org.assertj.core.api.SoftAssertions;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

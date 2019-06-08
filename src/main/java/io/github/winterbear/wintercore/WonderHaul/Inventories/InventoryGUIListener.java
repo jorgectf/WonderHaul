@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.JanusGates;
+package io.github.winterbear.wintercore.WonderHaul.Inventories;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

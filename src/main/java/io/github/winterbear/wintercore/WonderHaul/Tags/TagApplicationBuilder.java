@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.Tags;
+package io.github.winterbear.wintercore.WonderHaul.Tags;
 
 import org.bukkit.inventory.ItemStack;
 
