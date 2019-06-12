@@ -1,0 +1,81 @@
+lore:
+        generic:
+                - 'Warm to the touch'
+                - 'Cold to the touch'
+                - 'A symbol of a sly cat is carved into it'
+                - 'A symbol of a raging boar is carved into it'
+                - 'A symbol of a great bear is carved into it'
+                - 'A symbol of a rampaging rhino is carved into it'
+                - 'A symbol of a ship being pulled under by a kraken is carved into it'
+                - 'A symbol of a cunning tiger is carved into it'
+                - 'A symbol of a proud stag is carved into it'
+                - 'A symbol of a crescent moon is carved into it'
+                - 'A symbol of a blazing sun is carved into it'
+                - 'A symbol of a monstrous demon is carved into it'
+                - 'A symbol of a wise elephant is carved into it'
+                - 'A symbol of an inhuman eye is carved into it'
+                - 'A symbol of a noble wolf is carved into it'
+                - 'A symbol of a mighty lion is carved into it'
+                - 'A symbol of an eldritch god is carved into it'
+                - 'Indecipherable symbols are carved into it'
+                - 'Forged in the heat of a dying star'
+                - 'Permanently on fire'
+                - 'Very old, but still looks like new'
+                - 'Hums inexplicably'
+                - 'Quite possibly cursed'
+                - 'Its origins are shrouded in mystery'
+                - 'When you hold it, the whispers of an eldritch god fill your mind'
+                - 'Has been passed between many hands'
+        swords:
+                - 'The handle is made from a strange wood'
+                - 'Only the tip is sharp'
+                - 'Coated in dried blood'
+                - 'Cuts like a hot knife through butter'
+                - 'Looks like an oversized butter knife'
+                - 'Seems to have once belonged to an ancient hero'
+                - 'Seems to have once belonged to an evil tyrant'
+                - 'Was once used as part of a secret ritual'
+                - 'It is said it can only be wielded by a pure soul'
+                - 'A blade imbued with powerful runes'
+                - 'Forged by dragonbreath'
+                - 'Looks old but its power is still strong'
+                - 'The sheen is captivating'
+                - 'Rusty, but still deadly'
+                - 'Glows with a heavenly aura'
+                - 'Glows with a demonic aura'
+                - 'Has a notch in the blade'
+                - 'Inlaid with a rainbow of jewels'
+                - 'Cold air follows this weapon around'
+                - 'The materials it was forged with seem unnatural'
+                - 'A weapon mentioned in ancient prophecies'
+                - 'Carved from the bones of an ancient beast'
+                - 'Adorned with countless sparkling emeralds'
+                - 'Carved from a large piece of coral from the depths of the ocean'
+                - 'Carved from the shell of some sea creature'
+        bows:
+                - 'The bowstring is woven from some unnatural substance'
+                - 'Drawing it takes all your effort'
+        pickaxes:
+                - 'Has a Notch in the handle'
+        axes:
+                - 'Felled a thousand trees'
+        shovels:
+                - 'An ancient dwarven war-shovel'
+        hoes:
+                - 'Looks more like a scythe than a hoe'
+        helmets:
+                - 'The wearer is filled with a sense of determination'
+        chestplates:
+                - 'Has 3 layers of plating'
+        leggings:
+                - 'Has a hole in the back, presumably for a tail of some kind'
+        boots:
+                - 'Mud and dirt never tarnishes their shine'
+        rods:
+                - 'Reinforced wood makes this a great bow for hauling in mighty fish'
+        shears:
+                - 'Tripped and fell on her own shears'
+        tridents:
+                - 'A tiny inscription on the side translates to words: Property of Poseidon'
+        shields:
+                - 'The wood seems to have been split and then magically refused'

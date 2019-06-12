@@ -1,0 +1,17 @@
+name: WonderHaul
+main: io.github.winterbear.wintercore.WonderHaul
+version: 2.0
+api-version: 1.13
+commands: 
+  getTag:
+    permission: taggenerator.gettag
+  setHealth:
+    permission: dev.sethealth
+  setHunger:
+    permission: dev.sethunger
+  addLore:
+    permission: dev.addlore
+  clearLore:
+    permission: dev.clearlore
+  removeLore:
+    permission: dev.removelore

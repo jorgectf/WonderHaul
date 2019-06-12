@@ -1,0 +1,7 @@
+io\github\winterbear\wintercore\SpigotTesting\SpigotTest.class
+io\github\winterbear\wintercore\wonderhaul\Crafting\WonderhaulIngredientTest.class
+io\github\winterbear\wintercore\wonderhaul\Tags\TagGeneratorTest.class
+io\github\winterbear\wintercore\SpigotTesting\MockItemMeta.class
+io\github\winterbear\wintercore\utils\ChatUtilsTest.class
+io\github\winterbear\wintercore\wonderhaul\Tags\TagApplicatorTest.class
+io\github\winterbear\wintercore\utils\ItemBuilderTest.class
