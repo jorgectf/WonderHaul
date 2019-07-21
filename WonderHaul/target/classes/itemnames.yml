@@ -1,0 +1,74 @@
+axe:
+  - 'Hatchet'
+  - 'Axe'
+  - 'Cleaver'
+  - 'Adze'
+  - 'Tomahawke'
+  - 'Waraxe'
+  - 'Battleaxe'
+  - 'Greataxe'
+  - 'Poleaxe'
+boots:
+  - 'Wellingtons'
+  - 'Boots'
+  - 'Shoes'
+  - 'Clogs'
+  - 'Slippers'
+bow:
+  - 'Longbow'
+  - 'Shortbow'
+  - 'Bow'
+carrotstick:
+  - 'Carrot on a stick'
+  - 'Pig Summoner'
+chestplate:
+  - 'Plate'
+  - 'Chestplate'
+  - 'Aegis'
+  - 'Mail'
+  - 'Breastplate'
+elytra:
+  - 'Wings'
+  - 'Elytra'
+  - 'Glider'
+flint:
+  - 'Tinderbox'
+helmet:
+  - 'Hood'
+  - 'Helm'
+  - 'Helmet'
+  - 'Crown'
+hoe:
+  - 'Rake'
+  - 'Hoe'
+leggings:
+  - 'Greaves'
+  - 'Leggings'
+pickaxe:
+  - 'Pickaxe'
+  - 'Pick'
+  - 'Mattock'
+rod:
+  - 'Rod'
+  - 'Line'
+  - 'Fishing Rod'
+shears:
+  - 'Shears'
+  - 'Scissors'
+shield:
+  - 'Shield'
+shovel:
+  - 'Shovel'
+  - 'Spade'
+sword:
+  - 'Blade'
+  - 'Sword'
+  - 'Dagger'
+  - 'Rapier'
+  - 'Greatsword'
+  - 'Longsword'
+  - 'Shortsword'
+trident:
+  - 'Trident'
+crossbow:
+  - 'Crossbow'

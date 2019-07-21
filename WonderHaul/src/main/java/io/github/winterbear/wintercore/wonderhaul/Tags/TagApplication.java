@@ -16,10 +16,13 @@ public class TagApplication {
 
     private Tag tag;
 
-    public TagApplication(int counter, ItemStack tagItem, Tag tag) {
+    private Player player;
+
+    public TagApplication(int counter, ItemStack tagItem, Tag tag, Player player) {
         this.counter = counter;
         this.tagItem = tagItem;
         this.tag = tag;
+        this.player = player;
     }
 
     public int getCounter() {
@@ -33,6 +36,8 @@ public class TagApplication {
     public ItemStack getTagItem() {
         return tagItem;
     }
+
+    public Player getPlayer() { return player; }
 
     public void setTagItem(ItemStack tagItem) {
         this.tagItem = tagItem;

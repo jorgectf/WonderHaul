@@ -13,12 +13,12 @@ public class ConfigLoader {
 
     private static HashMap<String, YamlConfiguration> customConfigs = new HashMap<>();
 
-    public static void registerCustomConfig(JavaPlugin plugin, String name){
-        File configFile = new File(plugin.getDataFolder(), name);
+    public static void registerCustomConfig(JavaPlugin plugin, String name, String file){
+        File configFile = new File(plugin.getDataFolder(), file);
 
         if(!configFile.exists()){
             configFile.getParentFile().mkdirs();
-            plugin.saveResource(name, false);
+            plugin.saveResource(file, false);
         }
 
         YamlConfiguration config = new YamlConfiguration();
@@ -28,6 +28,7 @@ public class ConfigLoader {
             plugin.getServer().getLogger().severe("WonderHaul configuration failed to load! Something is wrong.");
             e.printStackTrace();
         }
+        customConfigs.put(name, config);
     }
 
     public static YamlConfiguration getConfig(String reference){

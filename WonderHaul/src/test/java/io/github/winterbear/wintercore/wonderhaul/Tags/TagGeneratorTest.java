@@ -14,8 +14,8 @@ public class TagGeneratorTest extends SpigotTest {
         SoftAssertions softly = new SoftAssertions();
         ItemStack tag = TagGenerator.generate(new RepairTag());
         softly.assertThat(tag.getType()).isEqualTo(Material.NAME_TAG);
-        softly.assertThat(tag.getItemMeta().getDisplayName()).isEqualTo(ChatUtils.convert("&aRepair Tag"));
-        softly.assertThat(tag.getItemMeta().getLore()).containsExactly(ChatUtils.convert("&7Tag&8: &7Repair Tag"));
+        softly.assertThat(tag.getItemMeta().getDisplayName()).isEqualTo(ChatUtils.format("&aRepair Tag"));
+        softly.assertThat(tag.getItemMeta().getLore()).containsExactly(ChatUtils.format("&7Tag&8: &7Repair Tag"));
         softly.assertAll();
     }
 }

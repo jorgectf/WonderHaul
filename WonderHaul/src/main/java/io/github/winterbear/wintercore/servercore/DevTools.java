@@ -6,6 +6,7 @@ import io.github.winterbear.wintercore.utils.ChatUtils;
 import io.github.winterbear.wintercore.utils.CommandSenderUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.CommandRegistry;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -65,41 +66,48 @@ public class DevTools {
                     ChatUtils.send(player, "&cError&8: &7You must be holding an item to do that.");
                     return;
                 }
-                LoreUtils.addLoreLine(mainHandItem, args[0]);
-                ChatUtils.send(player, "Added line " + args[0] + " to your tool.");
+                LoreUtils.addLoreLine(mainHandItem, StringUtils.join(args, ' '), player);
+                ChatUtils.send(player, "Added line " + StringUtils.join(args, ' ') + " to your tool.");
                 return;
+            } else {
+                ChatUtils.error(player, "Must specify a line of lore to add!");
             }
         });
     }
 
-    @Command(permission = "dev.clearlore")
+    @Command(permission = "dev.clearLore")
     public static CommandWrapper clearLore(){
-        return CommandRegistry.createPlayerCommand("clearlore", (player, command, label, args) -> {
-            if(args.length > 0) {
-                ItemStack mainHandItem = player.getInventory().getItemInMainHand();
-                if(mainHandItem.getType().equals(Material.AIR)){
-                    ChatUtils.send(player, "&cError&8: &7You must be holding an item to do that.");
-                    return;
-                }
-                LoreUtils.clearlore(mainHandItem);
-                ChatUtils.send(player, "Cleared the lore.yml of your tool.");
+        return CommandRegistry.createPlayerCommand("clearLore", (player, command, label, args) -> {
+            ItemStack mainHandItem = player.getInventory().getItemInMainHand();
+            if(mainHandItem.getType().equals(Material.AIR)){
+                ChatUtils.send(player, "&cError&8: &7You must be holding an item to do that.");
                 return;
             }
+            LoreUtils.clearLore(mainHandItem, player);
+            ChatUtils.send(player, "Cleared the lore of your tool.");
+            return;
         });
     }
 
     @Command(permission = "dev.removelore")
     public static CommandWrapper removeLore(){
         return CommandRegistry.createPlayerCommand("removelore", (player, command, label, args) -> {
-            if(args.length > 1) {
+            if(args.length > 0) {
                 ItemStack mainHandItem = player.getInventory().getItemInMainHand();
                 if(mainHandItem.getType().equals(Material.AIR)){
                     ChatUtils.send(player, "&cError&8: &7You must be holding an item to do that.");
                     return;
                 }
-                LoreUtils.removeLoreLine(mainHandItem, Integer.valueOf(args[0]));
-                ChatUtils.send(player, "Cleared the lore.yml of your tool.");
+                if(args[0].contains("+")){
+                    LoreUtils.truncateLoreLine(mainHandItem, Integer.valueOf(args[0].replace("+", "")), player);
+                } else {
+                    LoreUtils.removeLoreLine(mainHandItem, Integer.valueOf(args[0]), player);
+                }
+                ChatUtils.send(player, "Removed the lore of your tool.");
                 return;
+            }
+            else {
+                ChatUtils.error(player, "Must specify a line to remove!");
             }
 
         });

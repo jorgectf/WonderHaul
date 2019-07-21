@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Created by WinterBear on 10/06/2019.
  */
 @Target(ElementType.METHOD)
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface Command {
 
     String aliases() default "";

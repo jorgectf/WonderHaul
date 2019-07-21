@@ -10,6 +10,7 @@
     <modules>
         <module>plugin-annotations</module>
         <module>WonderHaul</module>
+        <module>WonderQuest</module>
     </modules>
 
     <packaging>pom</packaging>

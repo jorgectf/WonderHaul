@@ -1,8 +1,8 @@
 package io.github.winterbear.wintercore.wonderhaul.Tags;
 
 import com.frequal.romannumerals.Converter;
-import io.github.winterbear.wintercore.utils.CollectionUtils;
 import io.github.winterbear.wintercore.utils.EnchantmentUtils;
+import io.github.winterbear.wintercore.utils.RandomUtils;
 import io.github.winterbear.wintercore.utils.SoundUtils;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
@@ -18,7 +18,8 @@ public class BoostTag implements Tag {
     private static Converter romanNumeralConverter = new Converter();
 
     @Override
-    public boolean apply(ItemStack item, Player player) {
+    public boolean apply(ItemStack item, TagApplication application) {
+        Player player = application.getPlayer();
         final Map<Enchantment, Integer> enchantments = item.getEnchantments();
         if(enchantments.isEmpty()){
             sendMessage(player,"There are no enchantments on this item.");
@@ -29,7 +30,7 @@ public class BoostTag implements Tag {
                 sendMessage(player, "All the enchantments on this item are already at their maximum level.");
                 return false;
             } else {
-                Enchantment toBoost = CollectionUtils.getRandomElementOf(boostableEnchantments);
+                Enchantment toBoost = RandomUtils.getRandomElementOf(boostableEnchantments);
                 int newLevel = enchantments.get(toBoost) + 1;
                 item.addEnchantment(toBoost, newLevel);
                 SoundUtils.playSound(player, Sound.ENTITY_PLAYER_LEVELUP);

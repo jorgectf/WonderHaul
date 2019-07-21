@@ -14,7 +14,8 @@ public class RepairTag implements Tag{
 
 
     @Override
-    public boolean apply(ItemStack item, Player player) {
+    public boolean apply(ItemStack item, TagApplication application) {
+        Player player = application.getPlayer();
         if(item.getItemMeta() instanceof Damageable){
             Damageable meta = ((Damageable) item.getItemMeta());
             if(meta.hasDamage()){

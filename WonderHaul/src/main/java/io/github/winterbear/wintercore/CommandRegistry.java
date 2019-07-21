@@ -2,7 +2,6 @@ package io.github.winterbear.wintercore;
 
 import io.github.winterbear.wintercore.utils.ChatUtils;
 import io.github.winterbear.wintercore.utils.CommandSenderUtils;
-import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -29,7 +28,8 @@ public class CommandRegistry {
                     }
                     return false;
                 } catch (Exception e){
-                    ChatUtils.send(commandSender, "&4Warning. An unexpected " + e.getClass().getSimpleName() + " occurred. See console for stacktrace.");
+                    ChatUtils.error(commandSender, "An unexpected " + e.getClass().getSimpleName() + " occurred. See console for stacktrace.");
+                    e.printStackTrace();
                     return false;
                 }
 
@@ -53,7 +53,7 @@ public class CommandRegistry {
     }
 
     public static void register(JavaPlugin plugin, CommandWrapper wrapper){
-        Bukkit.getServer().getLogger().info("Loading " + wrapper.getName());
+        ChatUtils.info("Loading Command" + wrapper.getName());
         plugin.getCommand(wrapper.getName()).setExecutor(wrapper.getExecutor());
     }
 

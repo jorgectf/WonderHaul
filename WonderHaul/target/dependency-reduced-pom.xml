@@ -77,6 +77,9 @@
               <artifactSet>
                 <includes>
                   <include>com.frequal.romannumerals:roman-numerals</include>
+                  <include>org.reflections:reflections</include>
+                  <include>org.javassist:javassist</include>
+                  <include>io.github.winterbear.wintercore:plugin-annotations</include>
                 </includes>
               </artifactSet>
             </configuration>
@@ -87,9 +90,9 @@
   </build>
   <dependencies>
     <dependency>
-      <groupId>io.github.winterbear.wintercore</groupId>
-      <artifactId>plugin-annotations</artifactId>
-      <version>1.0.0</version>
+      <groupId>commons-collections</groupId>
+      <artifactId>commons-collections</artifactId>
+      <version>3.2.1</version>
       <scope>compile</scope>
     </dependency>
     <dependency>

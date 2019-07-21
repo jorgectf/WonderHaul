@@ -5,6 +5,8 @@ api-version: 1.13
 commands: 
   getTag:
     permission: taggenerator.gettag
+  generateItem:
+    permission: itemgenerator.test
   setHealth:
     permission: dev.sethealth
   setHunger:
@@ -12,6 +14,6 @@ commands:
   addLore:
     permission: dev.addlore
   clearLore:
-    permission: dev.clearlore
+    permission: dev.clearLore
   removeLore:
     permission: dev.removelore

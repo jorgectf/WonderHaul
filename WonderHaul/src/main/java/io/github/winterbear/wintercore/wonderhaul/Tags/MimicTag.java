@@ -1,8 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.Tags;
 
-import io.github.winterbear.wintercore.utils.MaterialGroups;
 import io.github.winterbear.wintercore.utils.ItemUtils;
-import org.bukkit.entity.Player;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.MaterialGroup;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -13,10 +12,10 @@ public class MimicTag  implements Tag {
 
 
     @Override
-    public boolean apply(ItemStack item, Player player) {
-        if(MaterialGroups.EQUIPMENT.contains(item.getType())) {
-            ItemUtils.safelyGiveItem(player, item);
-            sendMessage(player, "Item was duplicated successfully!");
+    public boolean apply(ItemStack item, TagApplication application) {
+        if(MaterialGroup.ALL_EQUIPMENT.contains(item.getType())) {
+            ItemUtils.safelyGiveItem(application.getPlayer(), item);
+            sendMessage(application.getPlayer(), "Item was duplicated successfully!");
             return true;
         }
         return false;

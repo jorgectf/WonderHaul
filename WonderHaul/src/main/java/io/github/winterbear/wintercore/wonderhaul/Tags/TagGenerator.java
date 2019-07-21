@@ -34,7 +34,7 @@ public class TagGenerator {
     }
 
     public static ItemStack generate(Tag tag){
-        return ItemBuilder.createItem(ChatUtils.convert(tag.getDisplayName()), createLore(tag), Material.NAME_TAG);
+        return tag.modify(ItemBuilder.createItem(ChatUtils.format(tag.getDisplayName()), createLore(tag), Material.NAME_TAG));
     }
 
     private static String createLore(Tag tag){

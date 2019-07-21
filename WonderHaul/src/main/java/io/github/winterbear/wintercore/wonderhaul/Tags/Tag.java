@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
  */
 public interface Tag {
 
-    boolean apply(ItemStack item, Player player);
+    boolean apply(ItemStack item, TagApplication application);
 
     String getDisplayName();
 
@@ -17,6 +17,10 @@ public interface Tag {
 
     default void sendMessage(Player player, String text){
         ChatUtils.send(player, this.getDisplayName() + "&8: &7" + text);
+    }
+
+    default ItemStack modify(ItemStack item){
+        return item;
     }
 
 }

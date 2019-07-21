@@ -12,7 +12,7 @@ import java.util.Optional;
  */
 public class TagParser {
 
-    private static final String TAG_KEY = ChatUtils.convert("&7Tag&8: &7");
+    private static final String TAG_KEY = ChatUtils.format("&7Tag&8: &7");
 
     public static Map<String, Tag> tagMap = createTagMap();
 

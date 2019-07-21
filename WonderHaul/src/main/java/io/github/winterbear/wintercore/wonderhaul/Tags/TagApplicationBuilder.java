@@ -1,14 +1,21 @@
 package io.github.winterbear.wintercore.wonderhaul.Tags;
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class TagApplicationBuilder {
     private int counter;
     private ItemStack tagItem;
     private Tag tag;
+    private Player player;
 
     public static TagApplicationBuilder create(){
         return new TagApplicationBuilder();
+    }
+
+    public TagApplicationBuilder forPlayer(Player player){
+        this.player = player;
+        return this;
     }
 
     public TagApplicationBuilder withCounter(int counter) {
@@ -27,6 +34,6 @@ public class TagApplicationBuilder {
     }
 
     public TagApplication build() {
-        return new TagApplication(counter, tagItem, tag);
+        return new TagApplication(counter, tagItem, tag, player);
     }
 }

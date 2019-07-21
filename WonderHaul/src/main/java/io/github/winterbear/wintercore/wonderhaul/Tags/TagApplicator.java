@@ -75,6 +75,7 @@ public class TagApplicator implements Listener {
 
     private void initiateApplication(Tag tag, ItemStack item, final Player player){
         TagApplication application = TagApplicationBuilder.create()
+                .forPlayer(player)
                 .withCounter(BASE_COUNTER)
                 .withTag(tag)
                 .withTagItem(item)
@@ -92,7 +93,7 @@ public class TagApplicator implements Listener {
             TagRegister.remove(player);
             return;
         }
-        if(application.getTag().apply(player.getInventory().getItemInMainHand(), player)){
+        if(application.getTag().apply(player.getInventory().getItemInMainHand(), application)){
             TagRegister.remove(player);
         }
     }
