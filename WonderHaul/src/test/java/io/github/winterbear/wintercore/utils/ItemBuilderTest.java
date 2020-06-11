@@ -4,15 +4,15 @@ import io.github.winterbear.wintercore.SpigotTesting.SpigotTest;
 import org.assertj.core.api.SoftAssertions;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.junit.Ignore;
 import org.junit.Test;
-import io.github.winterbear.wintercore.utils.ItemBuilder;
 
-
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Created by WinterBear on 30/09/2018.
  */
+@Ignore
 public class ItemBuilderTest extends SpigotTest {
 
     @Test

@@ -3,6 +3,7 @@ package io.github.winterbear.wintercore.wonderhaul.data;
 import org.bukkit.block.Biome;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by WinterBear on 20/07/2019.
@@ -31,5 +32,15 @@ public class BiomeSets {
             Biome.DEEP_FROZEN_OCEAN,
             Biome.FLOWER_FOREST
     ));
+
+    public static final BiomeSet COMMON_BIOMES = new ListBiomeSet(exclude(RARE_BIOMES.contents()));
+
+    private static List<Biome> exclude(List<Biome> biomesToExclude){
+
+        List<Biome> biomes = ALL_BIOMES.contents();
+        biomes.removeAll(biomesToExclude);
+        return biomes;
+
+    }
 
 }

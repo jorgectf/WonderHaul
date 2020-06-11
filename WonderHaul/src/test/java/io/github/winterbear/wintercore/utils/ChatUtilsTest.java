@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore.utils;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

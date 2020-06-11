@@ -33,5 +33,12 @@ public class RepeatingTaskUtils {
         }.runTaskTimer(plugin, SECOND_IN_TICKS, period);
     }
 
+    public static void everyMinutes(int minutes, Callable<Boolean> r, JavaPlugin plugin){
+
+        everySeconds(minutes*60, r, plugin);
+
+
+    }
+
 
 }

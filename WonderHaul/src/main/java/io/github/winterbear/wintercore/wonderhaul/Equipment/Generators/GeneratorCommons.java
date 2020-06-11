@@ -1,9 +1,12 @@
 package io.github.winterbear.wintercore.wonderhaul.Equipment.Generators;
 
-import io.github.winterbear.wintercore.utils.ChatUtils;
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
-import io.github.winterbear.wintercore.wonderhaul.Equipment.*;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.Enchanting.Enchantments;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.ItemNames;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.MaterialGroup;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Prefixes;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Tier;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -13,6 +16,7 @@ import java.util.Optional;
  * Created by WinterBear on 17/06/2019.
  */
 public class GeneratorCommons {
+
 
     public static Optional<String> generateName(MaterialGroup group, Tier tier){
         Optional<String> prefix = Prefixes.generatePrefix(tier);
@@ -31,7 +35,7 @@ public class GeneratorCommons {
             Enchantments.enchant(item, group, tier);
             return item;
         }
-        ChatUtils.warn("WonderHaul has either failed to load or an invalid configuration has been set: Could not load item names or prefixes for Junk " + group);
+        ChatUtils.warn("WonderHaul has either failed to load or an invalid configuration has been set: Could not load item names or prefixes for " + tier + " " + group);
         return new ItemStack(mat);
     }
 

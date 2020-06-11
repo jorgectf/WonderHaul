@@ -3,7 +3,6 @@ package io.github.winterbear.wintercore.wonderhaul.Tags;
 import io.github.winterbear.wintercore.ConfigLoader;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.RandomUtils;
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
@@ -14,7 +13,12 @@ public class LoreTag implements Tag{
 
     @Override
     public boolean apply(ItemStack item, TagApplication application) {
-        return false;
+
+        String lore = application.getTagItem().getItemMeta().getLore().get(1);
+        LoreUtils.addLoreLine(item, lore);
+        sendMessage(application.getPlayer(), "Lore was added successfully!");
+        return true;
+
     }
 
     private String pickLore(ItemStack item){
@@ -24,17 +28,17 @@ public class LoreTag implements Tag{
 
     @Override
     public String getDisplayName() {
-        return null;
+        return "&eLore Tag";
     }
 
     @Override
     public String getInstructions() {
-        return null;
+        return "&7Right click with a piece of equipment to add lore to it!";
     }
 
     @Override
     public ItemStack modify(ItemStack item){
-        item.getItemMeta().getLore().add(pickLore(item));
+        LoreUtils.addLoreLine(item, "&7" + pickLore(item));
         return item;
     }
 }

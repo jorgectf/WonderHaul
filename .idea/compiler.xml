@@ -6,11 +6,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="WinterCore" />
+        <module name="Handy" />
+        <module name="WonderHaul" />
+        <module name="WinterCoreUtils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="Handy" target="1.8" />
+      <module name="pluginannotations" target="1.8" />
       <module name="WinterCore" target="1.8" />
+      <module name="WinterCoreUtils" target="1.8" />
+      <module name="WonderHaul" target="1.8" />
+      <module name="WonderQuest" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="WonderHaul" options="" />
+    </option>
   </component>
 </project>

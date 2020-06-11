@@ -1,7 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.Equipment.Enchanting;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.ConfigLoader;
-import io.github.winterbear.wintercore.utils.ChatUtils;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.MaterialGroup;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.Tier;
 import org.bukkit.inventory.ItemStack;

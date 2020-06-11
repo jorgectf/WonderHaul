@@ -10,7 +10,8 @@
     <modules>
         <module>plugin-annotations</module>
         <module>WonderHaul</module>
-        <module>WonderQuest</module>
+        <module>Handy</module>
+        <module>WinterCoreUtils</module>
     </modules>
 
     <packaging>pom</packaging>

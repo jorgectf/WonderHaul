@@ -1,20 +1,22 @@
 package io.github.winterbear.wintercore.wonderhaul.Tags;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.WinterCoreUtils.CommandRegistry;
+import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
-import io.github.winterbear.wintercore.CommandRegistry;
-import io.github.winterbear.wintercore.CommandWrapper;
-import io.github.winterbear.wintercore.utils.ChatUtils;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
 import io.github.winterbear.wintercore.utils.ItemUtils;
+import io.github.winterbear.wintercore.wonderhaul.Dropper.Chance;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Generators.Generator;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Optional;
 
-public class TagGenerator {
+public class TagGenerator implements Generator {
 
-    @Command(permission = "taggenerator.gettag")
+    @Command(permission = "wonderhaul.taggenerator.gettag")
     public static CommandWrapper getTag(){
         return CommandRegistry.createPlayerCommand("gettag", (player, command, label, string) -> {
            if(string.length == 0){
@@ -38,7 +40,25 @@ public class TagGenerator {
     }
 
     private static String createLore(Tag tag){
-        return "&7Tag&8: &7" + ChatUtils.uncolored(tag.getDisplayName());
+        return "&6✦ &7Tag&8: &7" + ChatUtils.uncolored(tag.getDisplayName());
     }
 
+    @Override
+    public ItemStack create() {
+
+        if(Chance.roll(90)){ //90%
+            return generate(Tags.LORE);
+        } else if(Chance.roll(60)) { //6%
+            return generate(Tags.REPAIR);
+        } else if (Chance.roll(75)){ //3%
+            return generate(Tags.BOOST);
+        } else { //1%
+            return generate(Tags.MIMIC);
+        }
+    }
+
+    @Override
+    public String getName() {
+        return "Tag Generator";
+    }
 }

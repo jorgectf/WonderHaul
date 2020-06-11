@@ -1,6 +1,6 @@
 package io.github.winterbear.wintercore.utils;
 
-import org.bukkit.entity.Item;
+import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -15,6 +15,12 @@ public class ItemUtils {
         } else {
             player.getInventory().addItem(item.clone());
         }
+
+    }
+
+    public static void dropNaturally(Location location, ItemStack item){
+
+        location.getWorld().dropItemNaturally(location, item.clone());
 
     }
 

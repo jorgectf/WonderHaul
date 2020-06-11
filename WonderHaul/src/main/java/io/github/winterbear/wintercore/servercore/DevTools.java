@@ -1,11 +1,13 @@
 package io.github.winterbear.wintercore.servercore;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.WinterCoreUtils.CommandRegistry;
+import io.github.winterbear.WinterCoreUtils.CommandSenderUtils;
+import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
-import io.github.winterbear.wintercore.CommandWrapper;
-import io.github.winterbear.wintercore.utils.ChatUtils;
-import io.github.winterbear.wintercore.utils.CommandSenderUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
-import io.github.winterbear.wintercore.CommandRegistry;
+import io.github.winterbear.wintercore.utils.MicroblockUtils;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Artifacts.RelicGenerator;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -109,6 +111,35 @@ public class DevTools {
             else {
                 ChatUtils.error(player, "Must specify a line to remove!");
             }
+
+        });
+    }
+
+    @Command(permission = "dev.getTextureData")
+    public static CommandWrapper getTextureData(){
+        return CommandRegistry.createPlayerCommand("getTextureData", (player, command, label, args) -> {
+            ItemStack mainHandItem = player.getInventory().getItemInMainHand();
+            if(!mainHandItem.getType().equals(Material.PLAYER_HEAD)) {
+                ChatUtils.send(player, "&cError&8: &7You must be holding a head to do that.");
+                return;
+            }
+
+            String textureUrl = MicroblockUtils.getTextureUrl(mainHandItem);
+
+            ChatUtils.send(player, textureUrl);
+            ChatUtils.info(textureUrl);
+            return;
+
+
+        });
+    }
+
+    @Command(permission = "dev.getRelic")
+    public static CommandWrapper getRelic(){
+        return CommandRegistry.createPlayerCommand("getRelic", (player, command, label, args) -> {
+            player.getInventory().addItem(new RelicGenerator().create());
+            return;
+
 
         });
     }

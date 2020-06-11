@@ -26,4 +26,9 @@ public class ListBiomeSet implements BiomeSet {
     public List<String> toSerializable() {
         return this.biomes.stream().map(Biome::name).collect(Collectors.toList());
     }
+
+    @Override
+    public List<Biome> contents() {
+        return biomes;
+    }
 }

@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore.utils;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -27,6 +28,22 @@ public class ItemBuilder {
         }
         i.setItemMeta(iMeta);
         return i;
+    }
+
+    public static ItemStack setDisplayName(ItemStack stack, String displayName){
+        ItemMeta iMeta = stack.getItemMeta();
+        iMeta.setDisplayName(ChatUtils.format(displayName));
+        stack.setItemMeta(iMeta);
+        return stack;
+    }
+
+    public static ItemStack addLore(ItemStack stack, String lore){
+        ItemMeta iMeta = stack.getItemMeta();
+        if(lore != null){
+            iMeta.setLore(buildLore(lore));
+        }
+        stack.setItemMeta(iMeta);
+        return stack;
     }
 
     private static List<String> buildLore(String toParse){

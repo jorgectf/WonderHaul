@@ -2,7 +2,7 @@ package io.github.winterbear.wintercore.wonderhaul.Equipment.Enchanting;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
-import io.github.winterbear.wintercore.utils.ChatUtils;
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import org.bukkit.enchantments.Enchantment;
 
 /**

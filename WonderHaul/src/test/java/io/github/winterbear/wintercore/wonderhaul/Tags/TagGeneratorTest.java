@@ -1,12 +1,14 @@
 package io.github.winterbear.wintercore.wonderhaul.Tags;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.SpigotTesting.SpigotTest;
-import io.github.winterbear.wintercore.utils.ChatUtils;
 import org.assertj.core.api.SoftAssertions;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class TagGeneratorTest extends SpigotTest {
 
     @Test

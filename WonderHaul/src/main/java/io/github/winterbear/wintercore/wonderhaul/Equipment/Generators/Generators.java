@@ -1,5 +1,10 @@
 package io.github.winterbear.wintercore.wonderhaul.Equipment.Generators;
 
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Artifacts.RelicGenerator;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Decorations.StuffedToyGenerator;
+import io.github.winterbear.wintercore.wonderhaul.Equipment.Packs.PackGenerator;
+import io.github.winterbear.wintercore.wonderhaul.Tags.TagGenerator;
+
 /**
  * Created by WinterBear on 17/06/2019.
  */
@@ -13,6 +18,14 @@ public class Generators {
 
     public static Generator RARE = new RareGenerator();
 
+    public static Generator RELIC = new RelicGenerator();
+
+    public static Generator TAG = new TagGenerator();
+
+    public static Generator STUFFED_TOY = new StuffedToyGenerator();
+
+    public static Generator PACK = new PackGenerator();
+
     public static Generator fromName(String name){
         if(name.equalsIgnoreCase("junk")){
             return JUNK;
@@ -20,8 +33,16 @@ public class Generators {
             return ORDINARY;
         } else if (name.equalsIgnoreCase("unusual")){
             return UNUSUAL;
-        } else  if (name.equalsIgnoreCase("rare")){
+        } else if (name.equalsIgnoreCase("rare")){
             return RARE;
+        } else if (name.equalsIgnoreCase("relic")){
+            return RELIC;
+        } else if (name.equalsIgnoreCase("tag")){
+            return TAG;
+        } else if (name.equalsIgnoreCase("pack")){
+            return PACK;
+        } else if (name.equalsIgnoreCase("toy")){
+            return STUFFED_TOY;
         }
         return null;
     }

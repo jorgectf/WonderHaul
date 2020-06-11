@@ -1,6 +1,7 @@
 package io.github.winterbear.wintercore.utils;
 
-import java.util.List;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -21,10 +22,17 @@ public class RandomUtils {
     }
 
 
-    public static <T> T getRandomElementOf(List<T> collection){
+    public static <T> T getRandomElementOf(Collection<T> collection){
         int index = ThreadLocalRandom.current()
                 .nextInt(collection.size());
-        return collection.get(index);
+        Iterator<T> iterator = collection.iterator();
+        T result = iterator.next();
+        while(index > 0){
+            index--;
+            result = iterator.next();
+        }
+
+        return result;
     }
 
 

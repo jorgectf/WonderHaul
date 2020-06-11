@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore.utils;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -34,7 +35,6 @@ public class LoreUtils {
     }
 
 
-
     public static void removeLoreLine(ItemStack item, int line, Player player){
         removeLoreLine(item, line);
         player.updateInventory();
@@ -59,7 +59,7 @@ public class LoreUtils {
         return meta;
     }
 
-    private static List<String> getLore(ItemStack item){
+    public static List<String> getLore(ItemStack item){
         ItemMeta meta = initialiseMeta(item);
         List<String> itemLore = meta.hasLore() ? new ArrayList<>(meta.getLore()) : new ArrayList<>();
         return itemLore;

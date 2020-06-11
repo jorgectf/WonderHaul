@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: io.github.winterbear.wintercore.wonderhaul.Tags.TagGeneratorTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.274 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.001 sec

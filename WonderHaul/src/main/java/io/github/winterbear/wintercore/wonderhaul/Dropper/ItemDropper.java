@@ -1,9 +1,9 @@
 package io.github.winterbear.wintercore.wonderhaul.Dropper;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.WinterCoreUtils.CommandRegistry;
+import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
-import io.github.winterbear.wintercore.CommandRegistry;
-import io.github.winterbear.wintercore.CommandWrapper;
-import io.github.winterbear.wintercore.utils.ChatUtils;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.Generators.Generator;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.Generators.Generators;
 import io.github.winterbear.wintercore.wonderhaul.data.Pools;
@@ -25,7 +25,6 @@ public class ItemDropper {
         return Pools.getPools()
                 .stream()
                 .filter(pool -> pool.getGlobalChance().roll()) //Global pool chance
-                .filter(pool -> pool.getEnabledWorlds().contains(world)) //World is valid
                 .filter(pool -> pool.getEnabledBiomes().contains(biome)) //Biome is valid
                 .filter(pool -> pool.getMobChances().containsKey(victimType)) //Mob is valid
                 .filter(pool -> pool.getMobChances().get(victimType).roll(luckModifier)) //Roll mob chance
@@ -33,7 +32,7 @@ public class ItemDropper {
                 .collect(Collectors.toList());
     }
 
-    @Command(permission = "itemgenerator.test")
+    @Command(permission = "wonderhaul.itemgenerator.test")
     public static CommandWrapper generateItem(){
         return CommandRegistry.createPlayerCommand("generateitem", (player, command, label, args) -> {
 

@@ -13,6 +13,8 @@ public interface BiomeSet {
 
     public List<String> toSerializable();
 
+    public List<Biome> contents();
+
 
 
 }

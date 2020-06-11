@@ -1,6 +1,6 @@
 package io.github.winterbear.wintercore.wonderhaul.Tags;
 
-import io.github.winterbear.wintercore.utils.ChatUtils;
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.ItemUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

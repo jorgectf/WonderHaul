@@ -20,9 +20,9 @@ public class PoolBuilder {
     }
 
     private String name;
-    private Chance globalChance;
+    private Chance globalChance = new Chance(100);
     private List<String> enabledWorlds = new ArrayList<>();
-    private BiomeSet enabledBiomes;
+    private BiomeSet enabledBiomes = BiomeSets.ALL_BIOMES;
     private Map<EntityType, Chance> mobChances = new HashMap<>();
     private Generator generator;
 
