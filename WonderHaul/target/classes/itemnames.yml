@@ -14,36 +14,61 @@ boots:
   - 'Shoes'
   - 'Clogs'
   - 'Slippers'
+  - 'Sneakers'
+  - 'Waders'
+  - 'Sabatons'
 bow:
   - 'Longbow'
   - 'Shortbow'
   - 'Bow'
+  - 'Warbow'
+  - 'Hunters Bow'
+  - 'Compound Bow'
+  - 'Greatbow'
+  - 'Sniper'
 carrotstick:
   - 'Carrot on a stick'
   - 'Pig Summoner'
 chestplate:
   - 'Plate'
   - 'Chestplate'
+  - 'Cuirass'
   - 'Aegis'
   - 'Mail'
   - 'Breastplate'
+  - 'Chestpiece'
+  - 'Chestguard'
+  - 'Battleplate'
+  - 'Vestment'
 elytra:
   - 'Wings'
   - 'Elytra'
   - 'Glider'
 flint:
   - 'Tinderbox'
+  - 'Flint and Steel'
 helmet:
   - 'Hood'
   - 'Helm'
   - 'Helmet'
   - 'Crown'
+  - 'Cowl'
+  - 'Cap'
+  - 'Greathelm'
+  - 'Bandana'
+  - 'Mask'
+  - 'Headpiece'
 hoe:
   - 'Rake'
   - 'Hoe'
 leggings:
   - 'Greaves'
   - 'Leggings'
+  - 'Chausses'
+  - 'Skirt'
+  - 'Kilt'
+  - 'Pants'
+  - 'Britches'
 pickaxe:
   - 'Pickaxe'
   - 'Pick'
@@ -57,6 +82,8 @@ shears:
   - 'Scissors'
 shield:
   - 'Shield'
+  - 'Buckler'
+  - 'Guard'
 shovel:
   - 'Shovel'
   - 'Spade'
@@ -70,5 +97,8 @@ sword:
   - 'Shortsword'
 trident:
   - 'Trident'
+  - 'Halberd'
+  - 'Harpoon'
 crossbow:
   - 'Crossbow'
+  - 'Arbalest'

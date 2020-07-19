@@ -39,5 +39,11 @@ public class GeneratorCommons {
         return new ItemStack(mat);
     }
 
+    public static ItemStack generateWithLore(Material mat, Tier tier){
+        ItemStack item = generateDefault(mat, tier);
+        //TODO implement
+        return item;
+    }
+
 
 }

@@ -7,7 +7,7 @@ public enum Tier {
     JUNK("Junk","&7", true),
     ORDINARY("Ordinary","&9", true),
     UNUSUAL("Unusual","&a", true),
-    RARE("Rare","&e", true),
+    RARE("Rare","&6", true),
     ASCENDED("Ascended","&d", true),
     LEGENDARY("Legendary","&5", false),
     MYSTERIOUS("Mysterious", "&d", false),
@@ -25,6 +25,7 @@ public enum Tier {
         this.setEnchantable(enchantable);
     }
 
+    public String getName(){ return this.name; }
 
     public String getColorCode() {
         return colorCode;

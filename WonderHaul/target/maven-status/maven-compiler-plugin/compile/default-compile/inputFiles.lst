@@ -11,11 +11,11 @@ I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\git
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\Generators\GeneratorCommons.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\Lore.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Crafting\InvalidItemStackException.java
-I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\PrefixDictionary.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\MicroblockDataListener.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\LoreDictionary.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\data\WHPlayerData.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Inventories\InventoryGUIListener.java
+I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\database\ItemStackSerializer.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\utils\ItemBuilder.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Tags\TagApplicationBuilder.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\Generators\Generator.java
@@ -23,9 +23,12 @@ I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\git
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Crafting\NamedIngredient.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\ItemNames.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\Generators\RareGenerator.java
+I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\database\DataExecutor.java
+I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\database\InventoryDatabaseConnector.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\utils\EnchantmentUtils.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Tags\LoreTag.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\data\Pools.java
+I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\RandomTieredDictionary.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\utils\TexturedHeads.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Tags\RepairTag.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Crafting\MaterialDataIngredient.java
@@ -45,6 +48,7 @@ I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\git
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Tags\TagApplicationListener.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\servercore\DevTools.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\BlockStorage\BlockMetadata.java
+I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\database\BlockMetadataDatabaseConnector.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\utils\LoreUtils.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\data\WHPool.java
 I:\Projects\Minecraft Projects\Spigot\WinterCore\WonderHaul\src\main\java\io\github\winterbear\wintercore\wonderhaul\Equipment\Decorations\StuffedToyGenerator.java

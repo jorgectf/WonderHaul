@@ -93,6 +93,68 @@ public class TexturedHeads {
 
     public static Supplier<ItemStack> MYSTIC_HAUL = () -> getCustomSkull("http://textures.minecraft.net/texture/36575fcccadae87c0842f53de5e0ffa75851696866d81e1b72828348db5256");
 
+    public static Supplier<ItemStack> IFRIT_HEART = () -> getCustomSkull("http://textures.minecraft.net/texture/d45f4d139c9e89262ec06b27aaad73fa488ab49290d2ccd685a2554725373c9b");
+
+    public static Supplier<ItemStack> BLESSED_IFRIT_HEART = () -> getCustomSkull("http://textures.minecraft.net/texture/3587b6c20d3519d668c8b7c2a2564450eb2be4e9707b9ed925345dd2fccece8f");
+
+    public static Supplier<ItemStack> NAIAD_FRUIT = () -> getCustomSkull("http://textures.minecraft.net/texture/99ace4589fa04cd33174c8db2d2e009da7d820e6bc8b04bb6cd8ec2316d3a3f1");
+
+    public static Supplier<ItemStack> WRAITH_SHADOW = () -> getCustomSkull("http://textures.minecraft.net/texture/c482d1ba4bdac990f6ea987703587fd79fe55555363251984679d4f279cc0c2a");
+
+    public static Supplier<ItemStack> END_ESSENCE = () -> getCustomSkull("http://textures.minecraft.net/texture/87cf21ccb21e2d29c81cc15fe8d3b3ef971d182d3224a212964dddb36cf4");
+
+    public static Supplier<ItemStack> PURE_ESSENCE = () -> getCustomSkull("http://textures.minecraft.net/texture/e679918e52f3f8f2cabbbeac6a97681f2f8aa10c0b2e818592885a4a0e9d227");
+
+    public static Supplier<ItemStack> UNDEATH_ESSENCE = () -> getCustomSkull("http://textures.minecraft.net/texture/7594ca5dc5c85db3b4a90d485932bede5fbdf4023fc4fbff6fe14be409c1f97");
+
+    public static Supplier<ItemStack> AQUA_ESSENCE = () -> getCustomSkull("http://textures.minecraft.net/texture/23553de6ac72ba72a8bb53683fe38cb765d7deb4f56ff158ec0a0b430106ae4");
+
+    public static Supplier<ItemStack> NETHER_ESSENCE = () -> getCustomSkull("http://textures.minecraft.net/texture/6e5cf7f2e0f6b167b0b6fd0c4ac16ca70e4c5c811b8d5ad0eed2e3aa6dd2b7");
+
+    public static Supplier<ItemStack> LODESTONE_ORE = () -> getCustomSkull("http://textures.minecraft.net/texture/9867825764de98da1c1eedc8f57fac371cbefc40b14ba534aef2c5028a6280");
+
+    public static Supplier<ItemStack> SENSOR_ARRAY = () -> getCustomSkull("http://textures.minecraft.net/texture/53204f132b327a7306638a5d431a62139b5232d8475bb0f48a9a4e05e51f7297");
+
+    public static Supplier<ItemStack> LODESTONE_CORE = () -> getCustomSkull("http://textures.minecraft.net/texture/21a111ec1102c40c02d1d40f47e60938512393e9ddafefd5028d2d3a22bf518e");
+
+    public static Supplier<ItemStack> CONDENSED_DIAMOND = () -> getCustomSkull("http://textures.minecraft.net/texture/403343c2dd7eedc887dc6af2b70aee0cfb1511524df34ee4f1414d954a9e7a7d");
+
+    public static Supplier<ItemStack> MERCHANT_CONNECTOR = () -> getCustomSkull("http://textures.minecraft.net/texture/cbfb41f866e7e8e593659986c9d6e88cd37677b3f7bd44253e5871e66d1d424");
+
+    public static Supplier<ItemStack> LANDMARK_CONNECTOR = () -> getCustomSkull("http://textures.minecraft.net/texture/dc9365642c6eddcfedf5b5e14e2bc71257d9e4a3363d123c6f33c55cafbf6d");
+
+    public static Supplier<ItemStack> TOWN_CONNECTOR = () -> getCustomSkull("http://textures.minecraft.net/texture/32fa8f38c7b22096619c3a6d6498b405530e48d5d4f91e2aacea578844d5c67");
+
+    public static Supplier<ItemStack> CONDENSED_IRON = () -> getCustomSkull("http://textures.minecraft.net/texture/65629c1c77aea2b0cebcf333655e68db134f4841c08d9e875c3074ac30e2a6de");
+
+    public static Supplier<ItemStack> ADVANCED_CRAFTER = () -> getCustomSkull("http://textures.minecraft.net/texture/cca45ef5821a8b107cbfba7d66e997fb6abe5521c155cee2f24b34b3d91a5");
+
+    public static Supplier<ItemStack> TOWN_LODESTONE = () -> getCustomSkull("http://textures.minecraft.net/texture/2fb09cb9b671aeff5b76831b6b2ca5798f5ebf678344a0706f6a4b92fb56");
+
+    public static Supplier<ItemStack> LANDMARK_LODESTONE = () -> getCustomSkull("http://textures.minecraft.net/texture/e33fbd8c4b8536c8469b8d68fb9ed46961c1b5b2cc2ab8f27de53c5327c84a6");
+
+    public static Supplier<ItemStack> MERCHANT_LODESTONE = () -> getCustomSkull("http://textures.minecraft.net/texture/db3f6785ab90b6a57b71521574ad66328c4c14266a5d3a276cbfd9f14a70b");
+
+    public static Supplier<ItemStack> LANTERN = () -> getCustomSkull("http://textures.minecraft.net/texture/3d25e46719f967b33c297ed14a51be94ed64bbed362aac91c79f3903e1ea491");
+
+    public static Supplier<ItemStack> MICROPORUS_AFFINIS = () -> getCustomSkull("http://textures.minecraft.net/texture/c79db50622819fdfbfeb8b8e011204c3db3a1e896e462cc57c3c769e39df16");
+
+    public static Supplier<ItemStack> BROWN_PACKAGE = () -> getCustomSkull("http://textures.minecraft.net/texture/bf5b75961f72f140da521f3fe262733aaea06bb439a38cd67fc3189da6b5b0");
+
+    public static Supplier<ItemStack> CROCK_POT = () -> getCustomSkull("http://textures.minecraft.net/texture/2b146e1cf1aac40d3791c8981a328d55f974a8b9f7b3abde3d4b918734ea7");
+
+    public static Supplier<ItemStack> PIGGY_BANK = () -> getCustomSkull("http://textures.minecraft.net/texture/198df42f477f213ff5e9d7fa5a4cc4a69f20d9cef2b90c4ae4f29bd17287b5");
+
+    public static Supplier<ItemStack> ARCHERY_TARGET = () -> getCustomSkull("http://textures.minecraft.net/texture/5ecd9727e9d9f2c0739934ef1e63d1d89c92369421cafbaea733cce35c3b6768");
+
+    public static Supplier<ItemStack> CANDLE_ROLLING_STATION = () -> getCustomSkull("http://textures.minecraft.net/texture/f04fca931fb56d3a8f504a265b3a2935dfaf8b033844f7f2df6c779a316fad3");
+
+    public static Supplier<ItemStack> BOMB = () -> getCustomSkull("http://textures.minecraft.net/texture/9b20ff173bd17b2c4f2eb21f3c4b43841a14b31dfbfd354a3bec8263af562b");
+
+    public static Supplier<ItemStack> ESSENCE_COLLECTOR = () -> getCustomSkull("http://textures.minecraft.net/texture/18b26c9aff7d19944b04aa4dec95aef48ee3fa58f57157886133216e749e85");
+
+
+
 
 
 

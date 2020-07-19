@@ -22,7 +22,6 @@ public class MicroblockUtils {
     private static Base64 base64 = new Base64();
 
     public static String getTextureUrl(ItemStack head){
-
         ItemMeta headMeta = head.getItemMeta();
         Class<?> headMetaClass = headMeta.getClass();
         Collection<Property> properties = getField(headMetaClass, "profile", GameProfile.class, 0).get(headMeta).getProperties().get("textures");

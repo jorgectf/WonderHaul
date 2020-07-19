@@ -11,7 +11,7 @@ import java.util.Optional;
  */
 public class Prefixes {
 
-    private static PrefixDictionary dictionary;
+    private static RandomTieredDictionary dictionary;
 
     public static void enable(JavaPlugin plugin){
         Prefixes.reload(plugin);
@@ -19,7 +19,7 @@ public class Prefixes {
 
     public static void reload(JavaPlugin plugin){
         ConfigLoader.registerCustomConfig(plugin, "prefixes", "prefixes.yml");
-        dictionary = new PrefixDictionary(ConfigLoader.getConfig("prefixes"));
+        dictionary = new RandomTieredDictionary("prefixes",ConfigLoader.getConfig("prefixes"));
     }
 
     public static Optional<String> generatePrefix(Tier tier){
@@ -27,7 +27,7 @@ public class Prefixes {
             ChatUtils.warn("Prefix dictionary not initialised.");
             return Optional.empty();
         } else {
-            return dictionary.getPrefix(tier);
+            return dictionary.getRandomValue(tier);
         }
     }
 

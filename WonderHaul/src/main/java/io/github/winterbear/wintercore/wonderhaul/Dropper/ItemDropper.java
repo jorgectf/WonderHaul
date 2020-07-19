@@ -7,11 +7,12 @@ import io.github.winterbear.wintercore.Annotations.Command;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.Generators.Generator;
 import io.github.winterbear.wintercore.wonderhaul.Equipment.Generators.Generators;
 import io.github.winterbear.wintercore.wonderhaul.data.Pools;
-import org.bukkit.World;
+import org.bukkit.Chunk;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,11 @@ import java.util.stream.Collectors;
 public class ItemDropper {
 
 
-    public static List<ItemStack> generate(World world, Biome biome, EntityType victimType, double luckModifier){
+    public static List<ItemStack> generate(Chunk chunk, Biome biome, EntityType victimType, double luckModifier){
+        if(!chunkIsValid(chunk)){
+            return Collections.EMPTY_LIST;
+        }
+
         return Pools.getPools()
                 .stream()
                 .filter(pool -> pool.getGlobalChance().roll()) //Global pool chance
@@ -30,6 +35,26 @@ public class ItemDropper {
                 .filter(pool -> pool.getMobChances().get(victimType).roll(luckModifier)) //Roll mob chance
                 .map(p -> p.getGenerator().create())
                 .collect(Collectors.toList());
+    }
+
+    private static boolean chunkIsValid(Chunk chunk){
+        long time = chunk.getInhabitedTime();
+        if(time > 216000l){
+
+            long excess = time - 216000l;
+            if (excess < 72000l) {
+                return new Chance(50).roll();
+            } else if (excess < 144000l) {
+                return new Chance(25).roll();
+            } else if (excess < 216000l) {
+                return new Chance(5).roll();
+            } else {
+                return false;
+            }
+
+        }
+
+        return true;
     }
 
     @Command(permission = "wonderhaul.itemgenerator.test")

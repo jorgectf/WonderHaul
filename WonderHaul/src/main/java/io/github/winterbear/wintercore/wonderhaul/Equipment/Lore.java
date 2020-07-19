@@ -15,7 +15,7 @@ public class Lore {
 
     }
 
-    private static PrefixDictionary dictionary;
+    private static RandomTieredDictionary dictionary;
 
     public static void enable(JavaPlugin plugin){
         Lore.reload(plugin);
@@ -23,15 +23,15 @@ public class Lore {
 
     public static void reload(JavaPlugin plugin){
         ConfigLoader.registerCustomConfig(plugin, "lore", "lore.yml");
-        dictionary = new PrefixDictionary(ConfigLoader.getConfig("lore"));
+        dictionary = new RandomTieredDictionary("lore", ConfigLoader.getConfig("lore"));
     }
 
-    public static Optional<String> generatePrefix(Tier tier){
+    public static Optional<String> generateLore(Tier tier){
         if(dictionary == null){
-            ChatUtils.warn("Prefix dictionary not initialised.");
+            ChatUtils.warn("Lore dictionary not initialised.");
             return Optional.empty();
         } else {
-            return dictionary.getPrefix(tier);
+            return dictionary.getRandomValue(tier);
         }
     }
 

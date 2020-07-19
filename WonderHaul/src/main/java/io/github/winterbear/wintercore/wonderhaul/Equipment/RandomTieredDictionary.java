@@ -12,22 +12,22 @@ import java.util.Optional;
 /**
  * Created by WinterBear on 17/06/2019.
  */
-public class PrefixDictionary {
+public class RandomTieredDictionary {
 
     private Map<Tier, List<String>> dictionary;
 
-    public PrefixDictionary(YamlConfiguration config){
+    public RandomTieredDictionary(String dictionaryType, YamlConfiguration config){
         Map<Tier, List<String>> tiers = new HashMap<>();
         for(Tier tier : Tier.values()){
-            tiers.put(tier, config.getStringList(tier.name().toLowerCase()));
+            tiers.put(tier, config.getStringList(tier.getName().toLowerCase()));
             if(tiers.get(tier).isEmpty()){
-                ChatUtils.warn("Tier " + tier + " has no configured prefixes.");
+                ChatUtils.warn("Tier " + tier.getName() + " has no configured " + dictionaryType + ".");
             }
         }
         this.dictionary = tiers;
     }
 
-    public Optional<String> getPrefix(Tier tier){
+    public Optional<String> getRandomValue(Tier tier){
         if(dictionary.containsKey(tier) && !dictionary.get(tier).isEmpty()) {
             return Optional.of(RandomUtils.getRandomElementOf(dictionary.get(tier)));
         } else {

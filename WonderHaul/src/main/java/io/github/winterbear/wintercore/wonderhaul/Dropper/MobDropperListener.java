@@ -39,32 +39,22 @@ public class MobDropperListener implements Listener {
 
         float luckModifier = 1.0f;
 
-        if(EventUtils.damageCauseIsPlayer(event.getEntity().getLastDamageCause())){
+        Optional<Entity> attacker = EventUtils.getAttacker(event.getEntity().getLastDamageCause());
 
-        }
+        if(attacker.isPresent() && attacker.get() instanceof Player) {
 
-        List<ItemStack> drops = ItemDropper.generate(
-                getWorld(event),
-                getBiome(event),
-                event.getEntity().getType(),
-                luckModifier
-        );
+            List<ItemStack> drops = ItemDropper.generate(
+                    event.getEntity().getLocation().getChunk(),
+                    getBiome(event),
+                    event.getEntity().getType(),
+                    luckModifier
+            );
 
-
-
-        if(!drops.isEmpty()){
-            Optional<Entity> attacker = EventUtils.getAttacker(event.getEntity().getLastDamageCause());
-            if(attacker.isPresent() && attacker.get() instanceof Player){
+            if(!drops.isEmpty()) {
                 SoundUtils.playSound((Player) attacker.get(), Sound.BLOCK_ENCHANTMENT_TABLE_USE);
+                event.getDrops().addAll(drops);
             }
-
-            event.getDrops().addAll(drops);
-
-
-
         }
-
-
     }
 
     private World getWorld(EntityDeathEvent event){
