@@ -25,7 +25,7 @@ import java.util.Optional;
  */
 public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
-    private List<Material> microblockTypes = Arrays.asList(Material.PLAYER_HEAD, Material.PLAYER_WALL_HEAD);
+    private static final List<Material> MICROBLOCK_TYPES = Arrays.asList(Material.PLAYER_HEAD, Material.PLAYER_WALL_HEAD);
 
     private BlockStorage blockStorage = new BlockStorage();
 
@@ -51,7 +51,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
 
-        if(event.getItemInHand().getType().equals(Material.PLAYER_HEAD)){
+        if(MICROBLOCK_TYPES.contains(event.getItemInHand().getType())){
 
             Location loc = event.getBlockPlaced().getLocation();
             blockStorage.setBlockMetadata(new BlockMetadata(event.getBlockPlaced(), ItemUtils.oneOf(event.getItemInHand()), getType(event.getItemInHand())));
@@ -76,7 +76,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
         Location blockLocation = event.getBlock().getLocation();
 
-        if(event.getBlock().getType().equals(Material.PLAYER_HEAD)){
+        if(MICROBLOCK_TYPES.contains(event.getBlock().getType())){
 
             Optional<BlockMetadata> blockMeta = blockStorage.get(blockLocation);
 
