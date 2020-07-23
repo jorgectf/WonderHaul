@@ -3,8 +3,9 @@ package io.github.winterbear.wintercore.wonderhaul;
 import io.github.winterbear.wintercore.utils.ItemUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.RepeatingTaskUtils;
-import io.github.winterbear.wintercore.wonderhaul.BlockStorage.BlockMetadata;
-import io.github.winterbear.wintercore.wonderhaul.BlockStorage.BlockStorage;
+import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
+import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorage;
+import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorageCommands;
 import io.github.winterbear.wintercore.wonderhaul.data.PersistentDataHolder;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -15,6 +16,8 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,15 +25,22 @@ import java.util.Optional;
  */
 public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
+    private List<Material> microblockTypes = Arrays.asList(Material.PLAYER_HEAD, Material.PLAYER_WALL_HEAD);
+
     private BlockStorage blockStorage = new BlockStorage();
 
     private final JavaPlugin plugin;
 
     public MicroblockDataListener(JavaPlugin plugin){
         this.plugin = plugin;
+        BlockStorageCommands.setStorage(this.blockStorage);
         this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
         blockStorage.loadFromDB();
         RepeatingTaskUtils.everyMinutes(10, this::saveBlockStorage, plugin);
+    }
+
+    public BlockStorage getBlockStorage() {
+        return blockStorage;
     }
 
     private boolean saveBlockStorage(){
@@ -44,7 +54,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
         if(event.getItemInHand().getType().equals(Material.PLAYER_HEAD)){
 
             Location loc = event.getBlockPlaced().getLocation();
-            blockStorage.setBlockMetadata(loc, new BlockMetadata(ItemUtils.oneOf(event.getItemInHand()), getType(event.getItemInHand())));
+            blockStorage.setBlockMetadata(new BlockMetadata(event.getBlockPlaced(), ItemUtils.oneOf(event.getItemInHand()), getType(event.getItemInHand())));
 
 
         }

@@ -34,6 +34,59 @@ public class LoreUtils {
         setLore(item, itemLore);
     }
 
+    public static void addMultiLineLore(ItemStack item, String lore){
+        List<String> itemLore = getLore(item);
+        itemLore.addAll(getMultiline(lore, 20, 0));
+        setLore(item, itemLore);
+    }
+
+    public static List<String> getMultiline(String string, int lineLength, int indentCount){
+        List<String> result = new ArrayList<>();
+        String[] characters = string.split("");
+        String color = "&7";
+        String format = "";
+        String indent = "";
+        StringBuilder line = new StringBuilder();
+        line.append(color);
+        int maxLineLength = 0;
+        for(int i = 0; i < indentCount; i++){
+            indent = indent + " ";
+        }
+        for(int i = 0; i < characters.length; i++){
+            String c = characters[i];
+            if(c.equals("&") && i + 1 < characters.length){
+                String modifier = characters[i + 1];
+                if(ChatUtils.COLOR_CODES.contains(modifier)){
+                    color = "&" + modifier;
+                } else if (ChatUtils.FORMAT_CODES.contains(modifier)){
+                    format = "&" + modifier;
+                } else if (ChatUtils.RESET.equals(modifier)){
+                    color = "&7";
+                    format = "";
+                }
+            }
+            line.append(c);
+            if(line.length() > lineLength && c.equals(" ")){
+                //Start new line
+                String newLine = ChatUtils.format(line.toString());
+                int currentLineLength = newLine.length();
+                int remainingChars = characters.length - (i + 1);
+                if((currentLineLength + remainingChars) > maxLineLength){
+                    result.add(indent + newLine);
+                    line = new StringBuilder();
+                    line.append(color);
+                    line.append(format);
+                }
+                if(currentLineLength > maxLineLength){
+                    maxLineLength = currentLineLength;
+                }
+            }
+        }
+        result.add(indent + ChatUtils.format(line.toString()));
+
+        return result;
+    }
+
 
     public static void removeLoreLine(ItemStack item, int line, Player player){
         removeLoreLine(item, line);

@@ -1,7 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.data;
 
-import io.github.winterbear.wintercore.wonderhaul.Dropper.Chance;
-import io.github.winterbear.wintercore.wonderhaul.Equipment.Generators.Generator;
+import io.github.winterbear.wintercore.wonderhaul.dropper.Chance;
+import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import org.bukkit.entity.EntityType;
 
 import java.util.ArrayList;
