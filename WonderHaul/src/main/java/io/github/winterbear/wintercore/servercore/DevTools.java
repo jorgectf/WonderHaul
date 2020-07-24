@@ -7,7 +7,7 @@ import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.MicroblockUtils;
-import io.github.winterbear.wintercore.wonderhaul.Equipment.Artifacts.RelicGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.artifacts.RelicGenerator;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

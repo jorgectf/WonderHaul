@@ -1,6 +1,6 @@
 package io.github.winterbear.wintercore.utils;
 
-import io.github.winterbear.wintercore.wonderhaul.Equipment.MaterialGroup;
+import io.github.winterbear.wintercore.wonderhaul.equipment.MaterialGroup;
 import org.bukkit.Material;
 
 import java.util.Arrays;

@@ -5,6 +5,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by WinterBear on 20/05/2019.
  */
@@ -15,6 +18,12 @@ public class ChatUtils {
     private static final Character MODIFIER_CONVERTED = '§';
 
     private static final String REGEX_COLOR_CODES = "[&§][abcdef0123456789lmnok]";
+
+    public static final List<String> COLOR_CODES = Arrays.asList("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
+
+    public static final List<String> FORMAT_CODES = Arrays.asList("k", "l", "m", "n", "o");
+
+    public static final String RESET = "r";
 
     public static final String EMPTY_STRING = "";
 
