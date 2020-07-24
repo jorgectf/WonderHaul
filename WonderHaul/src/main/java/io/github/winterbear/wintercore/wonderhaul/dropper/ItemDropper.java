@@ -32,21 +32,22 @@ public class ItemDropper {
                 .filter(pool -> pool.getGlobalChance().roll()) //Global pool chance
                 .filter(pool -> pool.getEnabledBiomes().contains(biome)) //Biome is valid
                 .filter(pool -> pool.getMobChances().containsKey(victimType)) //Mob is valid
-                .filter(pool -> pool.getMobChances().get(victimType).roll(luckModifier)) //Roll mob chance
+                .filter(pool -> pool.getMobChances().get(victimType).rollModified(luckModifier)) //Roll mob chance
                 .map(p -> p.getGenerator().create())
                 .collect(Collectors.toList());
     }
 
     private static boolean chunkIsValid(Chunk chunk){
         long time = chunk.getInhabitedTime();
-        if(time > 216000l){
 
-            long excess = time - 216000l;
-            if (excess < 72000l) {
+        if(time > 216000L){
+
+            long excess = time - 216000L;
+            if (excess < 72000L) {
                 return new Chance(50).roll();
-            } else if (excess < 144000l) {
+            } else if (excess < 144000L) {
                 return new Chance(25).roll();
-            } else if (excess < 216000l) {
+            } else if (excess < 216000L) {
                 return new Chance(5).roll();
             } else {
                 return false;

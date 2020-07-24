@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore.wonderhaul.data;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.wonderhaul.dropper.Chance;
 import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import org.bukkit.entity.EntityType;
@@ -71,6 +72,14 @@ public class Pool {
 
     public Map<EntityType, Chance> getMobChances() {
         return mobChances;
+    }
+
+    public boolean roll(EntityType entityType, long luckModifier){
+        if(mobChances.containsKey(entityType)){
+            ChatUtils.info(this.name + " rolling chance " + mobChances.get(entityType));
+            return mobChances.get(entityType).rollModified(luckModifier);
+        }
+        return false;
     }
 
     public void setMobChances(Map<EntityType, Chance> mobChances) {
