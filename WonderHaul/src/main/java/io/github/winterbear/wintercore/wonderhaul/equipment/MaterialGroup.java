@@ -14,6 +14,7 @@ public enum MaterialGroup {
 
 
     PICKAXE("Pickaxe", EnumSet.of(
+            Material.NETHERITE_PICKAXE,
             Material.DIAMOND_PICKAXE,
             Material.IRON_PICKAXE,
             Material.STONE_PICKAXE,
@@ -21,6 +22,7 @@ public enum MaterialGroup {
             Material.GOLDEN_PICKAXE
     )),
     AXE("Axe", EnumSet.of(
+            Material.NETHERITE_AXE,
             Material.DIAMOND_AXE,
             Material.IRON_AXE,
             Material.STONE_AXE,
@@ -28,6 +30,7 @@ public enum MaterialGroup {
             Material.GOLDEN_AXE
     )),
     SHOVEL("Shovel", EnumSet.of(
+            Material.NETHERITE_SHOVEL,
             Material.DIAMOND_SHOVEL,
             Material.IRON_SHOVEL,
             Material.STONE_SHOVEL,
@@ -35,6 +38,7 @@ public enum MaterialGroup {
             Material.GOLDEN_SHOVEL
     )),
     HOE("Hoe", EnumSet.of(
+            Material.NETHERITE_HOE,
             Material.DIAMOND_HOE,
             Material.IRON_HOE,
             Material.STONE_HOE,
@@ -42,6 +46,7 @@ public enum MaterialGroup {
             Material.GOLDEN_HOE
     )),
     SWORD("Sword", EnumSet.of(
+            Material.NETHERITE_SWORD,
             Material.DIAMOND_SWORD,
             Material.GOLDEN_SWORD,
             Material.IRON_SWORD,
@@ -49,6 +54,7 @@ public enum MaterialGroup {
             Material.WOODEN_SWORD
     )),
     HELMET("Helmet", EnumSet.of(
+            Material.NETHERITE_HELMET,
             Material.DIAMOND_HELMET,
             Material.GOLDEN_HELMET,
             Material.IRON_HELMET,
@@ -57,6 +63,7 @@ public enum MaterialGroup {
             Material.TURTLE_HELMET
     )),
     CHESTPLATE("Chestplate", EnumSet.of(
+            Material.NETHERITE_CHESTPLATE,
             Material.DIAMOND_CHESTPLATE,
             Material.GOLDEN_CHESTPLATE,
             Material.CHAINMAIL_CHESTPLATE,
@@ -64,6 +71,7 @@ public enum MaterialGroup {
             Material.IRON_CHESTPLATE
     )),
     LEGGINGS("Leggings", EnumSet.of(
+            Material.NETHERITE_LEGGINGS,
             Material.DIAMOND_LEGGINGS,
             Material.GOLDEN_LEGGINGS,
             Material.CHAINMAIL_LEGGINGS,
@@ -71,6 +79,7 @@ public enum MaterialGroup {
             Material.IRON_LEGGINGS
     )),
     BOOTS("Boots", EnumSet.of(
+            Material.NETHERITE_BOOTS,
             Material.DIAMOND_BOOTS,
             Material.GOLDEN_BOOTS,
             Material.CHAINMAIL_BOOTS,
