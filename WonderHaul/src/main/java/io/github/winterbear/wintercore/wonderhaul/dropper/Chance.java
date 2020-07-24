@@ -1,6 +1,5 @@
 package io.github.winterbear.wintercore.wonderhaul.dropper;
 
-import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.RandomUtils;
 
 /**
@@ -12,7 +11,7 @@ public class Chance {
 
     public static boolean roll(double percentage){
         boolean pass = RandomUtils.getDoubleBetween(0, 1) <= percentage / 100.0;
-        ChatUtils.info("Rolled: " + pass + " for chance " + percentage);
+        //ChatUtils.info("Rolled: " + pass + " for chance " + percentage + "%");
         return pass;
     }
 
