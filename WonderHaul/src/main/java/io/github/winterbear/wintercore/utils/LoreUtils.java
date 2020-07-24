@@ -28,6 +28,11 @@ public class LoreUtils {
         player.updateInventory();
     }
 
+    public static void addLore(ItemStack item, List<String> lore, Player player){
+        lore.forEach(l -> addLoreLine(item, l));
+        player.updateInventory();
+    }
+
     public static void addLoreLine(ItemStack item, String lore){
         List<String> itemLore = getLore(item);
         itemLore.add(ChatUtils.format(lore));
@@ -36,7 +41,7 @@ public class LoreUtils {
 
     public static void addMultiLineLore(ItemStack item, String lore){
         List<String> itemLore = getLore(item);
-        itemLore.addAll(getMultiline(lore, 20, 0));
+        itemLore.addAll(getMultiline(lore, 26, 0));
         setLore(item, itemLore);
     }
 

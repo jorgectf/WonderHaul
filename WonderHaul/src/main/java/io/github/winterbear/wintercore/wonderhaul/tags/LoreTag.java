@@ -13,9 +13,9 @@ public class LoreTag implements Tag{
 
     @Override
     public boolean apply(ItemStack item, TagApplication application) {
-
-        String lore = application.getTagItem().getItemMeta().getLore().get(1);
-        LoreUtils.addMultiLineLore(item, lore);
+        List<String> tagLore = application.getTagItem().getItemMeta().getLore();
+        List<String> lore = tagLore.subList(1, tagLore.size());
+        LoreUtils.addLore(item, lore, application.getPlayer());
         sendMessage(application.getPlayer(), "Lore was added successfully!");
         return true;
 
@@ -38,7 +38,7 @@ public class LoreTag implements Tag{
 
     @Override
     public ItemStack modify(ItemStack item){
-        LoreUtils.addLoreLine(item, "&7" + pickLore(item));
+        LoreUtils.addMultiLineLore(item, "&7" + pickLore(item));
         return item;
     }
 }
