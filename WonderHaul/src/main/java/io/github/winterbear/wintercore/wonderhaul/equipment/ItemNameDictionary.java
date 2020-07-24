@@ -20,7 +20,7 @@ public class ItemNameDictionary {
         for (MaterialGroup mat : MaterialGroup.values()) {
             itemNames.put(mat, config.getStringList(mat.name().toLowerCase()));
             if(itemNames.get(mat).isEmpty()){
-                ChatUtils.warn("Material " + mat + " has no configured prefixes.");
+                ChatUtils.warn("Material " + mat + " has no configured names.");
             }
         }
         this.dictionary = itemNames;
@@ -28,7 +28,7 @@ public class ItemNameDictionary {
 
     public String getRandomName(MaterialGroup material){
         if(!dictionary.containsKey(material) || dictionary.get(material) == null || dictionary.get(material).isEmpty()){
-            ChatUtils.warn("No names configured for material " + material.name() + ". Using default name.");
+            ChatUtils.warn("No names configured for material " + material + ". Using default name.");
             return material.name();
         }
         return RandomUtils.getRandomElementOf(dictionary.get(material));

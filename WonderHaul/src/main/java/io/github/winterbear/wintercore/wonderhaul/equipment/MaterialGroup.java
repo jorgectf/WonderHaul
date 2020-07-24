@@ -11,8 +11,6 @@ import java.util.EnumSet;
  */
 public enum MaterialGroup {
 
-
-
     PICKAXE("Pickaxe", EnumSet.of(
             Material.NETHERITE_PICKAXE,
             Material.DIAMOND_PICKAXE,
@@ -112,6 +110,11 @@ public enum MaterialGroup {
 
     public static MaterialGroup fromMaterial(Material material){
         return MaterialGroups.MATERIALS.get(material);
+    }
+
+    @Override
+    public String toString(){
+        return this.displayName;
     }
 
     MaterialGroup(String name, EnumSet<Material> materials){
