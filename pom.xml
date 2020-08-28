@@ -51,11 +51,11 @@
         </repository>
         <repository>
             <id>frequal.com</id>
-            <url>http://frequal.com/maven-repository</url>
+            <url>https://frequal.com/maven-repository</url>
         </repository>
         <repository>
             <id>dmulloy2-repo</id>
-            <url>http://repo.dmulloy2.net/content/groups/public/</url>
+            <url>https://repo.dmulloy2.net/content/groups/public/</url>
         </repository>
     </repositories>
     <dependencies>
@@ -95,6 +95,11 @@
             <artifactId>assertj-core</artifactId>
             <version>3.11.1</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.9.10</version>
         </dependency>
 
     </dependencies>
