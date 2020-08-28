@@ -145,7 +145,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
     private boolean isOwner(BlockMetadata metadata, Player player){
         if(metadata.getProperty("Owner").isPresent()){
-            return metadata.getProperty("Owner").get().equals(player.getUniqueId());
+            return metadata.getProperty("Owner").get().equals(player.getUniqueId().toString());
         } else {
             return false;
         }

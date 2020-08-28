@@ -72,10 +72,10 @@ public class EssenceCollector extends Microblock {
             //Y - Is the player's tool an item that can be sacrificed?
             if(tier.isPresent() && SACRIFICE_VALUES.containsKey(tier.get())){
                 //Y - Calculate essence value and add to internal counter.
-                Integer count = Integer.parseInt(metadata.getProperty("EssenceCount").get());
+                int count = Integer.parseInt(metadata.getProperty("EssenceCount").get());
                 count = count + SACRIFICE_VALUES.get(tier.get());
-                metadata.setProperty("EssenceCount", count.toString());
-                Integer cost = Integer.parseInt(metadata.getProperty("UpgradeCost").get());
+                metadata.setProperty("EssenceCount", Integer.toString(count));
+                int cost = Integer.parseInt(metadata.getProperty("UpgradeCost").get());
                 event.getPlayer().getInventory().removeItem(ItemUtils.oneOf(item));
                 if(count >= cost){
                     //If internal counter meets requirements for item upgrading, upgrade item
@@ -96,8 +96,8 @@ public class EssenceCollector extends Microblock {
             } else {
                 //N - Message player
                 if(item.getType().equals(Material.AIR)){
-                    Integer count = Integer.parseInt(metadata.getProperty("EssenceCount").get());
-                    Integer cost = Integer.parseInt(metadata.getProperty("UpgradeCost").get());
+                    int count = Integer.parseInt(metadata.getProperty("EssenceCount").get());
+                    int cost = Integer.parseInt(metadata.getProperty("UpgradeCost").get());
                     ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7Progress - " + count + "/" + cost);
                 } else {
                     ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7You can only sacrifice items with a tier.");

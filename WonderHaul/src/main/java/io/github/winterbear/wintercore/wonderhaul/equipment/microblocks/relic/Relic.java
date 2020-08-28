@@ -56,7 +56,7 @@ public class Relic extends Microblock {
         if(tool == null || Material.AIR.equals(tool.getType())){
             return true;
         }
-        if(!metadata.getProperty("Owner").isPresent() && metadata.getProperty("Owner").get().equals(event.getPlayer().getUniqueId())){
+        if(!metadata.getProperty("Owner").isPresent() && metadata.getProperty("Owner").get().equals(event.getPlayer().getUniqueId().toString())){
             ChatUtils.send(event.getPlayer(), "&5Relic &8>> &7This isn't your Relic.");
         }
 

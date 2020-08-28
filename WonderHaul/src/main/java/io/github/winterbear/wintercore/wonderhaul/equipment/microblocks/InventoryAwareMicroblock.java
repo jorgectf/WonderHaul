@@ -40,7 +40,8 @@ public abstract class InventoryAwareMicroblock extends Microblock {
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event){
-        if(InventoryUtils.getCurrentInventory((Player) event.getPlayer()).equals(getInventoryType())) {
+        Optional<WHInventoryType> inventoryType = InventoryUtils.getCurrentInventory((Player) event.getPlayer());
+        if(inventoryType.isPresent() && inventoryType.get().equals(getInventoryType())) {
             InventoryUtils.closeInventory((Player) event.getPlayer());
         }
     }
