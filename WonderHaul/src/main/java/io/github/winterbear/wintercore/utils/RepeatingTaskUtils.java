@@ -32,7 +32,7 @@ public class RepeatingTaskUtils {
 
     public static void everySeconds(int seconds, Callable<Boolean> r, JavaPlugin plugin){
 
-        Long period = seconds*SECOND_IN_TICKS;
+        long period = seconds*SECOND_IN_TICKS;
 
         new BukkitRunnable(){
 
