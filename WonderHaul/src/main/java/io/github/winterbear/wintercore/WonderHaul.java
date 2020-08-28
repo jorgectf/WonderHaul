@@ -6,6 +6,8 @@ import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
 import io.github.winterbear.wintercore.Annotations.SpigotPlugin;
 import io.github.winterbear.wintercore.database.HibernateUtil;
+import io.github.winterbear.wintercore.particles.ParticleEngine;
+import io.github.winterbear.wintercore.utils.DelayUtils;
 import io.github.winterbear.wintercore.wonderhaul.MicroblockDataListener;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorage;
 import io.github.winterbear.wintercore.wonderhaul.data.PersistentDataHolder;
@@ -13,6 +15,8 @@ import io.github.winterbear.wintercore.wonderhaul.dropper.MobDropperListener;
 import io.github.winterbear.wintercore.wonderhaul.equipment.ItemNames;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Lore;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Prefixes;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollector;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.Relic;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantConfig;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
 import io.github.winterbear.wintercore.wonderhaul.equipment.packs.ExperiencePackListener;
@@ -45,6 +49,8 @@ public class WonderHaul extends JavaPlugin {
     private static BlockStorage blockStorage;
 
     private List<PersistentDataHolder> dataHolders = new ArrayList<>();
+
+    private static boolean databaseConfigured = false;
 
     @Override
     public void onEnable() {
@@ -89,14 +95,30 @@ public class WonderHaul extends JavaPlugin {
     private void loadListeners(){
         PluginConfig config = new PluginConfig(this);
         HibernateUtil.setConfig(config);
+        try {
+            HibernateUtil.setupDatabase();
+            databaseConfigured = true;
+        } catch (Exception e){
+            databaseConfigured = false;
+            ChatUtils.error("An error occurred while enabling the database. Please check your config. Block persistence will not work until this is resolved.");
+            e.printStackTrace();
+        }
+
         new TagApplicationListener(this);
         new MobDropperListener(this);
         new ExperiencePackListener(this);
+        if(databaseConfigured) {
+            DelayUtils.after(1, this::loadData, this);
+        }
+        new Relic(this);
+        new EssenceCollector(this);
+        ParticleEngine.start(this);
+    }
+
+    private void loadData(){
         MicroblockDataListener microblockDataListener = new MicroblockDataListener(this);
         blockStorage = microblockDataListener.getBlockStorage();
         dataHolders.add(microblockDataListener);
-
-
     }
 
     public static BlockStorage getBlockStorage() {

@@ -17,31 +17,34 @@ public class BlockMetadataDAO {
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            metadata.forEach(session::saveOrUpdate);
+
+            metadata.stream()
+                    //.peek(b -> ChatUtils.info(b.getLocationReference() + ": " + System.identityHashCode(b)))
+                    .forEach(session::saveOrUpdate);
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
+
         }
     }
 
-    public void delete(List<String> references){
+    public void delete(List<BlockMetadata> metadata){
 
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.createQuery("delete from BlockMetadata where location in (:references)")
-                    .setParameter("references", references)
-                    .executeUpdate();
+            metadata.forEach(session::delete);
             transaction.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             if (transaction != null) {
                 transaction.rollback();
             }
-            e.printStackTrace();
+
         }
 
 
@@ -55,6 +58,8 @@ public class BlockMetadataDAO {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             blockMetadata = session.createQuery("from BlockMetadata", BlockMetadata.class).list();
         }
+
+        //blockMetadata.stream().forEach(b -> ChatUtils.info(b.getLocationReference() + ": " + System.identityHashCode(b)));
 
         return blockMetadata;
 

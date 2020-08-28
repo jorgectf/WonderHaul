@@ -25,6 +25,7 @@ public class OrdinaryGenerator implements  Generator{
             Material.IRON_CHESTPLATE,
             Material.IRON_HELMET,
             Material.IRON_HELMET,
+            Material.BOW,
             Material.SHIELD,
             Material.SHEARS
     );

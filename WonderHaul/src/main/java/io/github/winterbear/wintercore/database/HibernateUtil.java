@@ -40,7 +40,7 @@ public class HibernateUtil {
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 settings.put(Environment.SHOW_SQL, config.getShowSQL().toString());
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-                settings.put(Environment.HBM2DDL_AUTO, "update");
+                settings.put(Environment.HBM2DDL_AUTO, "none");
                 configuration.setProperties(settings);
                 getDatabaseEntities().forEach(configuration::addAnnotatedClass);
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
@@ -62,6 +62,10 @@ public class HibernateUtil {
 
     public static void setConfig(PluginConfig config){
         configHolder = Optional.of(config);
+    }
+
+    public static void setupDatabase(){
+        VersionMigrationUtil.doMigration();
     }
 
     private static List<Class<?>> getDatabaseEntities(){

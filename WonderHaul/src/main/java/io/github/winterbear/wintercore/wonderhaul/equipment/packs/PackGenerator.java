@@ -43,7 +43,7 @@ public class PackGenerator implements Generator {
 
             ItemStack item = texture.get();
             ItemBuilder.setDisplayName(item, name);
-            LoreUtils.addLoreLine(item, tier.getColouredLore("&d⚒","Pack", tier.getColorCode() + ChatUtils.uncolored(name)));
+            LoreUtils.addLoreLine(item, tier.getColouredLore("&d⚒","Pack", tier.getColor() + ChatUtils.uncolored(name)));
             return item;
         }
 

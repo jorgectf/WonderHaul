@@ -2,6 +2,8 @@ package io.github.winterbear.wintercore.wonderhaul.dropper;
 
 import io.github.winterbear.wintercore.utils.EventUtils;
 import io.github.winterbear.wintercore.utils.SoundUtils;
+import me.lorinth.rpgmobs.LorinthsRpgMobs;
+import org.bukkit.Bukkit;
 import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Biome;
@@ -43,11 +45,12 @@ public class MobDropperListener implements Listener {
 
         if(attacker.isPresent() && attacker.get() instanceof Player) {
 
+
             List<ItemStack> drops = ItemDropper.generate(
                     event.getEntity().getLocation().getChunk(),
                     getBiome(event),
                     event.getEntity().getType(),
-                    luckModifier
+                    luckModifier + getLevelModifier(event.getEntity())
             );
 
             if(!drops.isEmpty()) {
@@ -55,6 +58,24 @@ public class MobDropperListener implements Listener {
                 event.getDrops().addAll(drops);
             }
         }
+    }
+
+    private static float getLevelModifier(Entity e){
+        if (Bukkit.getPluginManager().getPlugin("LorinthsRpgMobs") != null) {
+            Integer level = LorinthsRpgMobs.GetLevelOfEntity(e);
+            if(level != null) {
+                if (level != 1 && level < 100) {
+                    float lmod = 0.095f;
+                    return lmod * (level - 1);
+                } else if (level >= 100) {
+                    float lmod = 0.101f;
+                    return 15.0f + lmod * (level - 100);
+                }
+            }
+
+        }
+
+        return 0.0f;
     }
 
     private World getWorld(EntityDeathEvent event){

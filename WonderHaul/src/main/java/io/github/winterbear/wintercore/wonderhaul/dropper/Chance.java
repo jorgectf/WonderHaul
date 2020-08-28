@@ -24,6 +24,7 @@ public class Chance {
     }
 
     public boolean rollModified(double modifier){
+        //ChatUtils.info("Chance: " + (chance * modifier));
         return (roll(chance * modifier));
     }
 

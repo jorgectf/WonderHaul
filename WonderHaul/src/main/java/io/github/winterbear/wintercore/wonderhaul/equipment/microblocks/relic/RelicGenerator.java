@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.wonderhaul.equipment.artifacts;
+package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
@@ -21,8 +21,8 @@ public class RelicGenerator implements Generator {
 
         ItemStack relic = TexturedHeads.RELIC.get();
 
-        String displayName = ChatUtils.format(tier.getColorCode() + "Relic");
-        String lore = Tier.MYSTERIOUS.getColouredLore("Artifact", "Relic");
+        String displayName = ChatUtils.format(tier.getColor() + "Relic");
+        String lore = tier.getColouredLore("Artifact", "Relic");
         String loreText1 = "  &7&oSacrifice items for";
         String loreText2 = "  &7&oa chance to get a better";
         String loreText3 = "  &7&oitem";

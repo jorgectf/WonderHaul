@@ -92,7 +92,7 @@ public class StuffedToyGenerator implements Generator {
     }
 
     private static ItemStack format(ItemStack baseItem, String name, Tier tier){
-        ItemBuilder.setDisplayName(baseItem, tier.getColorCode() + "Stuffed " + name + " Toy");
+        ItemBuilder.setDisplayName(baseItem, tier.getColor() + "Stuffed " + name + " Toy");
         LoreUtils.addLoreLine(baseItem, tier.getColouredLore("Decoration", "Stuffed Toy"));
         return baseItem;
     }

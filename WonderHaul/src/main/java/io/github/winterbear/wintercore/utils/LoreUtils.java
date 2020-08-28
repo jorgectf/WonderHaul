@@ -1,18 +1,38 @@
 package io.github.winterbear.wintercore.utils;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
+import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by WinterBear on 20/05/2019.
  */
 public class LoreUtils {
+
+    private static final String WORD_SEPARATOR = " ";
+
+    public static String convertToTitleCase(String text) {
+        if (text == null || text.isEmpty()) {
+            return text;
+        }
+
+        return Arrays
+                .stream(text.split(WORD_SEPARATOR))
+                .map(word -> word.isEmpty()
+                        ? word
+                        : Character.toTitleCase(word.charAt(0)) + word
+                        .substring(1)
+                        .toLowerCase())
+                .collect(Collectors.joining(WORD_SEPARATOR));
+    }
 
     public static void clearLore(ItemStack item, Player player){
         clearLore(item);
@@ -119,8 +139,62 @@ public class LoreUtils {
 
     public static List<String> getLore(ItemStack item){
         ItemMeta meta = initialiseMeta(item);
+        if(meta == null){
+            return Collections.EMPTY_LIST;
+        }
         List<String> itemLore = meta.hasLore() ? new ArrayList<>(meta.getLore()) : new ArrayList<>();
         return itemLore;
+    }
+
+    public static String getType(ItemStack item) {
+        return LoreUtils.getLore(item).stream()
+                .filter(lore -> lore.contains("✦"))
+                .map(line -> line.substring(line.indexOf(':') + 2))
+                .map(type -> ChatUtils.uncolored(type.trim()))
+                .findFirst().orElse("None");
+
+    }
+
+    public static Optional<Tier> getTier(ItemStack item) {
+        String tier = LoreUtils.getLore(item).stream()
+                .filter(lore -> lore.contains("✦"))
+                .map(line -> line.substring(line.indexOf(':') + 2))
+                .map(d -> d.split(" ")[0])
+                .map(ChatUtils::uncolored)
+                .findFirst().orElse(null);
+        if(tier != null){
+            return Optional.of(Tier.valueOf(tier.toUpperCase()));
+        }
+        return Optional.empty();
+
+    }
+
+    public static void changeTier(ItemStack item, Tier newTier){
+        ItemMeta meta = item.getItemMeta();
+        List<String> lore = LoreUtils.getLore(item);
+        for(String line : lore){
+            if(line.contains("✦")){
+                int index = lore.indexOf(line);
+                lore.set(index, ChatColor.translateAlternateColorCodes('&' , newTier.getTierLore(item.getType())));
+            }
+        }
+        meta.setLore(lore);
+        item.setItemMeta(meta);
+    }
+
+    public static void addEmptySocket(ItemStack item, SocketType socketType){
+        ItemMeta meta = item.getItemMeta();
+        List<String> lore = LoreUtils.getLore(item);
+        int index = 0;
+        for(String line : lore){
+            if(line.contains("✦")){
+                index = lore.indexOf(line) + 1;
+            }
+        }
+        lore.add(index, socketType.getColor() + socketType.getSymbol() +
+                ChatColor.translateAlternateColorCodes('&'," &7" + socketType.getName() + "&8: &7Empty Slot"));
+        meta.setLore(lore);
+        item.setItemMeta(meta);
     }
 
 

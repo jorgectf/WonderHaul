@@ -36,6 +36,9 @@ public class EnchantmentApplication {
     }
 
     public void enchant(ItemStack item){
+        if(level < 1){
+            return;
+        }
         if(item.containsEnchantment(enchantment)){
             if(item.getEnchantmentLevel(enchantment) >= level){
                 return;

@@ -183,49 +183,48 @@ public class Pools {
                 .createPool());
 
 
-//        defaultPools.add(PoolBuilder.create("Relics") //Disabled until block-metadata persistence is ready
-//                .setGenerator(Generators.RELIC)
-//                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
-//                .setGlobalChance(new Chance(100.0))
-//                .mobChance(EntityType.ZOMBIE, 0.18)
-//                .mobChance(EntityType.SPIDER, 0.18)
-//                .mobChance(EntityType.SKELETON, 0.18)
-//                .mobChance(EntityType.SLIME, 0.18)
-//                .mobChance(EntityType.BLAZE, 0.18)
-//                .mobChance(EntityType.SILVERFISH, 0.18)
-//                .mobChance(EntityType.CREEPER, 1.2)
-//                .mobChance(EntityType.MAGMA_CUBE, 1.4)
-//                .mobChance(EntityType.GUARDIAN, 1.4)
-//                .mobChance(EntityType.WITCH, 1.4)
-//                .mobChance(EntityType.VEX, 1.4)
-//                .mobChance(EntityType.ENDERMAN, 1.4)
-//                .mobChance(EntityType.PHANTOM, 1.4)
-//                .mobChance(EntityType.PILLAGER, 1.4)
-//                .mobChance(EntityType.PIG_ZOMBIE, 1.4)
-//                .mobChance(EntityType.ENDERMITE, 3.0)
-//                .mobChance(EntityType.GHAST, 3.0)
-//                .mobChance(EntityType.WITHER_SKELETON, 3.0)
-//                .mobChance(EntityType.ELDER_GUARDIAN, 3.0)
-//                .mobChance(EntityType.EVOKER, 3.0)
-//                .mobChance(EntityType.VINDICATOR, 3.0)
-//                .mobChance(EntityType.SHULKER, 3.0)
-//                .mobChance(EntityType.RAVAGER, 3.0)
-//                .mobChance(EntityType.WITHER, 33)
-//                .mobChance(EntityType.ENDER_DRAGON, 100)
-//                .createPool());
-//
-//        defaultPools.add(PoolBuilder.create("Bonus_Relic_1")
-//                .setGenerator(Generators.RELIC)
-//                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
-//                .mobChance(EntityType.WITHER, 10)
-//                .mobChance(EntityType.ENDER_DRAGON, 50)
-//                .createPool());
-//
-//        defaultPools.add(PoolBuilder.create("Bonus_Relic_2")
-//                .setGenerator(Generators.RELIC)
-//                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
-//                .mobChance(EntityType.ENDER_DRAGON, 25)
-//                .createPool());
+        defaultPools.add(PoolBuilder.create("Relics")
+                .setGenerator(Generators.RELIC)
+                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
+                .setGlobalChance(new Chance(50.0))
+                .mobChance(EntityType.ZOMBIE, 0.005)
+                .mobChance(EntityType.SPIDER, 0.005)
+                .mobChance(EntityType.SKELETON, 0.005)
+                .mobChance(EntityType.SLIME, 0.2)
+                .mobChance(EntityType.BLAZE, 0.2)
+                .mobChance(EntityType.SILVERFISH, 0.2)
+                .mobChance(EntityType.CREEPER, 0.12)
+                .mobChance(EntityType.MAGMA_CUBE, 0.12)
+                .mobChance(EntityType.GUARDIAN, 0.12)
+                .mobChance(EntityType.WITCH, 0.12)
+                .mobChance(EntityType.VEX, 0.12)
+                .mobChance(EntityType.ENDERMAN, 0.12)
+                .mobChance(EntityType.PHANTOM, 0.14)
+                .mobChance(EntityType.PILLAGER, 0.14)
+                .mobChance(EntityType.ZOMBIFIED_PIGLIN, 0.12)
+                .mobChance(EntityType.ENDERMITE, 0.28)
+                .mobChance(EntityType.GHAST, 0.28)
+                .mobChance(EntityType.WITHER_SKELETON, 0.28)
+                .mobChance(EntityType.ELDER_GUARDIAN, 0.28)
+                .mobChance(EntityType.EVOKER, 0.28)
+                .mobChance(EntityType.VINDICATOR, 0.28)
+                .mobChance(EntityType.SHULKER, 0.28)
+                .mobChance(EntityType.RAVAGER, 0.35)
+                .mobChance(EntityType.WITHER, 1)
+                .mobChance(EntityType.ENDER_DRAGON, 100)
+                .createPool());
+
+        defaultPools.add(PoolBuilder.create("Bonus_Relic_1")
+                .setGenerator(Generators.RELIC)
+                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
+                .mobChance(EntityType.ENDER_DRAGON, 50)
+                .createPool());
+
+        defaultPools.add(PoolBuilder.create("Bonus_Relic_2")
+                .setGenerator(Generators.RELIC)
+                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
+                .mobChance(EntityType.ENDER_DRAGON, 25)
+                .createPool());
 
         return defaultPools;
 

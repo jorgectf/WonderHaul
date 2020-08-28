@@ -11,14 +11,21 @@ public class RandomUtils {
 
     public static int getIntegerBetween(int min, int max){
         double randomDouble = Math.random();
-        randomDouble = randomDouble * max;
+        randomDouble = randomDouble * (max-min);
         return (int) randomDouble + min;
     }
 
-    public static double getDoubleBetween(int min, int max){
+    public static double getDoubleBetween(double min, double max){
         double randomDouble = Math.random();
-        randomDouble = randomDouble * max;
+        randomDouble = randomDouble * (max-min);
         return randomDouble + min;
+    }
+
+    public static float getFloatBetween(float min, float max){
+
+        float randomFloat = (float) Math.random();
+        randomFloat = randomFloat * (max-min);
+        return randomFloat + min;
     }
 
 

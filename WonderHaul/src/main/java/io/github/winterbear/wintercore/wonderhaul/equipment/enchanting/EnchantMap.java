@@ -52,6 +52,7 @@ public class EnchantMap {
         enchantments.put("vanishing", Enchantment.VANISHING_CURSE);
         enchantments.put("depthstrider", Enchantment.DEPTH_STRIDER);
         enchantments.put("frostwalker", Enchantment.FROST_WALKER);
+        enchantments.put("soulspeed", Enchantment.SOUL_SPEED);
         return enchantments;
 
     }

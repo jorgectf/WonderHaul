@@ -18,6 +18,8 @@ public class Tags {
 
     public static final Tag MIMIC = new MimicTag();
 
+    public static final Tag COLOR = new ColorTag();
+
     private static Map<String, Tag> tagMap = createTagMap();
 
     private static Map<String, Tag> createTagMap(){
@@ -26,6 +28,7 @@ public class Tags {
         map.put("Boost Tag", BOOST);
         map.put("Mimic Tag", MIMIC);
         map.put("Lore Tag", LORE);
+        map.put("Color Tag", COLOR);
         return map;
     }
 

@@ -2,11 +2,11 @@ package io.github.winterbear.wintercore.wonderhaul.equipment.generators;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
-import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
 import io.github.winterbear.wintercore.wonderhaul.equipment.ItemNames;
 import io.github.winterbear.wintercore.wonderhaul.equipment.MaterialGroup;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Prefixes;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
+import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -22,7 +22,7 @@ public class GeneratorCommons {
         Optional<String> prefix = Prefixes.generatePrefix(tier);
         Optional<String> itemName = ItemNames.getItemName(group);
         if(prefix.isPresent() && itemName.isPresent()){
-            return Optional.of(ChatUtils.format(tier.getColorCode() + prefix.get() + " " + itemName.get()));
+            return Optional.of(ChatUtils.format(tier.getColor() + prefix.get() + " " + itemName.get()));
         }
         return Optional.empty();
     }
@@ -41,7 +41,8 @@ public class GeneratorCommons {
 
     public static ItemStack generateWithLore(Material mat, Tier tier){
         ItemStack item = generateDefault(mat, tier);
-        //TODO implement
+
+        //LoreUtils.addMultiLineLore();
         return item;
     }
 

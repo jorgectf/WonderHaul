@@ -36,6 +36,7 @@ public class UnusualGenerator implements Generator{
             Material.DIAMOND_CHESTPLATE,
             Material.DIAMOND_HELMET,
             Material.DIAMOND_LEGGINGS,
+            Material.BOW,
             Material.SHIELD,
             Material.SHEARS
     );

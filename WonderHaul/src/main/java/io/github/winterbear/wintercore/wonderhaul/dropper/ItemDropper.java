@@ -37,6 +37,7 @@ public class ItemDropper {
                 .collect(Collectors.toList());
     }
 
+
     private static boolean chunkIsValid(Chunk chunk){
         long time = chunk.getInhabitedTime();
 
@@ -56,6 +57,34 @@ public class ItemDropper {
         }
 
         return true;
+    }
+
+    @Command
+    public static CommandWrapper chunkChance(){
+        return CommandRegistry.createPlayerCommand("chunkchance", (player, command, label, args) -> {
+
+            Chunk chunk = player.getLocation().getChunk();
+            long time = chunk.getInhabitedTime();
+
+            if(time > 216000L){
+                long excess = time - 216000L;
+                if (excess < 72000L) {
+                    ChatUtils.send(player, ChatUtils.format("&7There is an &eok &7chance of getting loot drops in this chunk."));
+                } else if (excess < 144000L) {
+                    ChatUtils.send(player, ChatUtils.format("&7There is a &clow &7chance of getting loot drops in this chunk."));
+                } else if (excess < 216000L) {
+                    ChatUtils.send(player, ChatUtils.format("&7There is an &4extremely low &7chance of getting loot drops in this chunk."));
+                } else {
+                    ChatUtils.send(player, ChatUtils.format("&7There is &fno &7chance of getting loot drops in this chunk."));
+                }
+
+            } else {
+                ChatUtils.send(player, "&7There is a &agood &7chance of getting loot drops in this chunk.");
+            }
+
+
+        });
+
     }
 
     @Command(permission = "wonderhaul.itemgenerator.test")

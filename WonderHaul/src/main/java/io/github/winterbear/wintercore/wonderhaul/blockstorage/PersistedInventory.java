@@ -13,6 +13,14 @@ public class PersistedInventory {
 
     private List<PersistedItem> items;
 
+    public PersistedInventory(){
+
+    }
+
+    public PersistedInventory(String reference){
+        this.reference = reference;
+    }
+
     @Id
     @GeneratedValue
     @Column(name="id")
@@ -33,7 +41,7 @@ public class PersistedInventory {
         this.reference = reference;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name="WH_PersistedInv_Item",
             joinColumns = @JoinColumn( name="inventory_id"),

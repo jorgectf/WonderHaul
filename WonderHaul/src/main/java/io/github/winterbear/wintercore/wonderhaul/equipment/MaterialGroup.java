@@ -1,15 +1,19 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment;
 
+import com.google.common.collect.Sets;
 import io.github.winterbear.wintercore.utils.EnumUtils;
 import io.github.winterbear.wintercore.utils.MaterialGroups;
 import org.bukkit.Material;
 
 import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Created by WinterBear on 17/06/2019.
  */
 public enum MaterialGroup {
+
+
 
     PICKAXE("Pickaxe", EnumSet.of(
             Material.NETHERITE_PICKAXE,
@@ -94,7 +98,7 @@ public enum MaterialGroup {
     FLINT("Flint and Steel",EnumSet.of(Material.FLINT_AND_STEEL)),
     ELYTRA("Elytra",EnumSet.of(Material.ELYTRA));
 
-
+    public static Set<MaterialGroup> ARMOR = Sets.newHashSet(HELMET, CHESTPLATE, LEGGINGS, BOOTS);
 
     private EnumSet<Material> materials;
 

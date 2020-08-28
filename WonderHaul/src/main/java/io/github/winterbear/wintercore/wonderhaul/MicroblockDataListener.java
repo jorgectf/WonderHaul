@@ -1,5 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul;
 
+import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.ItemUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.RepeatingTaskUtils;
@@ -9,13 +11,16 @@ import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorageComma
 import io.github.winterbear.wintercore.wonderhaul.data.PersistentDataHolder;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.event.block.*;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -36,7 +41,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
         BlockStorageCommands.setStorage(this.blockStorage);
         this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
         blockStorage.loadFromDB();
-        RepeatingTaskUtils.everyMinutes(10, this::saveBlockStorage, plugin);
+        RepeatingTaskUtils.everyMinutes(5, this::saveBlockStorage, plugin);
     }
 
     public BlockStorage getBlockStorage() {
@@ -52,24 +57,60 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
     public void onPlace(BlockPlaceEvent event) {
 
         if(MICROBLOCK_TYPES.contains(event.getItemInHand().getType())){
-
-            Location loc = event.getBlockPlaced().getLocation();
-            blockStorage.setBlockMetadata(new BlockMetadata(event.getBlockPlaced(), ItemUtils.oneOf(event.getItemInHand()), getType(event.getItemInHand())));
+            String type = LoreUtils.getType(event.getItemInHand());
+            BlockMetadata metadata = new BlockMetadata(event.getBlockPlaced(), ItemUtils.oneOf(event.getItemInHand()), type);
+            metadata.setProperty("Owner", event.getPlayer().getUniqueId().toString());
+            if(type.equals("Essence Collector")){
+                metadata.setProperty("ParticleEffect", ParticleEffectType.ESSENCE_COLLECTOR.toString());
+            }
+            blockStorage.setBlockMetadata(metadata);
 
 
         }
 
     }
 
-    private String getType(ItemStack item) {
-
-        return LoreUtils.getLore(item).stream()
-                .filter(lore -> lore.contains("✦"))
-                .map(line -> line.substring(line.indexOf(':') + 1))
-                .findFirst().orElse("None");
-
+    @EventHandler
+    public void onEntityExplode(EntityExplodeEvent event){
+        List<Block> blocks = new ArrayList<>(event.blockList());
+        for (Block block : blocks) {
+            if(blockStorage.get(block.getLocation()).isPresent()){
+                event.blockList().remove(block);
+            }
+        }
     }
 
+    @EventHandler
+    public void onBlockExplode(BlockExplodeEvent event){
+        List<Block> blocks = new ArrayList<>(event.blockList());
+        for (Block block : blocks) {
+            if(blockStorage.get(block.getLocation()).isPresent()){
+                event.blockList().remove(block);
+            }
+        }
+    }
+
+    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onBlockFromTo(BlockFromToEvent event) {
+        Block block = event.getToBlock();
+        if (blockStorage.get(block.getLocation()).isPresent()) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPistonEvent(BlockPistonExtendEvent e){
+        if (e.getBlocks().stream().anyMatch(b -> blockStorage.get(b.getLocation()).isPresent())){
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPistonEvent(BlockPistonRetractEvent e){
+        if (e.getBlocks().stream().anyMatch(b -> blockStorage.get(b.getLocation()).isPresent())){
+            e.setCancelled(true);
+        }
+    }
 
     @EventHandler
     public void onBreak(BlockBreakEvent event) {
@@ -82,14 +123,32 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
             if(blockMeta.isPresent()){
                 event.setCancelled(true);
+                if(!isOwner(blockMeta.get(), event.getPlayer()) && !canOverrideLock(event.getPlayer())){
+                    ChatUtils.send(event.getPlayer(), "&7This doesn't belong to you.");
+                    return;
+                }
                 event.getBlock().setType(Material.AIR);
                 ItemUtils.dropNaturally(blockLocation, blockMeta.get().getInternalItem());
+                if(!blockMeta.get().getCustomInventories().keySet().isEmpty()){
+                    blockMeta.get().getCustomInventories().values().forEach(i -> {
+                            i.getItems().forEach(d -> ItemUtils.dropNaturally(blockLocation, d.getInternalItem()));
+                    });
+                }
                 blockStorage.clearBlockMetadata(blockLocation);
             }
-
         }
+    }
 
+    private boolean canOverrideLock(Player player){
+        return player.hasPermission("wonderhaul.mod.overridelock");
+    }
 
+    private boolean isOwner(BlockMetadata metadata, Player player){
+        if(metadata.getProperty("Owner").isPresent()){
+            return metadata.getProperty("Owner").get().equals(player.getUniqueId());
+        } else {
+            return false;
+        }
     }
 
 

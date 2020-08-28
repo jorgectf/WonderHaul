@@ -46,8 +46,10 @@ public class TagGenerator implements Generator {
     @Override
     public ItemStack create() {
 
-        if(Chance.roll(90)){ //90%
+        if(Chance.roll(80)) { //80%
             return generate(Tags.LORE);
+        } else if (Chance.roll(50)){ //10%
+            return generate(Tags.COLOR);
         } else if(Chance.roll(60)) { //6%
             return generate(Tags.REPAIR);
         } else if (Chance.roll(75)){ //3%

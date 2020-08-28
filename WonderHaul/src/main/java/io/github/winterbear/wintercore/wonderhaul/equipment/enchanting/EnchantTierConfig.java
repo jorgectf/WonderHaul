@@ -13,7 +13,6 @@ public class EnchantTierConfig {
     private Integer minEnchants;
     private List<EnchantConfig> enchantConfigs;
 
-
     public int getMaxEnchants() {
         return maxEnchants;
     }
@@ -39,8 +38,16 @@ public class EnchantTierConfig {
     }
 
     public EnchantmentApplication generateEnchantment(){
+        EnchantmentApplication application = null;
+        int limit = 30;
+        while(limit-- > 0){
+            application = RandomUtils.getRandomElementOf(enchantConfigs).generateEnchantment();
+            if(application.getLevel() > 0){
+                return application;
+            }
 
-        return RandomUtils.getRandomElementOf(enchantConfigs).generateEnchantment();
+        }
+        return application;
     }
 
 }

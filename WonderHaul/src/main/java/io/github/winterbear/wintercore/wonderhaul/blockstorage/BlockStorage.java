@@ -2,6 +2,9 @@ package io.github.winterbear.wintercore.wonderhaul.blockstorage;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.database.BlockMetadataDAO;
+import io.github.winterbear.wintercore.particles.HologramEngine;
+import io.github.winterbear.wintercore.particles.ParticleEffectType;
+import io.github.winterbear.wintercore.particles.ParticleEngine;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 
@@ -19,7 +22,7 @@ public class BlockStorage {
 
     private Map<String, Map<String, BlockMetadata>> metadata;
 
-    private List<String> deleted = new ArrayList<>();
+    private List<BlockMetadata> deleted = new ArrayList<>();
 
     public BlockStorage(){
         metadata = new ConcurrentHashMap<>();
@@ -37,20 +40,31 @@ public class BlockStorage {
     }
 
     public void setBlockMetadata(BlockMetadata data){
+        if(data.getInternalLocation() == null){
+            ChatUtils.warn("Block Metadata loaded with null location!!!!");
+        }
+
+        if(data.getProperties().containsKey("ParticleEffect")){
+            ParticleEngine.registerEffect(data, ParticleEffectType.valueOf(data.getProperty("ParticleEffect").get()));
+        }
+
         String chunkRef = getChunkRef(data.getInternalLocation().getChunk());
         Map<String, BlockMetadata> chunkMeta = metadata.computeIfAbsent(chunkRef, k -> new HashMap<>());
         chunkMeta.put(getBlockRef(data.getInternalLocation()), data);
-        deleted.removeIf(d -> d.equals(data.getLocationReference()));
     }
 
     public void clearBlockMetadata(Location location){
         String chunkRef = getChunkRef(location.getChunk());
         Map<String, BlockMetadata> chunkMeta = metadata.get(chunkRef);
         if(chunkMeta != null){
-            deleted.add(chunkMeta.get(getBlockRef(location)).getLocationReference());
+            BlockMetadata data = chunkMeta.get(getBlockRef(location));
+            if(data.getProperties().containsKey("ParticleEffect")){
+                ParticleEngine.cancelEffect(data);
+            }
+            HologramEngine.removeHologram(data);
+            deleted.add(data);
             chunkMeta.remove(getBlockRef(location));
         }
-
     }
 
     private String getChunkRef(Chunk chunk){
@@ -73,7 +87,9 @@ public class BlockStorage {
     public void loadFromDB(){
         List<BlockMetadata> loaded = blockMetadataDAO.getMetadata();
         loaded.forEach(this::setBlockMetadata);
+        //loaded.forEach(l -> ChatUtils.info("loading:" + l.getLocationReference()));
         ChatUtils.info("Loaded " + loaded.size() + " block metadata");
+
 
     }
 
@@ -81,10 +97,14 @@ public class BlockStorage {
         List<BlockMetadata> values = metadata.values().stream()
                 .flatMap(m -> Stream.of(m.values()))
                 .flatMap(Collection::stream)
+                .filter(b -> b.getLocationReference() != null)
                 .collect(Collectors.toList());
-        blockMetadataDAO.save(values);
+        //deleted.forEach(l -> ChatUtils.info("deleting:" + l.getLocationReference()));
+        //values.forEach(l -> ChatUtils.info("saving:" + l.getLocationReference()));
+
         blockMetadataDAO.delete(deleted);
         deleted = new ArrayList<>();
+        blockMetadataDAO.save(values);
     }
 
 
