@@ -27,8 +27,9 @@ public class ItemStackSerializer {
 
         List<ItemStack> items = new ArrayList<>();
 
+        int size = dataInput.readInt();
         // Read the serialized inventory
-        for (int i = 0; i < dataInput.readInt(); i++) {
+        for (int i = 0; i < size; i++) {
             items.add((ItemStack) dataInput.readObject());
         }
 
@@ -54,7 +55,9 @@ public class ItemStackSerializer {
             }
 
             dataOutput.close();
-            return Base64Coder.encodeLines(outputStream.toByteArray());
+            String result = Base64Coder.encodeLines(outputStream.toByteArray());
+            //ChatUtils.info("Serialised with length " + result.length());
+            return result;
         } catch (Exception e) {
             throw new IllegalStateException("Unable to save item stacks.", e);
         }

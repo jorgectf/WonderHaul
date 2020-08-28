@@ -7,7 +7,8 @@ import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.MicroblockUtils;
-import io.github.winterbear.wintercore.wonderhaul.Equipment.Artifacts.RelicGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollectorGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.RelicGenerator;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -101,9 +102,19 @@ public class DevTools {
                     return;
                 }
                 if(args[0].contains("+")){
-                    LoreUtils.truncateLoreLine(mainHandItem, Integer.valueOf(args[0].replace("+", "")), player);
+                    int line = Integer.valueOf(args[0].replace("+", "")) - 1;
+                    if(mainHandItem.getItemMeta().getLore().size() < (line - 1)){
+                        ChatUtils.send(player, "Lore line " + line + " does not exist");
+                        return;
+                    }
+                    LoreUtils.truncateLoreLine(mainHandItem, line, player);
                 } else {
-                    LoreUtils.removeLoreLine(mainHandItem, Integer.valueOf(args[0]), player);
+                    int line = Integer.valueOf(args[0]) - 1;
+                    if(mainHandItem.getItemMeta().getLore().size() < (line - 1)){
+                        ChatUtils.send(player, "Lore line " + line + " does not exist");
+                        return;
+                    }
+                    LoreUtils.removeLoreLine(mainHandItem, line, player);
                 }
                 ChatUtils.send(player, "Removed the lore of your tool.");
                 return;
@@ -141,6 +152,14 @@ public class DevTools {
             return;
 
 
+        });
+    }
+
+    @Command(permission = "dev.getEssenceCollector")
+    public static CommandWrapper getEssenceCollector(){
+        return CommandRegistry.createPlayerCommand("getEssenceCollector", (player, command, label, args) -> {
+            player.getInventory().addItem(new EssenceCollectorGenerator().create());
+            return;
         });
     }
 

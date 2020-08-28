@@ -77,9 +77,6 @@ axe:
       - silktouch:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -115,7 +112,7 @@ axe:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 1
@@ -123,7 +120,7 @@ axe:
     enchantments:
       - sharpness:
           minlevel: 4
-          maxlevel: 6
+          maxlevel: 7
       - bane:
           minlevel: 4
           maxlevel: 6
@@ -132,7 +129,7 @@ axe:
           maxlevel: 3
       - efficiency:
           minlevel: 4
-          maxlevel: 5
+          maxlevel: 6
       - smite:
           minlevel: 3
           maxlevel: 5
@@ -141,7 +138,7 @@ axe:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 4
       - fortune:
           minlevel: 2
           maxlevel: 3
@@ -152,7 +149,7 @@ axe:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 boots:
   junk:
@@ -215,10 +212,10 @@ boots:
       - depthstrider:
           minlevel: 1
           maxlevel: 1
-      - frostwalker:
+      - soulspeed:
           minlevel: 1
           maxlevel: 1
-      - mending:
+      - frostwalker:
           minlevel: 1
           maxlevel: 1
   rare:
@@ -252,8 +249,11 @@ boots:
       - frostwalker:
           minlevel: 1
           maxlevel: 2
-      - mending:
+      - soulspeed:
           minlevel: 1
+          maxlevel: 2
+      - mending:
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 8
@@ -261,7 +261,7 @@ boots:
     enchantments:
       - protection:
           minlevel: 4
-          maxlevel: 4
+          maxlevel: 7
       - fireprotection:
           minlevel: 3
           maxlevel: 4
@@ -279,15 +279,18 @@ boots:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 5
       - depthstrider:
           minlevel: 2
           maxlevel: 3
       - frostwalker:
           minlevel: 1
           maxlevel: 2
-      - mending:
+      - soulspeed:
           minlevel: 1
+          maxlevel: 3
+      - mending:
+          minlevel: 0
           maxlevel: 1
 bow:
   junk:
@@ -341,9 +344,6 @@ bow:
       - infinity:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -367,7 +367,7 @@ bow:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 7
@@ -381,7 +381,7 @@ bow:
           maxlevel: 3
       - power:
           minlevel: 4
-          maxlevel: 5
+          maxlevel: 6
       - unbreaking:
           minlevel: 2
           maxlevel: 3
@@ -392,7 +392,7 @@ bow:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 carrotstick:
   junk:
@@ -455,9 +455,6 @@ carrotstick:
       - fireaspect:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -484,7 +481,7 @@ carrotstick:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 1
@@ -492,7 +489,7 @@ carrotstick:
     enchantments:
       - sharpness:
           minlevel: 4
-          maxlevel: 6
+          maxlevel: 7
       - bane:
           minlevel: 4
           maxlevel: 6
@@ -512,7 +509,7 @@ carrotstick:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 chestplate:
   junk:
@@ -566,9 +563,6 @@ chestplate:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -592,7 +586,7 @@ chestplate:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 7
@@ -600,7 +594,7 @@ chestplate:
     enchantments:
       - protection:
           minlevel: 4
-          maxlevel: 4
+          maxlevel: 6
       - fireprotection:
           minlevel: 3
           maxlevel: 4
@@ -615,9 +609,9 @@ chestplate:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 4
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 elytra:
   junk:
@@ -638,9 +632,6 @@ elytra:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 2
     minenchants: 1
@@ -649,7 +640,7 @@ elytra:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 2
@@ -657,7 +648,7 @@ elytra:
     enchantments:
       - unbreaking:
           minlevel: 3
-          maxlevel: 5
+          maxlevel: 6
       - mending:
           minlevel: 1
           maxlevel: 1
@@ -680,9 +671,6 @@ flint:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 2
     minenchants: 1
@@ -691,7 +679,7 @@ flint:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 2
@@ -699,7 +687,7 @@ flint:
     enchantments:
       - unbreaking:
           minlevel: 3
-          maxlevel: 5
+          maxlevel: 6
       - mending:
           minlevel: 1
           maxlevel: 1
@@ -758,9 +746,6 @@ helmet:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
       - respiration:
           minlevel: 1
           maxlevel: 1
@@ -790,7 +775,7 @@ helmet:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
       - respiration:
           minlevel: 1
@@ -804,7 +789,7 @@ helmet:
     enchantments:
       - protection:
           minlevel: 4
-          maxlevel: 4
+          maxlevel: 6
       - fireprotection:
           minlevel: 3
           maxlevel: 4
@@ -819,9 +804,9 @@ helmet:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 5
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
       - respiration:
           minlevel: 2
@@ -890,9 +875,6 @@ hoe:
       - fireaspect:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -919,7 +901,7 @@ hoe:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 1
@@ -942,12 +924,12 @@ hoe:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 5
       - fireaspect:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 leggings:
   junk:
@@ -1001,9 +983,6 @@ leggings:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -1027,7 +1006,7 @@ leggings:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 7
@@ -1035,7 +1014,7 @@ leggings:
     enchantments:
       - protection:
           minlevel: 4
-          maxlevel: 4
+          maxlevel: 6
       - fireprotection:
           minlevel: 3
           maxlevel: 4
@@ -1050,9 +1029,9 @@ leggings:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 5
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 pickaxe:
   junk:
@@ -1091,9 +1070,6 @@ pickaxe:
       - silktouch:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 5
     minenchants: 4
@@ -1111,7 +1087,7 @@ pickaxe:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 5
@@ -1119,10 +1095,10 @@ pickaxe:
     enchantments:
       - efficiency:
           minlevel: 4
-          maxlevel: 5
+          maxlevel: 6
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 5
       - fortune:
           minlevel: 2
           maxlevel: 3
@@ -1130,7 +1106,7 @@ pickaxe:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 rod:
   junk:
@@ -1166,9 +1142,6 @@ rod:
       - lure:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 3
     minenchants: 4
@@ -1183,7 +1156,7 @@ rod:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 4
@@ -1199,7 +1172,7 @@ rod:
           minlevel: 3
           maxlevel: 5
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 shears:
   junk:
@@ -1262,9 +1235,6 @@ shears:
       - fireaspect:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -1291,7 +1261,7 @@ shears:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 1
@@ -1319,7 +1289,7 @@ shears:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 shield:
   junk:
@@ -1340,9 +1310,6 @@ shield:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 2
     minenchants: 1
@@ -1351,7 +1318,7 @@ shield:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 2
@@ -1433,9 +1400,6 @@ shovel:
       - silktouch:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -1468,7 +1432,7 @@ shovel:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 1
@@ -1491,7 +1455,7 @@ shovel:
           maxlevel: 3
       - unbreaking:
           minlevel: 2
-          maxlevel: 3
+          maxlevel: 5
       - fortune:
           minlevel: 2
           maxlevel: 3
@@ -1502,7 +1466,7 @@ shovel:
           minlevel: 1
           maxlevel: 1
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 sword:
   junk:
@@ -1568,9 +1532,6 @@ sword:
       - sweepingedge:
           minlevel: 1
           maxlevel: 1
-      - mending:
-          minlevel: 1
-          maxlevel: 1
   rare:
     maxenchants: 6
     minenchants: 4
@@ -1600,7 +1561,7 @@ sword:
           minlevel: 1
           maxlevel: 2
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
   ascended:
     maxenchants: 1
@@ -1622,8 +1583,7 @@ sword:
           minlevel: 2
           maxlevel: 3
       - unbreaking:
-          minlevel: 2
-          maxlevel: 3
+          minlevel: 5
       - fireaspect:
           minlevel: 1
           maxlevel: 2
@@ -1631,7 +1591,7 @@ sword:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
 trident:
   junk:
@@ -1661,9 +1621,6 @@ trident:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
       - loyalty:
           minlevel: 1
           maxlevel: 1
@@ -1684,7 +1641,7 @@ trident:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
       - loyalty:
           minlevel: 1
@@ -1706,7 +1663,7 @@ trident:
           minlevel: 3
           maxlevel: 5
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
       - loyalty:
           minlevel: 3
@@ -1745,9 +1702,6 @@ crossbow:
       - unbreaking:
           minlevel: 1
           maxlevel: 3
-      - mending:
-          minlevel: 1
-          maxlevel: 1
       - multishot:
           minlevel: 1
           maxlevel: 1
@@ -1765,7 +1719,7 @@ crossbow:
           minlevel: 2
           maxlevel: 3
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
       - multishot:
           minlevel: 1
@@ -1784,7 +1738,7 @@ crossbow:
           minlevel: 3
           maxlevel: 5
       - mending:
-          minlevel: 1
+          minlevel: 0
           maxlevel: 1
       - multishot:
           minlevel: 1
