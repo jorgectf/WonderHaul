@@ -1,26 +1,25 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
-import io.github.winterbear.wintercore.utils.*;
+import io.github.winterbear.wintercore.utils.ItemUtils;
+import io.github.winterbear.wintercore.utils.LoreUtils;
+import io.github.winterbear.wintercore.utils.SoundUtils;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.PersistedInventory;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.PersistedItem;
-import io.github.winterbear.wintercore.wonderhaul.equipment.MaterialGroup;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Microblock;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
-import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantConfig;
-import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantTierConfig;
-import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
-import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 
 /**
  * Created by WinterBear on 10/08/2020.
@@ -66,38 +65,19 @@ public class EssenceCollector extends Microblock {
 
         ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
         Optional<Tier> tier = LoreUtils.getTier(item);
+        Optional<ItemStack> upgradeItem = getUpgradeItem(metadata);
 
         //Is there already an item stored in the collector for upgrading?
-        if(metadata.getCustomInventories().containsKey("UpgradeItem")){
+        if(upgradeItem.isPresent()){
             //Y - Is the player's tool an item that can be sacrificed?
             if(tier.isPresent() && SACRIFICE_VALUES.containsKey(tier.get())){
                 //Y - Calculate essence value and add to internal counter.
-                int count = Integer.parseInt(metadata.getProperty("EssenceCount").get());
-                count = count + SACRIFICE_VALUES.get(tier.get());
-                metadata.setProperty("EssenceCount", Integer.toString(count));
-                int cost = Integer.parseInt(metadata.getProperty("UpgradeCost").get());
-                event.getPlayer().getInventory().removeItem(ItemUtils.oneOf(item));
-                if(count >= cost){
-                    //If internal counter meets requirements for item upgrading, upgrade item
-                    ItemStack internalItem = metadata.getCustomInventories().get("UpgradeItem").getItems().get(0).getInternalItem();
-                    ItemStack newItem = upgrade(internalItem, LoreUtils.getTier(internalItem).get());
-                    SoundUtils.playSound(event.getPlayer(), Sound.ENTITY_LIGHTNING_BOLT_THUNDER);
-                    ItemUtils.safelyGiveItem(event.getPlayer(), newItem);
-                    ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7Your item was upgraded.");
-                    metadata.getProperties().remove("EssenceCount");
-                    metadata.getCustomInventories().remove("UpgradeItem");
-                    metadata.getProperties().remove("UpgradeCost");
-                } else {
-                    //Message player
-                    ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7Sacrificed a " +
-                            tier.get().getColor() + tier.get().getName() + " &7tier item. " + SACRIFICE_VALUES.get(tier.get())
-                    + " essence was added to the collector. " + (cost - count) + " essence needed to complete upgrading.");
-                }
+                sacrifice(event.getPlayer(), metadata, item, tier.get(), upgradeItem.get());
             } else {
                 //N - Message player
                 if(item.getType().equals(Material.AIR)){
-                    int count = Integer.parseInt(metadata.getProperty("EssenceCount").get());
-                    int cost = Integer.parseInt(metadata.getProperty("UpgradeCost").get());
+                    int count = getEssenceCount(metadata);
+                    int cost = getUpgradeCost(metadata);
                     ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7Progress - " + count + "/" + cost);
                 } else {
                     ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7You can only sacrifice items with a tier.");
@@ -108,16 +88,7 @@ public class EssenceCollector extends Microblock {
         } else {
             //N - Is the player's tool an item that can be upgraded?
             if(tier.isPresent() && UPGRADE_COSTS.containsKey(tier.get())){
-                //Y - Store item internally and set cost to essence cost
-                PersistedInventory inventory = new PersistedInventory("UpgradeItem");
-                PersistedItem internalItem = new PersistedItem(ItemUtils.oneOf(item));
-                inventory.setItems(Arrays.asList(internalItem));
-                metadata.setCustomInventory("UpgradeItem", inventory);
-                metadata.setProperty("EssenceCount", "0");
-                metadata.setProperty("UpgradeCost", UPGRADE_COSTS.get(tier.get()).toString());
-                event.getPlayer().getInventory().removeItem(ItemUtils.oneOf(item));
-                ChatUtils.send(event.getPlayer(), "&dEssence Collector &8>> &7Placed a " + tier.get().getColor() + tier.get().getName() +
-                        " &7tier item in the collector. Sacrifice items to add essence to the collector. " + UPGRADE_COSTS.get(tier.get()) + " essence needed to complete upgrading.");
+                setUpgradeItem(event.getPlayer(), metadata, item, tier.get());
             } else {
                 //N - Message player
                 if(item.getType().equals(Material.AIR)) {
@@ -131,90 +102,79 @@ public class EssenceCollector extends Microblock {
         return true;
     }
 
-    public ItemStack upgrade(ItemStack item, Tier tier){
-        ItemStack newItem = ItemUtils.oneOf(item);
-        Tier newTier = Tier.upgrade(tier);
-        Optional<EnchantTierConfig> config = Enchantments.lookup(MaterialGroup.fromMaterial(newItem.getType()), newTier);
-        if(config.isPresent()){
-            int max = config.get().getMaxEnchants();
-            int min = config.get().getMinEnchants();
-            int numEnchants = RandomUtils.getIntegerBetween(min, max);
-            int current = newItem.getEnchantments().keySet().size();
-            int newEnchants = numEnchants - current;
-            Map<Enchantment, Integer> possibleUpgrades = calculateUpgradeChances(newItem, tier, newTier);
-            int maxUpgrades = possibleUpgrades.values().stream()
-                    .reduce(0, Integer::sum);
-            int upgradechances = Math.min(maxUpgrades, 5);
-            if(newEnchants > 0) {
-                List<Enchantment> possibleEnchantments = config.get()
-                        .getEnchantConfigs().stream()
-                        .map(e -> e.getEnchantment())
-                        .filter(e -> !newItem.getEnchantments().keySet().contains(e))
-                        .collect(Collectors.toList());
-                for(int i = 0; i < 3; i++){
-                    if(!possibleEnchantments.isEmpty() && i < newEnchants){
-                        Enchantment newEnchantment = RandomUtils.getRandomElementOf(possibleEnchantments);
-                        Optional<EnchantConfig> econf = config.get().getEnchantConfigs()
-                                .stream()
-                                .filter(e -> e.getEnchantment().equals(newEnchantment))
-                                .findFirst();
-                        if(econf.isPresent()){
-                            econf.get().generateEnchantment().enchant(newItem);
-                            possibleEnchantments.remove(newEnchantment);
-                            upgradechances=- 1;
-                        }
-                    }
-                }
+    private void sacrifice(Player player, BlockMetadata metadata, ItemStack item, Tier tier, ItemStack upgradeItem) {
+        int currentEssence = getEssenceCount(metadata);
+        int sacrificeValue = SACRIFICE_VALUES.get(tier);
+        int totalEssence = currentEssence + sacrificeValue;
 
-            }
-            while(upgradechances-- > 0 && !possibleUpgrades.isEmpty()){
-                Enchantment enchantment = RandomUtils.getRandomElementOf(possibleUpgrades.keySet());
-                EnchantmentUtils.boost(newItem, enchantment, newItem.getItemMeta().getEnchantLevel(enchantment));
-                int remainingBoosts = possibleUpgrades.get(enchantment) - 1;
-                if(remainingBoosts < 1){
-                    possibleUpgrades.remove(enchantment);
-                } else {
-                    possibleUpgrades.put(enchantment, remainingBoosts);
-                }
-            }
-        }
+        setEssenceCount(metadata, totalEssence);
+        player.getInventory().removeItem(ItemUtils.oneOf(item));
 
-        String oldName = ChatUtils.uncolored(newItem.getItemMeta().getDisplayName());
-        ItemBuilder.setDisplayName(newItem, newTier.getColor() + oldName);
-        LoreUtils.changeTier(newItem, newTier);
-        if(newTier == Tier.ASCENDED){
-            if(MaterialGroup.ARMOR.contains(MaterialGroup.fromMaterial(newItem.getType()))){
-                LoreUtils.addEmptySocket(newItem, SocketType.ORNAMENT);
-            } else {
-                LoreUtils.addEmptySocket(newItem, SocketType.INFUSION);
-            }
+        int upgradeCost = getUpgradeCost(metadata);
+        if(totalEssence >= upgradeCost){
+            //If internal counter meets requirements for item upgrading, upgrade item
+            ItemStack upgradedItem = ItemUpgrader.upgrade(upgradeItem, LoreUtils.getTier(upgradeItem).get());
+            SoundUtils.playSound(player, Sound.ENTITY_LIGHTNING_BOLT_THUNDER);
+            ItemUtils.safelyGiveItem(player, upgradedItem);
+            ChatUtils.send(player, "&dEssence Collector &8>> &7Your item was upgraded.");
+            clearProperties(metadata);
+        } else {
+            //Message player
+            ChatUtils.send(player, "&dEssence Collector &8>> &7Sacrificed a " +
+                    tier.getColor() + tier.getName() + " &7tier item. " + SACRIFICE_VALUES.get(tier)
+                    + " essence was added to the collector. " + (upgradeCost - totalEssence) + " essence needed to complete upgrading.");
         }
-        return newItem;
     }
 
-    private Map<Enchantment, Integer> calculateUpgradeChances(ItemStack item, Tier tier, Tier newTier){
-        Optional<EnchantTierConfig> config = Enchantments.lookup(MaterialGroup.fromMaterial(item.getType()), newTier);
-        Map<Enchantment, Integer> currentEnchants = item.getEnchantments();
-        Map<Enchantment, Integer> availableUpgrades = new HashMap<>();
-        if(config.isPresent()){
-            for (Enchantment enchantment : item.getEnchantments().keySet()){
-                int currentLevel = currentEnchants.get(enchantment);
-                int max = config.get().getEnchantConfigs().stream()
-                        .filter(e -> e.getEnchantment().equals(enchantment))
-                        .map(e -> e.getMaxLevel())
-                        .findFirst().orElse(0);
-                if (max > currentLevel){
-                    availableUpgrades.put(enchantment, max - currentLevel);
-                }
-            }
-        }
-
-        return availableUpgrades;
-
-
-
+    private void setUpgradeItem(Player player, BlockMetadata metadata, ItemStack item, Tier tier) {
+        //Y - Store item internally and set cost to essence cost
+        PersistedInventory inventory = new PersistedInventory("UpgradeItem");
+        PersistedItem internalItem = new PersistedItem(ItemUtils.oneOf(item));
+        inventory.setItems(Arrays.asList(internalItem));
+        metadata.setCustomInventory("UpgradeItem", inventory);
+        metadata.setProperty("EssenceCount", "0");
+        metadata.setProperty("UpgradeCost", UPGRADE_COSTS.get(tier).toString());
+        player.getInventory().removeItem(ItemUtils.oneOf(item));
+        ChatUtils.send(player, "&dEssence Collector &8>> &7Placed a " + tier.getColor() + tier.getName() +
+                " &7tier item in the collector. Sacrifice items to add essence to the collector. " + UPGRADE_COSTS.get(tier) + " essence needed to complete upgrading.");
     }
 
+
+
+    private Optional<ItemStack> getUpgradeItem(BlockMetadata metadata){
+        if(metadata.getCustomInventories().containsKey("UpgradeItem")){
+            PersistedInventory inventory =  metadata.getCustomInventories().get("UpgradeItem");
+            if(!inventory.getItems().isEmpty()){
+                return Optional.of(inventory.getItems().get(0).getInternalItem());
+
+            }
+        }
+        return Optional.empty();
+    }
+
+    private int getEssenceCount(BlockMetadata metadata){
+        if(metadata.getProperty("EssenceCount").isPresent()){
+            return Integer.valueOf(metadata.getProperty("EssenceCount").get());
+        }
+        return 0;
+    }
+
+    private void setEssenceCount(BlockMetadata metadata, int totalEssence){
+        metadata.setProperty("EssenceCount", Integer.toString(totalEssence));
+    }
+
+    private int getUpgradeCost(BlockMetadata metadata){
+        if(metadata.getProperty("UpgradeCost").isPresent()){
+            return Integer.valueOf(metadata.getProperty("UpgradeCost").get());
+        }
+        return 0;
+    }
+
+    private void clearProperties(BlockMetadata metadata){
+        metadata.getProperties().remove("EssenceCount");
+        metadata.getCustomInventories().remove("UpgradeItem");
+        metadata.getProperties().remove("UpgradeCost");
+    }
 
     @Override
     public String getReference() {

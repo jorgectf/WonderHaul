@@ -146,6 +146,15 @@ public class LoreUtils {
         return itemLore;
     }
 
+    public static List<String> getTag(ItemStack item, String tagType) {
+        return LoreUtils.getLore(item).stream()
+                .filter(lore -> ChatUtils.uncolored(lore).contains(tagType + ":"))
+                .map(line -> line.substring(line.indexOf(':') + 2))
+                .map(type -> ChatUtils.uncolored(type.trim()))
+                .collect(Collectors.toList());
+
+    }
+
     public static String getType(ItemStack item) {
         return LoreUtils.getLore(item).stream()
                 .filter(lore -> lore.contains("✦"))

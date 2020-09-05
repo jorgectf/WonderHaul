@@ -1,5 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.tags;
 
+import org.bukkit.plugin.java.JavaPlugin;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,6 +23,12 @@ public class Tags {
     public static final Tag COLOR = new ColorTag();
 
     private static Map<String, Tag> tagMap = createTagMap();
+
+    private static TagApplicationListener listener;
+
+    public static void registerListeners(JavaPlugin plugin){
+        listener = new TagApplicationListener(plugin);
+    }
 
     private static Map<String, Tag> createTagMap(){
         Map<String, Tag> map = new HashMap<>();

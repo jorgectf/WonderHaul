@@ -2,12 +2,23 @@ package io.github.winterbear.wintercore.utils;
 
 
 import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.World;
+
+import java.util.EnumSet;
+import java.util.Set;
 
 /**
  * Created by WinterBear on 01/08/2020.
  */
 public class BlockUtils {
 
+    private static Set<Material> WATER_BLOCKS = EnumSet.of(Material.WATER);
+
+    public static boolean isUnderwater(Location location){
+        World world = location.getWorld();
+        return WATER_BLOCKS.contains(world.getBlockAt(location).getType());
+    }
 
     public static Location getBlockCentre(Location block){
 

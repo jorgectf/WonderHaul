@@ -14,13 +14,13 @@ import io.github.winterbear.wintercore.wonderhaul.data.PersistentDataHolder;
 import io.github.winterbear.wintercore.wonderhaul.dropper.MobDropperListener;
 import io.github.winterbear.wintercore.wonderhaul.equipment.ItemNames;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Lore;
+import io.github.winterbear.wintercore.wonderhaul.equipment.Microblocks;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Prefixes;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollector;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.Relic;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantConfig;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
 import io.github.winterbear.wintercore.wonderhaul.equipment.packs.ExperiencePackListener;
-import io.github.winterbear.wintercore.wonderhaul.tags.TagApplicationListener;
+import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
+import io.github.winterbear.wintercore.wonderhaul.tags.Tags;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
@@ -104,14 +104,14 @@ public class WonderHaul extends JavaPlugin {
             e.printStackTrace();
         }
 
-        new TagApplicationListener(this);
+        Tags.registerListeners(this);
         new MobDropperListener(this);
         new ExperiencePackListener(this);
         if(databaseConfigured) {
             DelayUtils.after(1, this::loadData, this);
         }
-        new Relic(this);
-        new EssenceCollector(this);
+        Microblocks.registerAll(this);
+        Infusions.registerAll(this);
         ParticleEngine.start(this);
     }
 

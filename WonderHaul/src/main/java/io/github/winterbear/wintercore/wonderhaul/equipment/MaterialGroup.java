@@ -100,6 +100,8 @@ public enum MaterialGroup {
 
     public static Set<MaterialGroup> ARMOR = Sets.newHashSet(HELMET, CHESTPLATE, LEGGINGS, BOOTS);
 
+    public static Set<MaterialGroup> WEAPONS = Sets.newHashSet(AXE, SWORD, BOW, TRIDENT, CROSSBOW);
+
     private EnumSet<Material> materials;
 
     private String displayName;
