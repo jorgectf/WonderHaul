@@ -35,6 +35,9 @@ public class RareGenerator implements Generator {
             Material.NETHERITE_LEGGINGS,
             Material.BOW,
             Material.SHIELD,
+            Material.CROSSBOW,
+            Material.TRIDENT,
+            Material.FISHING_ROD,
             Material.ELYTRA
     );
 

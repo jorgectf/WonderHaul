@@ -124,6 +124,12 @@ public class LoreUtils {
         setLore(item, itemLore);
     }
 
+    public static void setLoreLine(ItemStack item, int line, String lore){
+        List<String> itemLore = getLore(item);
+        itemLore.set(line, lore);
+        setLore(item, itemLore);
+    }
+
     private static void setLore(ItemStack item, List<String> lore){
         ItemMeta meta = initialiseMeta(item);
         meta.setLore(lore);

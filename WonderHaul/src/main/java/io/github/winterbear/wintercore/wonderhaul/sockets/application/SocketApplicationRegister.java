@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.wonderhaul.sockets;
+package io.github.winterbear.wintercore.wonderhaul.sockets.application;
 
 import org.bukkit.entity.Player;
 

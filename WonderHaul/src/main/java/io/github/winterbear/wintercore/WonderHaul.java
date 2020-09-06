@@ -19,6 +19,7 @@ import io.github.winterbear.wintercore.wonderhaul.equipment.Prefixes;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantConfig;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
 import io.github.winterbear.wintercore.wonderhaul.equipment.packs.ExperiencePackListener;
+import io.github.winterbear.wintercore.wonderhaul.sockets.Sockets;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
 import io.github.winterbear.wintercore.wonderhaul.tags.Tags;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
@@ -105,6 +106,7 @@ public class WonderHaul extends JavaPlugin {
         }
 
         Tags.registerListeners(this);
+        Sockets.registerListeners(this);
         new MobDropperListener(this);
         new ExperiencePackListener(this);
         if(databaseConfigured) {

@@ -1,7 +1,8 @@
-package io.github.winterbear.wintercore.wonderhaul.sockets;
+package io.github.winterbear.wintercore.wonderhaul.sockets.application;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.ItemUtils;
+import io.github.winterbear.wintercore.wonderhaul.sockets.ISocketable;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -14,11 +15,11 @@ public class SocketApplication {
 
     private ItemStack socketItem;
 
-    private Socketable socket;
+    private ISocketable socket;
 
     private Player player;
 
-    public SocketApplication(int counter, ItemStack tagItem, Socketable socket, Player player) {
+    public SocketApplication(int counter, ItemStack tagItem, ISocketable socket, Player player) {
         this.counter = counter;
         this.socketItem = tagItem;
         this.socket = socket;
@@ -43,11 +44,11 @@ public class SocketApplication {
         this.socketItem = socketItem;
     }
 
-    public Socketable getSocketable() {
+    public ISocketable getSocketable() {
         return socket;
     }
 
-    public void setSocketable(Socketable socket) {
+    public void setSocketable(ISocketable socket) {
         this.socket = socket;
     }
 

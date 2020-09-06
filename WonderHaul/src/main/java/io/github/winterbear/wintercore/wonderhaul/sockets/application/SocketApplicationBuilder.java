@@ -1,12 +1,13 @@
-package io.github.winterbear.wintercore.wonderhaul.sockets;
+package io.github.winterbear.wintercore.wonderhaul.sockets.application;
 
+import io.github.winterbear.wintercore.wonderhaul.sockets.ISocketable;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class SocketApplicationBuilder {
     private int counter;
     private ItemStack socketItem;
-    private Socketable socket;
+    private ISocketable socket;
     private Player player;
 
     public static SocketApplicationBuilder create(){
@@ -28,7 +29,7 @@ public class SocketApplicationBuilder {
         return this;
     }
 
-    public SocketApplicationBuilder withSocket(Socketable socket) {
+    public SocketApplicationBuilder withSocket(ISocketable socket) {
         this.socket = socket;
         return this;
     }

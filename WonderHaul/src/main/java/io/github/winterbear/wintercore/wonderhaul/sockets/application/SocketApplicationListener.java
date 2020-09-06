@@ -1,9 +1,10 @@
-package io.github.winterbear.wintercore.wonderhaul.sockets;
+package io.github.winterbear.wintercore.wonderhaul.sockets.application;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.InteractEventUtils;
 import io.github.winterbear.wintercore.utils.ItemUtils;
 import io.github.winterbear.wintercore.utils.RepeatingTaskUtils;
+import io.github.winterbear.wintercore.wonderhaul.sockets.ISocketable;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -47,7 +48,7 @@ public class SocketApplicationListener implements Listener {
     private boolean begin(Player player){
         ItemStack itemInMainHand = player.getInventory().getItemInMainHand();
         if(itemInMainHand != null && itemInMainHand.getType().equals(Material.PLAYER_HEAD)){
-            Optional<Socketable> socketable = SocketParser.parse(itemInMainHand);
+            Optional<ISocketable> socketable = SocketParser.parse(itemInMainHand);
             if(socketable.isPresent()){
                 //ChatUtils.info(player.getDisplayName() + "Started tag application " + tag.get());
                 if(SocketApplicationRegister.get(player) != null){
@@ -70,7 +71,7 @@ public class SocketApplicationListener implements Listener {
         return false;
     }
 
-    private void initiateApplication(Socketable socketable, ItemStack item, final Player player){
+    private void initiateApplication(ISocketable socketable, ItemStack item, final Player player){
         SocketApplication application = SocketApplicationBuilder.create()
                 .forPlayer(player)
                 .withCounter(BASE_COUNTER)
@@ -87,6 +88,7 @@ public class SocketApplicationListener implements Listener {
         ItemStack heldItem =  player.getInventory().getItemInMainHand();
         if(heldItem == null || heldItem.getType().equals(Material.AIR)){
             application.returnSocket(player);
+            application.getSocketable().apply(heldItem, application);
             SocketApplicationRegister.remove(player);
             return;
         }

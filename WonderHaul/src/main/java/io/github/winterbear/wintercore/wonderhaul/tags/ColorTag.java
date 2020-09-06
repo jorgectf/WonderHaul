@@ -1,11 +1,16 @@
 package io.github.winterbear.wintercore.wonderhaul.tags;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.utils.ColorUtils;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
 import io.github.winterbear.wintercore.utils.LoreUtils;
-import io.github.winterbear.wintercore.utils.RandomUtils;
+import net.md_5.bungee.api.ChatColor;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.inventory.ItemStack;
+
+import java.awt.*;
+import java.util.List;
+import java.util.Random;
 
 
 /**
@@ -15,8 +20,12 @@ public class ColorTag implements Tag{
 
     @Override
     public boolean apply(ItemStack item, TagApplication application) {
-        String color = application.getTagItem().getItemMeta().getDisplayName().substring(0, 2);
+        String color = application.getTagItem().getItemMeta().getDisplayName().substring(0, 14);
         ItemBuilder.setDisplayName(item, color + ChatUtils.uncolored(getDisplayName(item)));
+        List<String> lore = item.getItemMeta().getLore();
+        item.getItemMeta().getLore().stream()
+                .filter(l -> !l.contains(":"))
+                .forEach(l -> LoreUtils.setLoreLine(item, lore.indexOf(l), color + ChatUtils.uncolored(l)));
         return true;
     }
 
@@ -48,8 +57,11 @@ public class ColorTag implements Tag{
     }
 
     private String[] pickColor(){
-        String name = RandomUtils.getRandomElementOf(ChatUtils.COLOR_NAMES.keySet());
-        return new String[]{ name , ChatUtils.COLOR_NAMES.get(name) };
+        int r = (new Random().nextInt(256));
+        int g = (new Random().nextInt(256));
+        int b = (new Random().nextInt(256));
+        ChatColor color = ChatColor.of(new Color(r, g, b));
+        return new String[]{ColorUtils.getColorNameFromRgb(r, g, b), color + "" };
     }
 
 

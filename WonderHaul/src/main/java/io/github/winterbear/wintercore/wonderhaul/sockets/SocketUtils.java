@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
  */
 public class SocketUtils {
 
-    public static int getSocketLevel(Player player, Socketable socket){
+
+
+    public static int getSocketLevel(Player player, ISocketable socket){
         switch (socket.getTriggerType()){
             case MAINHAND:
                 return mainhandSocketLevel(player, socket);
@@ -29,19 +31,19 @@ public class SocketUtils {
         }
     }
 
-    private static int mainhandSocketLevel(Player player, Socketable socket){
+    private static int mainhandSocketLevel(Player player, ISocketable socket){
         ItemStack weapon = player.getInventory().getItemInMainHand();
         List<String> abilities = LoreUtils.getTag(weapon, socket.getSocketType().getName());
         return getSocketLevel(abilities, socket.getAbilityName());
     }
 
-    private static int offhandSocketLevel(Player player, Socketable socket){
+    private static int offhandSocketLevel(Player player, ISocketable socket){
         ItemStack weapon = player.getInventory().getItemInOffHand();
         List<String> abilities = LoreUtils.getTag(weapon, socket.getSocketType().getName());
         return getSocketLevel(abilities, socket.getAbilityName());
     }
 
-    private static int armorSocketLevel(Player player,Socketable socket){
+    private static int armorSocketLevel(Player player, ISocketable socket){
         List<ItemStack> armor = Arrays.asList(player.getInventory().getArmorContents());
         List<String> abilities = armor.stream()
                 .map(a -> LoreUtils.getTag(a, socket.getSocketType().getName()))
