@@ -18,13 +18,12 @@ public class Infusions {
 
     private static final String SYMBOL = "✵";
 
+    public static String PREFIX = Tier.ASCENDED.getColor() + SYMBOL + ChatUtils.format(" &7Infusion&8: &7");
+
     private static Set<Infusion> INFUSIONS = new HashSet<>();
 
     public static ItemStack setInfusionLore(ItemStack item, ChatColor color, String name){
-
-        LoreUtils.addLoreLine(item, Tier.ASCENDED.getColor() + SYMBOL +
-                ChatUtils.format(" &7Infusion&8: &7") + color + name);
-
+        LoreUtils.addLoreLine(item, PREFIX + color + name);
         return item;
     }
 

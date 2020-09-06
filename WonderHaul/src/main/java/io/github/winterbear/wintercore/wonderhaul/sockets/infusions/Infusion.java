@@ -18,6 +18,8 @@ import java.util.function.Supplier;
  */
 public abstract class Infusion implements Listener, Socketable {
 
+    public static SocketType TYPE = SocketType.INFUSION;
+
     protected final JavaPlugin plugin;
 
     public abstract Supplier<ItemStack> getTexture();
