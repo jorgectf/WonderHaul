@@ -50,8 +50,12 @@ public class LoreTag implements Tag{
 
     private String getColor(ItemStack item){
         if(item.getItemMeta().getDisplayName().contains("§")){
-            return item.getItemMeta().getDisplayName().substring(0, 14);
+            if(item.getItemMeta().getDisplayName().charAt(2) == '§'){
+                return item.getItemMeta().getDisplayName().substring(0, 14);
+            } else {
+                return item.getItemMeta().getDisplayName().substring(0, 2);
+            }
         }
-        return "&7";
+        return "§7";
     }
 }
