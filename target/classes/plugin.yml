@@ -1,0 +1,30 @@
+name: WonderHaul
+main: io.github.winterbear.wintercore.WonderHaul
+version: 2.0.1
+api-version: 1.13
+commands: 
+  setHealth:
+    permission: dev.sethealth
+  setHunger:
+    permission: dev.sethunger
+  addLore:
+    permission: dev.addlore
+  clearLore:
+    permission: dev.clearLore
+  removeLore:
+    permission: dev.removelore
+  getTextureData:
+    permission: dev.getTextureData
+  getRelic:
+    permission: dev.getRelic
+  getEssenceCollector:
+    permission: dev.getEssenceCollector
+  getTag:
+    permission: wonderhaul.taggenerator.gettag
+  getSocket:
+    permission: wonderhaul.socketgenerator.getsocket
+  chunkChance:
+  generateItem:
+    permission: wonderhaul.itemgenerator.test
+  saveBlocks:
+    permission: dev.save
