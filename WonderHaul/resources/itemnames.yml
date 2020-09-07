@@ -8,6 +8,7 @@ axe:
   - 'Battleaxe'
   - 'Greataxe'
   - 'Poleaxe'
+  - 'Tabar'
 boots:
   - 'Wellingtons'
   - 'Boots'
@@ -24,6 +25,8 @@ bow:
   - 'Warbow'
   - 'Hunters Bow'
   - 'Compound Bow'
+  - 'Siege Bow'
+  - 'Rune Bow'
   - 'Greatbow'
   - 'Sniper'
 carrotstick:
@@ -58,9 +61,13 @@ helmet:
   - 'Bandana'
   - 'Mask'
   - 'Headpiece'
+  - 'Circlet'
+  - 'Tiara'
+  - 'Diadem'
 hoe:
   - 'Rake'
   - 'Hoe'
+  - 'Scythe'
 leggings:
   - 'Greaves'
   - 'Leggings'
@@ -84,6 +91,11 @@ shield:
   - 'Shield'
   - 'Buckler'
   - 'Guard'
+  - 'Targe'
+  - 'Rondache'
+  - 'Aegis'
+  - 'Tower Shield'
+  - 'Greatshield'
 shovel:
   - 'Shovel'
   - 'Spade'
@@ -92,6 +104,9 @@ sword:
   - 'Sword'
   - 'Dagger'
   - 'Rapier'
+  - 'Cutlass'
+  - 'Rune Sword'
+  - 'Executioner'
   - 'Greatsword'
   - 'Longsword'
   - 'Shortsword'
@@ -102,3 +117,4 @@ trident:
 crossbow:
   - 'Crossbow'
   - 'Arbalest'
+  - 'Ballista'
