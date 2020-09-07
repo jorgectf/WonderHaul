@@ -58,9 +58,13 @@ helmet:
   - 'Bandana'
   - 'Mask'
   - 'Headpiece'
+  - 'Circlet'
+  - 'Tiara'
+  - 'Diadem'
 hoe:
   - 'Rake'
   - 'Hoe'
+  - 'Scythe'
 leggings:
   - 'Greaves'
   - 'Leggings'
@@ -84,6 +88,11 @@ shield:
   - 'Shield'
   - 'Buckler'
   - 'Guard'
+  - 'Targe'
+  - 'Rondache'
+  - 'Aegis'
+  - 'Tower Shield'
+  - 'Greatshield'
 shovel:
   - 'Shovel'
   - 'Spade'
@@ -102,3 +111,4 @@ trident:
 crossbow:
   - 'Crossbow'
   - 'Arbalest'
+  - 'Ballista'
