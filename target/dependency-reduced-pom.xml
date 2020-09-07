@@ -107,6 +107,10 @@
       <url>https://repo.spring.io/plugins-release/</url>
     </repository>
     <repository>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+    <repository>
       <id>frequal.com</id>
       <url>https://frequal.com/maven-repository</url>
     </repository>
