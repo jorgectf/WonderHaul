@@ -1,0 +1,8 @@
+extraction:
+  java:
+    before_index:
+      export BUILD_MODE=release
+    index:
+      maven:
+        version: 3.5.1
+        settings_file: resources/build/settings.xml
