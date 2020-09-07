@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by WinterBear on 05/06/2019.
  */
-public class TagRegister {
+public class TagApplicationRegister {
 
     private static Map<UUID, TagApplication> tags = new ConcurrentHashMap<>();
 

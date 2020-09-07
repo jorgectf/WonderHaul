@@ -153,12 +153,28 @@ public class TexturedHeads {
 
     public static Supplier<ItemStack> ESSENCE_COLLECTOR = () -> getCustomSkull("http://textures.minecraft.net/texture/18b26c9aff7d19944b04aa4dec95aef48ee3fa58f57157886133216e749e85");
 
+    public static Supplier<ItemStack> CRUCIAL_KNOWLEDGE = () -> getCustomSkull("http://textures.minecraft.net/texture/c0cf74e2638ba5ad32237a37b1d76aa123d18546e7eb9a6b9961e4bf1c3a919");
 
+    public static Supplier<ItemStack> SEA_PUMPKIN = () -> getCustomSkull("http://textures.minecraft.net/texture/dd3384c4d34a8f986e26802ba3587a2aab1f4d2346dd8eb318ce8b7bd194cad2");
 
+    public static Supplier<ItemStack> NULLIFYING_VARNISH = () -> getCustomSkull("http://textures.minecraft.net/texture/74617ba1fa6e8c60fa09839141af2304a70d30d00da03f324267dfb1c43d110e");
 
+    public static Supplier<ItemStack> SKULL_OF_YORICK = () -> getCustomSkull("http://textures.minecraft.net/texture/4c5269206a70039eba4fa2182eac24b4b4e85fa23e7bff221a6f71cfca1476b3");
 
+    public static Supplier<ItemStack> FRUIT_OF_FORTUNE = () -> getCustomSkull("http://textures.minecraft.net/texture/3c2d8e8ec2737b599a48fc07ea58b806969e6021802019992dda32a653794df6");
 
+    public static Supplier<ItemStack> EUCLIDIAN_SLIME = () -> getCustomSkull("http://textures.minecraft.net/texture/8eada85c17ae58637dae2b86f3f6966a77352abf214bc4493e65cf671c28a204");
 
+    public static Supplier<ItemStack> ICE_KINGS_CHALICE = () -> getCustomSkull("http://textures.minecraft.net/texture/49958766c85fdf9d41ae847b36bbd4c9c6978b6fac6f446d65d6dbe16622c90");
 
+    public static Supplier<ItemStack> JEWEL_OF_AGILITY = () -> getCustomSkull("http://textures.minecraft.net/texture/ddbd3c28bd5c4e6bb51b378bcb7e1a3026edf773c77fabc2f825f094eba02051");
+
+    public static Supplier<ItemStack> RAVENOUS_FLESHCRAWLER = () -> getCustomSkull("http://textures.minecraft.net/texture/3189a6242259f6c0d71f62f1fbb5e28d381cb22b186057b79b48301a72f288");
+
+    public static Supplier<ItemStack> NERVOUS_SHROOMLING = () -> getCustomSkull("http://textures.minecraft.net/texture/b1e4b7a000b6f042f15900bbc1fd18e42bd4e69ece21f4e0b6fe9aa3b751cad9");
+
+    public static Supplier<ItemStack> CRIMSON_SKULL = () -> getCustomSkull("http://textures.minecraft.net/texture/cb852ba1584da9e5714859995451e4b94748c4dd63ae4543c15f9f8aec65c8");
+
+    public static Supplier<ItemStack> ALL_SEEING_EYE = () -> getCustomSkull("http://textures.minecraft.net/texture/2dd56afe9afb89902ff4e87d76e6a134a6b29b9afda9fc3c78905fcc40cffb46");
 
 }

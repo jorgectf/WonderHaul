@@ -63,19 +63,25 @@ public class MobDropperListener implements Listener {
     private static float getLevelModifier(Entity e){
         if (Bukkit.getPluginManager().getPlugin("LorinthsRpgMobs") != null) {
             Integer level = LorinthsRpgMobs.GetLevelOfEntity(e);
-            if(level != null) {
-                if (level != 1 && level < 100) {
-                    float lmod = 0.095f;
-                    return lmod * (level - 1);
-                } else if (level >= 100) {
-                    float lmod = 0.101f;
-                    return 15.0f + lmod * (level - 100);
-                }
-            }
+            Float lmod = getLevelModifier(level);
+            if (lmod != null) return lmod;
 
         }
 
         return 0.0f;
+    }
+
+    public static Float getLevelModifier(Integer level) {
+        if(level != null) {
+            if (level != 1 && level < 100) {
+                float lmod = 0.095f;
+                return lmod * (level - 1);
+            } else if (level >= 100) {
+                float lmod = 0.101f;
+                return 15.0f + (lmod * (level - 100));
+            }
+        }
+        return null;
     }
 
     private World getWorld(EntityDeathEvent event){

@@ -124,6 +124,12 @@ public class LoreUtils {
         setLore(item, itemLore);
     }
 
+    public static void setLoreLine(ItemStack item, int line, String lore){
+        List<String> itemLore = getLore(item);
+        itemLore.set(line, lore);
+        setLore(item, itemLore);
+    }
+
     private static void setLore(ItemStack item, List<String> lore){
         ItemMeta meta = initialiseMeta(item);
         meta.setLore(lore);
@@ -144,6 +150,15 @@ public class LoreUtils {
         }
         List<String> itemLore = meta.hasLore() ? new ArrayList<>(meta.getLore()) : new ArrayList<>();
         return itemLore;
+    }
+
+    public static List<String> getTag(ItemStack item, String tagType) {
+        return LoreUtils.getLore(item).stream()
+                .filter(lore -> ChatUtils.uncolored(lore).contains(tagType + ":"))
+                .map(line -> line.substring(line.indexOf(':') + 2))
+                .map(type -> ChatUtils.uncolored(type.trim()))
+                .collect(Collectors.toList());
+
     }
 
     public static String getType(ItemStack item) {

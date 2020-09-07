@@ -178,10 +178,10 @@
         <dependency>
             <groupId>me.lorinth</groupId>
             <artifactId>rpgmobs</artifactId>
-            <version>1.8.4</version>
+            <version>1.8.7</version>
             <scope>system</scope>
             <optional>true</optional>
-            <systemPath>${project.basedir}/libs/LorinthsRpgMobs-1.8.4.jar</systemPath>
+            <systemPath>${project.basedir}/libs/LorinthsRpgMobs-1.8.7.jar</systemPath>
         </dependency>
 
         <dependency>

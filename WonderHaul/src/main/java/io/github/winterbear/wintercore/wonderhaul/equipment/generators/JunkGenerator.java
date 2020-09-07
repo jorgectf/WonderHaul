@@ -25,7 +25,10 @@ public class JunkGenerator implements Generator {
             Material.LEATHER_CHESTPLATE,
             Material.LEATHER_HELMET,
             Material.LEATHER_HELMET,
-            Material.BOW
+            Material.BOW,
+            Material.SHEARS,
+            Material.CARROT_ON_A_STICK,
+            Material.FLINT_AND_STEEL
     );
 
 

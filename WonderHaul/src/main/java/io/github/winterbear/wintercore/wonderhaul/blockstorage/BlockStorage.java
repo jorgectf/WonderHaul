@@ -42,6 +42,8 @@ public class BlockStorage {
     public void setBlockMetadata(BlockMetadata data){
         if(data.getInternalLocation() == null){
             ChatUtils.warn("Block Metadata loaded with null location!!!!");
+            deleted.add(data);
+            return;
         }
 
         if(data.getProperties().containsKey("ParticleEffect")){
