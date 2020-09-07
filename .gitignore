@@ -2,6 +2,7 @@
 .idea/workspace.xml
 */libs/*.jar
 .idea/*
-*/target/*
+target/*
+*/surefire-reports/*
 *.ipr
 *.iws
