@@ -8,6 +8,7 @@ axe:
   - 'Battleaxe'
   - 'Greataxe'
   - 'Poleaxe'
+  - 'Tabar'
 boots:
   - 'Wellingtons'
   - 'Boots'
@@ -24,6 +25,8 @@ bow:
   - 'Warbow'
   - 'Hunters Bow'
   - 'Compound Bow'
+  - 'Siege Bow'
+  - 'Rune Bow'
   - 'Greatbow'
   - 'Sniper'
 carrotstick:
@@ -101,6 +104,9 @@ sword:
   - 'Sword'
   - 'Dagger'
   - 'Rapier'
+  - 'Cutlass'
+  - 'Rune Sword'
+  - 'Executioner'
   - 'Greatsword'
   - 'Longsword'
   - 'Shortsword'
