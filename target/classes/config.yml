@@ -1,8 +1,0 @@
-config-version: "0.0.1"
-database:
-    host: "localhost"
-    port: 3306
-    database: "hibernate_db"
-    username: "WonderHaul"
-    password: "welcome"
-    show-sql: false
