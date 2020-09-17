@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Collection;
+
 /**
  * Created by WinterBear on 06/06/2019.
  */
@@ -22,6 +24,10 @@ public class ItemUtils {
 
         location.getWorld().dropItemNaturally(location, item.clone());
 
+    }
+
+    public static void dropNaturally(Location location, Collection<ItemStack> items){
+        items.forEach(i -> dropNaturally(location, i));
     }
 
     public static ItemStack oneOf(ItemStack item){

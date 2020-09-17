@@ -144,6 +144,9 @@ public class LoreUtils {
     }
 
     public static List<String> getLore(ItemStack item){
+        if(item == null){
+            return new ArrayList<>();
+        }
         ItemMeta meta = initialiseMeta(item);
         if(meta == null){
             return Collections.EMPTY_LIST;

@@ -21,6 +21,7 @@ import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantme
 import io.github.winterbear.wintercore.wonderhaul.equipment.packs.ExperiencePackListener;
 import io.github.winterbear.wintercore.wonderhaul.sockets.Sockets;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
+import io.github.winterbear.wintercore.wonderhaul.sockets.ornaments.Ornaments;
 import io.github.winterbear.wintercore.wonderhaul.tags.Tags;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -114,6 +115,7 @@ public class WonderHaul extends JavaPlugin {
         }
         Microblocks.registerAll(this);
         Infusions.registerAll(this);
+        Ornaments.registerAll(this);
         ParticleEngine.start(this);
     }
 

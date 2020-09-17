@@ -9,6 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 /**
  * Created by WinterBear on 06/09/2020.
@@ -49,6 +50,11 @@ public class SocketBuilder {
 
     public SocketBuilder forItems(MaterialGroup group){
         applicableItems.addAll(group.getMaterials());
+        return this;
+    }
+
+    public SocketBuilder forItems(MaterialGroup... groups){
+        Stream.of(groups).forEach(group -> applicableItems.addAll(group.getMaterials()));
         return this;
     }
 

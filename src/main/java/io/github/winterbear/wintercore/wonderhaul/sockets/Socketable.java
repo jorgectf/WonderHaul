@@ -1,8 +1,6 @@
 package io.github.winterbear.wintercore.wonderhaul.sockets;
 
-import io.github.winterbear.wintercore.utils.ItemBuilder;
 import io.github.winterbear.wintercore.wonderhaul.sockets.application.SocketApplication;
-import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -88,10 +86,7 @@ public class Socketable implements ISocketable{
 
     @Override
     public ItemStack getItem() {
-        ItemStack item = getTexture().get();
-        ItemBuilder.setDisplayName(item, getColor() + getItemName());
-        item = Infusions.setInfusionLore(item, getColor(), getAbilityName());
-        return item;
+        return socketType.create(this);
     }
 
     @Override

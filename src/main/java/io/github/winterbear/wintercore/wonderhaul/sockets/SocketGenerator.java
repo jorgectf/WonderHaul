@@ -8,6 +8,7 @@ import io.github.winterbear.wintercore.utils.ItemUtils;
 import io.github.winterbear.wintercore.utils.RandomUtils;
 import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
+import io.github.winterbear.wintercore.wonderhaul.sockets.ornaments.Ornaments;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.inventory.ItemStack;
 
@@ -41,6 +42,11 @@ public class SocketGenerator implements Generator {
             Optional<ISocketable> socket = Infusions.INFUSIONS.stream()
                     .filter(i -> i.getItemName().equals(socketName))
                     .findFirst();
+            if(!socket.isPresent()){
+                socket = Ornaments.ORNAMENTS.stream()
+                        .filter(i -> i.getItemName().equals(socketName))
+                        .findFirst();
+            }
             if(socket.isPresent()){
                 ItemUtils.safelyGiveItem(player, socket.get().getItem());
                 ChatUtils.send(player, "&7Generated socket " + socket.get().getItemName());

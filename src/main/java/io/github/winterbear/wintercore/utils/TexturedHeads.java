@@ -177,4 +177,30 @@ public class TexturedHeads {
 
     public static Supplier<ItemStack> ALL_SEEING_EYE = () -> getCustomSkull("http://textures.minecraft.net/texture/2dd56afe9afb89902ff4e87d76e6a134a6b29b9afda9fc3c78905fcc40cffb46");
 
+    public static Supplier<ItemStack> JEWEL_OF_PROSPERITY = () -> getCustomSkull("http://textures.minecraft.net/texture/964f25cfff754f287a9838d8efe03998073c22df7a9d3025c425e3ed7ff52c20");
+
+    public static Supplier<ItemStack> FLAME_OF_KUMUNE = () -> getCustomSkull("http://textures.minecraft.net/texture/31fad37da9567cf20580274a7568634311b0ca6ce90ffea42e94937f754c8c48");
+
+    public static Supplier<ItemStack> ENCHANTED_LUBRICANT =  () -> getCustomSkull("http://textures.minecraft.net/texture/457288544febad33f45c023ca81cf8b54239e76dc366c0bed562511e7ad9a240");
+
+    public static Supplier<ItemStack> THAUMIC_RUNESTONE =  () -> getCustomSkull("http://textures.minecraft.net/texture/ba44e2b8388df593a85f7d54445ce78796cee6b0bcb7a55acbdd1cbd8f35aef2");
+
+    public static Supplier<ItemStack> STRANGE_FLESH =  () -> getCustomSkull("http://textures.minecraft.net/texture/c5cc77819c993c196c3a578ddce0ef6b20ea175d99e6154f6b554c11b84fd542");
+
+    public static Supplier<ItemStack> SUN_GODS_KEYSTONE =  () -> getCustomSkull("http://textures.minecraft.net/texture/f0d6d5cb1c8402d4ea88084ba8bacfed6ddae74ff8024ecc36ce48daf82c2b24");
+
+    public static Supplier<ItemStack> PURIFIED_DEW =  () -> getCustomSkull("http://textures.minecraft.net/texture/535fb8d3356834ad87f31973227faa21e3f376e1cffb468a02a9e726bc53c0");
+
+    public static Supplier<ItemStack> ENDER_SNAIL =  () -> getCustomSkull("http://textures.minecraft.net/texture/9373fb54823eac330af033701b0694a3ece9f1322d82b68ace27cac8ea973419");
+
+    public static Supplier<ItemStack> NETHERITE_PLATING =  () -> getCustomSkull("http://textures.minecraft.net/texture/67e29a58c060511ff0350241c9c86496947d8f84bf32f2df35ebe3742f0e2029");
+
+    public static Supplier<ItemStack> THICK_STUDS =  () -> getCustomSkull("http://textures.minecraft.net/texture/d52e561fd63b4238a17139d573a131cf722a1e96f4795575528e6ed42756d4a");
+
+    public static Supplier<ItemStack> RIPE_SHADEBERRY =  () -> getCustomSkull("http://textures.minecraft.net/texture/e05c8b4e4fc165d1b08059e7e5e5b37153c9a1022ebc551d65ef6f82c4673492");
+
+    public static Supplier<ItemStack> JAR_OF_QUICKSILVER =  () -> getCustomSkull("http://textures.minecraft.net/texture/27db6e325fa82e92db2c35db8663049997d864dc55c2874eebda9d50086eb5a7");
+
+    public static Supplier<ItemStack> MAGMATIC_RUNESTONE =  () -> getCustomSkull("http://textures.minecraft.net/texture/7717933c40fbf936aa9288513efe19bda4601efc0e4ecad2e023b0c1d28444b");
+
 }

@@ -23,9 +23,11 @@ public class ColorTag implements Tag{
         String color = application.getTagItem().getItemMeta().getDisplayName().substring(0, 14);
         ItemBuilder.setDisplayName(item, color + ChatUtils.uncolored(getDisplayName(item)));
         List<String> lore = item.getItemMeta().getLore();
-        item.getItemMeta().getLore().stream()
-                .filter(l -> !l.contains(":"))
-                .forEach(l -> LoreUtils.setLoreLine(item, lore.indexOf(l), color + ChatUtils.uncolored(l)));
+        if(lore != null) {
+            lore.stream()
+                    .filter(l -> !l.contains(":"))
+                    .forEach(l -> LoreUtils.setLoreLine(item, lore.indexOf(l), color + ChatUtils.uncolored(l)));
+        }
         return true;
     }
 
