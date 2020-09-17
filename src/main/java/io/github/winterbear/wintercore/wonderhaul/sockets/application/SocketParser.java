@@ -4,9 +4,12 @@ import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.wonderhaul.sockets.ISocketable;
 import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
+import io.github.winterbear.wintercore.wonderhaul.sockets.ornaments.Ornaments;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -24,7 +27,10 @@ public class SocketParser {
     }
 
     public static Optional<ISocketable> parse(String string){
-        return Infusions.INFUSIONS.stream()
+        Collection<ISocketable> sockets = new ArrayList<>();
+        sockets.addAll(Infusions.INFUSIONS);
+        sockets.addAll(Ornaments.ORNAMENTS);
+        return sockets.stream()
                 .filter(i -> i.getAbilityName().equals(string))
                 .findFirst();
 

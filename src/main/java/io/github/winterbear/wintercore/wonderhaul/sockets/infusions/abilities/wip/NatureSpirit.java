@@ -41,7 +41,7 @@ public class NatureSpirit extends BlockBreakAbility {
             Material.DARK_OAK_LEAVES);
 
     @Override
-    public void onBlockBreak(Player player, BlockBreakEvent event) {
+    public void onBlockBreak(Player player, BlockBreakEvent event, int socketLevel) {
 
     }
 

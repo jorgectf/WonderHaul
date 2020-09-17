@@ -12,6 +12,7 @@ import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
 import io.github.winterbear.wintercore.wonderhaul.sockets.application.SocketApplication;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.abilities.*;
 import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -30,7 +31,7 @@ public class Infusions {
 
     public static Set<ISocketable> INFUSIONS = new HashSet<>();
 
-    public ItemStack create(ISocketable socketable){
+    public static ItemStack create(ISocketable socketable){
         ItemStack item = socketable.getTexture().get();
         ItemBuilder.setDisplayName(item, socketable.getColor() + socketable.getItemName());
         item = Infusions.setInfusionLore(item, socketable.getColor(), socketable.getAbilityName());
@@ -127,6 +128,34 @@ public class Infusions {
                 .forItems(MaterialGroup.ALL_WEAPONS)
                 .withSound(Sound.BLOCK_PORTAL_AMBIENT)
                 .create(plugin));
+        
+        INFUSIONS.add(SocketBuilder.createSocket(SocketType.INFUSION)
+                .withItemName("Netherite Plating")
+                .withTexture(TexturedHeads.NETHERITE_PLATING)
+                .withColor("#6543b5")
+                .withAbility(new Reinforced())
+                .forItems(MaterialGroup.AXE, MaterialGroup.PICKAXE, MaterialGroup.HOE, MaterialGroup.SHOVEL)
+                .withSound(Sound.BLOCK_ANVIL_USE)
+                .create(plugin));
+
+        INFUSIONS.add(SocketBuilder.createSocket(SocketType.INFUSION)
+                .withItemName("Jar of Quicksilver")
+                .withTexture(TexturedHeads.JAR_OF_QUICKSILVER)
+                .withColor("#e8fbff")
+                .withAbility(new Reflective())
+                .forItem(Material.SHIELD)
+                .withSound(Sound.ENTITY_VILLAGER_WORK_WEAPONSMITH)
+                .create(plugin));
+
+        INFUSIONS.add(SocketBuilder.createSocket(SocketType.INFUSION)
+                .withItemName("Magmatic Runestone")
+                .withTexture(TexturedHeads.MAGMATIC_RUNESTONE)
+                .withColor("#ff6f00")
+                .withAbility(new Fireproof())
+                .forItem(Material.SHIELD)
+                .withSound(Sound.BLOCK_LAVA_EXTINGUISH)
+                .create(plugin));
+
     }
 
 }

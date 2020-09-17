@@ -7,5 +7,5 @@ public enum TriggerType {
 
     MAINHAND,
     OFFHAND,
-    ARMOR;
+    ARMOR
 }
