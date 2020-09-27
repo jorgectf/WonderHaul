@@ -32,4 +32,9 @@ public class Adrenaline extends OffensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.MAINHAND;
     }
+
+    @Override
+    public String getDescription() {
+        return "Grands speed when in combat";
+    }
 }

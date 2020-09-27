@@ -1,5 +1,9 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment;
 
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateI;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateII;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.VerticalCrate;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StuffedToy;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollector;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.Relic;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,6 +21,9 @@ public class Microblocks {
     public static void registerAll(JavaPlugin plugin){
         MICROBLOCKS.add(new Relic(plugin));
         MICROBLOCKS.add(new EssenceCollector(plugin));
+        MICROBLOCKS.add(new VerticalCrate(new CrateI(), plugin));
+        MICROBLOCKS.add(new VerticalCrate(new CrateII(), plugin));
+        MICROBLOCKS.add(new StuffedToy(plugin));
     }
 
 

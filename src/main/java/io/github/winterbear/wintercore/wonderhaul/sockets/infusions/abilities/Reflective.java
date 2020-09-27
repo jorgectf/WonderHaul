@@ -45,6 +45,11 @@ public class Reflective extends DefensiveAbility {
 
     @Override
     public TriggerType getTriggerType() {
-        return TriggerType.ARMOR;
+        return TriggerType.OFFHAND;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Knock back enemies who hit your shield while you are blocking";
     }
 }

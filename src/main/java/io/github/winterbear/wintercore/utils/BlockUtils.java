@@ -4,6 +4,8 @@ package io.github.winterbear.wintercore.utils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockState;
 
 import java.util.EnumSet;
 import java.util.Set;
@@ -18,6 +20,12 @@ public class BlockUtils {
     public static boolean isUnderwater(Location location){
         World world = location.getWorld();
         return WATER_BLOCKS.contains(world.getBlockAt(location).getType());
+    }
+
+    public static void setBlock(Block block, Material air) {
+        BlockState blockState = block.getState();
+        blockState.setType(air);
+        blockState.update(true);
     }
 
     public static Location getBlockCentre(Location block){

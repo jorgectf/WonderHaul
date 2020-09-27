@@ -18,6 +18,7 @@ import io.github.winterbear.wintercore.wonderhaul.equipment.Microblocks;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Prefixes;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantConfig;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
+import io.github.winterbear.wintercore.wonderhaul.equipment.gobblers.Gobblers;
 import io.github.winterbear.wintercore.wonderhaul.equipment.packs.ExperiencePackListener;
 import io.github.winterbear.wintercore.wonderhaul.sockets.Sockets;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
@@ -116,6 +117,7 @@ public class WonderHaul extends JavaPlugin {
         Microblocks.registerAll(this);
         Infusions.registerAll(this);
         Ornaments.registerAll(this);
+        Gobblers.registerAll(this);
         ParticleEngine.start(this);
     }
 

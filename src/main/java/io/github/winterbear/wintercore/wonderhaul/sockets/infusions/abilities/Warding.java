@@ -14,7 +14,7 @@ public class Warding extends PotionAbility {
 
     @Override
     public void onPotionEffect(Player victim, EntityPotionEffectEvent event) {
-        if(PotionUtils.isNegative(event.getOldEffect(), event.getNewEffect()) && Chance.roll(25.0)){
+        if(PotionUtils.isNegative(event.getOldEffect(), event.getNewEffect()) && Chance.roll(50.0)){
             event.setCancelled(true);
         }
     }
@@ -27,6 +27,11 @@ public class Warding extends PotionAbility {
     @Override
     public TriggerType getTriggerType() {
         return TriggerType.OFFHAND;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Your shield has a chance to absorb potion effects";
     }
 
 }

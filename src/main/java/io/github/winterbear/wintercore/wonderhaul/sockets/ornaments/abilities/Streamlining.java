@@ -31,4 +31,9 @@ public class Streamlining extends DefensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.ARMOR;
     }
+
+    @Override
+    public String getDescription() {
+        return "Adds a chance to dodge attacks";
+    }
 }

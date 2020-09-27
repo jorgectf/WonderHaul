@@ -21,6 +21,9 @@ public class LoreTag implements Tag{
                 .map(l -> ChatUtils.uncolored(l))
                 .map(l -> getColor(item) + l)
                 .collect(Collectors.toList());
+        if(!item.getItemMeta().getLore().contains("")){
+            LoreUtils.addBlankLine(item);
+        }
         LoreUtils.addLore(item, lore, application.getPlayer());
         sendMessage(application.getPlayer(), "Lore was added successfully!");
         return true;

@@ -42,4 +42,9 @@ public class Studded extends DefensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.ARMOR;
     }
+
+    @Override
+    public String getDescription() {
+        return "Weapons that hit your armor will break faster";
+    }
 }

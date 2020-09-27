@@ -1,14 +1,15 @@
 package io.github.winterbear.wintercore.wonderhaul.sockets;
 
+import io.github.winterbear.wintercore.utils.TexturedHead;
 import io.github.winterbear.wintercore.wonderhaul.equipment.MaterialGroup;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
-import java.util.function.Supplier;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.stream.Stream;
 
 /**
@@ -16,7 +17,7 @@ import java.util.stream.Stream;
  */
 public class SocketBuilder {
 
-    private Supplier<ItemStack> texture;
+    private TexturedHead texture;
 
     private String itemName;
 
@@ -29,6 +30,10 @@ public class SocketBuilder {
     private Collection<Material> applicableItems = new HashSet<>();
 
     private Sound sound;
+
+    private String description;
+
+    private String lore;
 
     protected JavaPlugin plugin;
 
@@ -43,7 +48,7 @@ public class SocketBuilder {
         return this;
     }
 
-    public SocketBuilder withTexture(Supplier<ItemStack> texture){
+    public SocketBuilder withTexture(TexturedHead texture){
         this.texture = texture;
         return this;
     }
@@ -83,6 +88,16 @@ public class SocketBuilder {
         return this;
     }
 
+    public SocketBuilder withDescription(String description){
+        this.description = description;
+        return this;
+    }
+
+    public SocketBuilder withLore(String lore){
+        this.lore = lore;
+        return this;
+    }
+
     public ISocketable create(JavaPlugin plugin){
         Socketable socketable = new Socketable(plugin,
                 texture,
@@ -91,7 +106,9 @@ public class SocketBuilder {
                 color,
                 socketType,
                 applicableItems,
-                sound);
+                sound,
+                description,
+                lore);
         ability.register(plugin, socketable);
         return socketable;
     }

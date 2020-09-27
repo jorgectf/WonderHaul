@@ -1,7 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.generators;
 
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.RelicGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.decorations.StuffedToyGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StuffedToyGenerator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.packs.PackGenerator;
 import io.github.winterbear.wintercore.wonderhaul.tags.TagGenerator;
 

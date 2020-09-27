@@ -44,4 +44,9 @@ public class Carnivorous extends OffensiveAbility {
         return TriggerType.MAINHAND;
     }
 
+    @Override
+    public String getDescription() {
+        return "Has a chance to feed you when you cause damage";
+    }
+
 }

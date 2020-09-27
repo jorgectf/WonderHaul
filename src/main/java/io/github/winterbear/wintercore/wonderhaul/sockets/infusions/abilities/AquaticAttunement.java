@@ -24,6 +24,11 @@ public class AquaticAttunement extends OffensiveAbility {
     }
 
     @Override
+    public String getDescription() {
+        return "Increases your damage when underwater";
+    }
+
+    @Override
     public void onAttack(Player attacker, EntityDamageByEntityEvent event, int socketLevel) {
         if(BlockUtils.isUnderwater(attacker.getLocation())){
             event.setDamage(event.getDamage() * 1.25);

@@ -1,9 +1,9 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector;
 
-import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.utils.ColorLoreMode;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
-import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.TexturedHeads;
+import io.github.winterbear.wintercore.wonderhaul.ItemCategory;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
 import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import org.bukkit.inventory.ItemStack;
@@ -17,24 +17,20 @@ public class EssenceCollectorGenerator implements Generator {
 
     @Override
     public ItemStack create() {
-        ItemStack collector = TexturedHeads.ESSENCE_COLLECTOR.get();
 
-        String displayName = ChatUtils.format(tier.getColor() + "Essence Collector");
-        String lore = tier.getColouredLore("Artifact", "Essence Collector");
-        String loreText1 = "  &7&oSacrifice items to";
-        String loreText2 = "  &7&oupgrade your tools";
-        String loreText3 = "  &7&oto a new tier";
+        String displayName = "Essence Collector";
+        String description = "&7A mysterious altar, used to make offerings to some ancient force. It feels cold to the touch.";
+        String usage = "Sacrifice items to upgrade your tools to a new tier";
 
-        LoreUtils.addLoreLine(collector, lore);
-        LoreUtils.addLoreLine(collector, "");
-        LoreUtils.addLoreLine(collector, loreText1);
-        LoreUtils.addLoreLine(collector, loreText2);
-        LoreUtils.addLoreLine(collector, loreText3);
-        LoreUtils.addLoreLine(collector, "");
-
-        ItemBuilder.setDisplayName(collector, displayName);
-
-        return collector;
+        return ItemBuilder.newMicroblock(displayName,
+                ItemCategory.ARTIFACT,
+                tier.getColor(),
+                ColorLoreMode.DARKER,
+                TexturedHeads.ESSENCE_COLLECTOR)
+                .withDescription(description)
+                .withDisplayName(displayName)
+                .withUsage(usage)
+                .build();
     }
 
     @Override

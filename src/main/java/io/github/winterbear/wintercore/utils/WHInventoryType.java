@@ -5,7 +5,7 @@ package io.github.winterbear.wintercore.utils;
  */
 public enum WHInventoryType {
 
-
+    CRATE
 
 
 }

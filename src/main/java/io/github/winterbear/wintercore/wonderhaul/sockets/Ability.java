@@ -12,6 +12,8 @@ public abstract class Ability implements Listener {
 
     public abstract TriggerType getTriggerType();
 
+    public abstract String getDescription();
+
     protected ISocketable socketable;
 
     protected JavaPlugin plugin;

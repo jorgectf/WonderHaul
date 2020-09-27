@@ -40,4 +40,9 @@ public class Distortion extends OffensiveDefensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.MAINHAND;
     }
+
+    @Override
+    public String getDescription() {
+        return "Increases damage dealt, but also damage taken";
+    }
 }

@@ -1,10 +1,14 @@
 package io.github.winterbear.wintercore.utils;
 
+import com.google.common.base.Joiner;
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
 import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -59,9 +63,22 @@ public class LoreUtils {
         setLore(item, itemLore);
     }
 
+    public static void addBlankLine(ItemStack item){
+        List<String> itemLore = getLore(item);
+        itemLore.add("");
+        setLore(item, itemLore);
+    }
+
     public static void addMultiLineLore(ItemStack item, String lore){
         List<String> itemLore = getLore(item);
         itemLore.addAll(getMultiline(lore, 26, 0));
+        setLore(item, itemLore);
+    }
+
+    public static void addMultiLineLore(ItemStack item, net.md_5.bungee.api.ChatColor color, String lore){
+        List<String> itemLore = getLore(item);
+        List<String> split = getMultiline(lore, 26, 0);
+        split.forEach(l -> itemLore.add(color + ChatUtils.uncolored(l)));
         setLore(item, itemLore);
     }
 
@@ -155,13 +172,35 @@ public class LoreUtils {
         return itemLore;
     }
 
+    public static String getItemsAsVerbal(List<Material> objects){
+        return getListAsVerbal(objects.stream()
+                .map(o -> o.toString().replace("_", " "))
+                .map(WordUtils::capitalizeFully)
+                .collect(Collectors.toList()));
+
+    }
+
+    public static String getListAsVerbal(List<? extends Object> objects){
+        return Joiner.on(", ")
+                .join(objects.subList(0, objects.size() - 1))
+                .concat(", and ")
+                .concat(objects.get(objects.size() - 1).toString());
+
+    }
+
+    public static List<String> getLoreText(ItemStack item){
+        return LoreUtils.getLore(item).stream()
+                .filter(lore -> !ChatUtils.uncolored(lore).contains(":"))
+                .filter(lore -> !StringUtils.isBlank(lore))
+                .collect(Collectors.toList());
+    }
+
     public static List<String> getTag(ItemStack item, String tagType) {
         return LoreUtils.getLore(item).stream()
                 .filter(lore -> ChatUtils.uncolored(lore).contains(tagType + ":"))
                 .map(line -> line.substring(line.indexOf(':') + 2))
                 .map(type -> ChatUtils.uncolored(type.trim()))
                 .collect(Collectors.toList());
-
     }
 
     public static String getType(ItemStack item) {
@@ -181,7 +220,11 @@ public class LoreUtils {
                 .map(ChatUtils::uncolored)
                 .findFirst().orElse(null);
         if(tier != null){
-            return Optional.of(Tier.valueOf(tier.toUpperCase()));
+            try {
+                return Optional.of(Tier.valueOf(tier.toUpperCase()));
+            } catch (IllegalArgumentException ex){
+                return Optional.empty();
+            }
         }
         return Optional.empty();
 
