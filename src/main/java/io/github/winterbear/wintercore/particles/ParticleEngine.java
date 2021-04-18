@@ -41,6 +41,9 @@ public class ParticleEngine {
                 case ESSENCE_COLLECTOR:
                     EssenceCollectorParticleEffect.render(metadata, plugin);
                     break;
+                case CANDLE:
+                    CandleParticleEffect.render(metadata, plugin);
+                    break;
                 default:
                     throw new UnsupportedOperationException("Missing effect handler for " + effectQueue.get(metadata));
 
@@ -51,7 +54,9 @@ public class ParticleEngine {
 
     }
 
-
+    public static void flame(Location location){
+        location.getWorld().spawnParticle(Particle.FLAME, location, 1, 0, 0, 0, 0);
+    }
 
 
     public static void coloredDot(int r, int g, int b, Location location){

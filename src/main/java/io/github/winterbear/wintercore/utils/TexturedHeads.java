@@ -145,8 +145,6 @@ public class TexturedHeads {
 
     public static TexturedHead ARCHERY_TARGET = new TexturedHead("http://textures.minecraft.net/texture/5ecd9727e9d9f2c0739934ef1e63d1d89c92369421cafbaea733cce35c3b6768");
 
-    public static TexturedHead CANDLE_ROLLING_STATION = new TexturedHead("http://textures.minecraft.net/texture/f04fca931fb56d3a8f504a265b3a2935dfaf8b033844f7f2df6c779a316fad3");
-
     public static TexturedHead BOMB = new TexturedHead("http://textures.minecraft.net/texture/9b20ff173bd17b2c4f2eb21f3c4b43841a14b31dfbfd354a3bec8263af562b");
 
     public static TexturedHead ESSENCE_COLLECTOR = new TexturedHead("http://textures.minecraft.net/texture/18b26c9aff7d19944b04aa4dec95aef48ee3fa58f57157886133216e749e85");
@@ -203,7 +201,88 @@ public class TexturedHeads {
 
     public static TexturedHead JAR_OF_HONEY = new TexturedHead("http://textures.minecraft.net/texture/f1da38b1bc75a39e71c7dcb3cab73c26c826f826c59e8a4414c18c455cee9a62");
 
-    public static TexturedHead CLOSED_GOBBLER_A = new TexturedHead("http://textures.minecraft.net/texture/551969f6ac9fade1d93bbb88a09b6b49a409efa8b99ec8b5550d34faf55ad0eb");
+    public static TexturedHead CLOSED_ROCK_GOBBLER = new TexturedHead("http://textures.minecraft.net/texture/c587b5d8459a0131d1115c70e8eb58fd60971acb6d03ddc6b3bf92ba093dcd21");
 
-    public static TexturedHead OPEN_GOBBLER_A = new TexturedHead("http://textures.minecraft.net/texture/d85e8cc8f4047ff421d34b862cb967f2534c6ea08718a2544b3752addd6dede7");
+    public static TexturedHead OPEN_ROCK_GOBBLER = new TexturedHead("http://textures.minecraft.net/texture/6c8855f13585ec9df434e6552a88c1eeebb23c24740001b5ff71c90a0419bd63");
+
+    public static TexturedHead CLOSED_DESERT_GOBBLER = new TexturedHead("http://textures.minecraft.net/texture/294ca93d8f68992b702d230943d1313ad80dadda52d9e739c1015d8472c2d836");
+
+    public static TexturedHead OPEN_DESERT_GOBBLER = new TexturedHead("http://textures.minecraft.net/texture/c33ef53599f3ae594b966171d9895bc093bc82dbab2d7207df1a4a138811905");
+
+    public static TexturedHead CLOSED_NETHER_GOBBLER = new TexturedHead("http://textures.minecraft.net/texture/210efb4d1183078ef7f942513184055b24135ca23f0ec989695b48b7f3eb598b");
+
+    public static TexturedHead OPEN_NETHER_GOBBLER = new TexturedHead("http://textures.minecraft.net/texture/79143486b36b504edcba4bc5adc4b109b48195479e4efed66c68c11337cb7f36");
+
+    public static TexturedHead WHITE_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/206cfb74f6c9452ecb9142fc543e6c9c8351bab997d0d8e2b8e8c66eb3f440");
+    public static TexturedHead ORANGE_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/e521cf45ebe321e4860d76fd7b6abd379993c6f2c9d4a19c37bdcb7b11b6b");
+    public static TexturedHead MAGENTA_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/35dc6cb3cd6cfdcfe5e7bd978a29d1f7d4597dd3beb8e694e4928061953e35");
+    public static TexturedHead LIGHT_BLUE_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/466e29f3193386922de4d58ff1b358e62db75f1ae67a5bf8d2c8772515e5e63");
+    public static TexturedHead BROWN_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/c58b9516ff8c43ac63abe3305cf892ab4086c20199da519a848b0dddff4d133");
+    public static TexturedHead YELLOW_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/a48374514b61c378a2d9e66563112538bb191c3d7d2c3b498014f6a9aae5b9");
+    public static TexturedHead LIGHT_GREEN_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/b0b6c2f56a40acaeacb62f73784d5cca2481e69e223e38468b7551020f3617a");
+    public static TexturedHead PINK_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/be5c455694b922256c9e4ef6e02ad5dd99346d37395f0a6813fe7612357d64");
+    public static TexturedHead GREY_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/46da3de43665dde7fccaded850a279733a977e7d15bef91fc57c73dd9fb3642");
+    public static TexturedHead LIGHT_GREY_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/1352e3f19c6b3d1b9e61c953d856253f253cc6c97772ecbfefae2d7d64f924d");
+    public static TexturedHead AQUA_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/f865dd462e4af312b966529e66d28732b45a7fc8ea3ae1cc73474805b941677");
+    public static TexturedHead PURPLE_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/ad92feea1deee61cd5e239cb3ed9c444e597c9183326d1fe84b952c85fea33a");
+    public static TexturedHead BLUE_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/79d4ddb5403facf35ec3e0b62041c446b9d67719e7119132729a767dc4ee1");
+    public static TexturedHead GREEN_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/5acef09ac7778cf1b1f68cc12870d990cad7cab1a7bed30664da33fca1542");
+    public static TexturedHead RED_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/265c3bdb3d36eed5cddf75b1fb46daf8c1fc83428540a1e4a6e6d663e5f89d98");
+    public static TexturedHead BLACK_CANDLE = new TexturedHead("http://textures.minecraft.net/texture/e79f542252c1647de41558a772d6c6122e04f82a771a775cfa769ea3f32e794");
+
+    public static TexturedHead CANDLE_ROLLING_TABLE = new TexturedHead("http://textures.minecraft.net/texture/f04fca931fb56d3a8f504a265b3a2935dfaf8b033844f7f2df6c779a316fad3");
+
+    public static TexturedHead CARVED_STONE_A = new TexturedHead("http://textures.minecraft.net/texture/2ac58b1a3b53b9481e317a1ea4fc5eed6bafca7a25e741a32e4e3c2841278c");
+    public static TexturedHead CARVED_STONE_B = new TexturedHead("http://textures.minecraft.net/texture/d4c711571e7e214ee78dfe4ee0e1263b92516e418de8fc8f3257ae0901431");
+    public static TexturedHead CARVED_STONE_C = new TexturedHead("http://textures.minecraft.net/texture/fff5aabead6feafaaecf4422cdd7837cbb36b03c9841dd1b1d2d3edb7825e851");
+    public static TexturedHead CARVED_STONE_D = new TexturedHead("http://textures.minecraft.net/texture/893e622b581975792f7c119ec6f40a4f16e552bb98776b0c7ae2bdfd4154fe7");
+    public static TexturedHead CARVED_STONE_E = new TexturedHead("http://textures.minecraft.net/texture/a157d65b19921c760ff4910b3404455b9c2ee36afc202d8538baefec676953");
+    public static TexturedHead CARVED_STONE_F = new TexturedHead("http://textures.minecraft.net/texture/c54cf261b2cd6ab54b0c624f8f6ff565a7b63e28e3b50c6dbfb52b5f0d7cf9f");
+    public static TexturedHead CARVED_STONE_G = new TexturedHead("http://textures.minecraft.net/texture/d3c9f8a74ca01ba8c54de1edc82e1fc07a83923e66574b6ffe606919240c6");
+    public static TexturedHead CARVED_STONE_H = new TexturedHead("http://textures.minecraft.net/texture/f8c58c509034617bf81ee0db9be0ba3e85ca15568163914c87669edb2fd7");
+    public static TexturedHead CARVED_STONE_I = new TexturedHead("http://textures.minecraft.net/texture/4246323c9fb319326ee2bf3f5b63ec3d99df76a12439bf0b4c3ab32d13fd9");
+    public static TexturedHead CARVED_STONE_J = new TexturedHead("http://textures.minecraft.net/texture/c58456cd9bb8a7e978591ae0cb26af1aadad4fa7a16725b295145e09bed8064");
+    public static TexturedHead CARVED_STONE_K = new TexturedHead("http://textures.minecraft.net/texture/af49fb708369e7bc2944ad706963fb6ac6ce6d4c67081ddadecfe5da51");
+    public static TexturedHead CARVED_STONE_L = new TexturedHead("http://textures.minecraft.net/texture/8c84f75416e853a74f6c70fc7e1093d53961879955b433bd8c7c6d5a6df");
+    public static TexturedHead CARVED_STONE_M = new TexturedHead("http://textures.minecraft.net/texture/31fde91b19b9309913724fea9e85311271c67bcb78578d461bf65d9613074");
+    public static TexturedHead CARVED_STONE_N = new TexturedHead("http://textures.minecraft.net/texture/1c7c972e6785d6b0aceb779abdd7702d98341c24c2a71e702930eca58055");
+    public static TexturedHead CARVED_STONE_O = new TexturedHead("http://textures.minecraft.net/texture/8073bb44f9345f9bb31a679027e7939e461842a8c27486d7a6b842c39eb38c4e");
+    public static TexturedHead CARVED_STONE_P = new TexturedHead("http://textures.minecraft.net/texture/64b231a8d55870cfb5a9f4e65db06dd7f8e34282f1416f95878b19acc34ac95");
+    public static TexturedHead CARVED_STONE_Q = new TexturedHead("http://textures.minecraft.net/texture/ffedd6f9efdb156b86935699b2b4834df0f5d214513c01d38af3bd031cbcc92");
+    public static TexturedHead CARVED_STONE_R = new TexturedHead("http://textures.minecraft.net/texture/c03a1cd583cbbffde08f943e56ac3e3afafecaede834221a81e6db6c64667f7d");
+    public static TexturedHead CARVED_STONE_S = new TexturedHead("http://textures.minecraft.net/texture/b6572e655725d78375a9817eb9ee8b37829ca1fea93b6095cc7aa19e5eac");
+    public static TexturedHead CARVED_STONE_T = new TexturedHead("http://textures.minecraft.net/texture/708c9ef3a3751e254e2af1ad8b5d668ccf5c6ec3ea2641877cba575807d39");
+    public static TexturedHead CARVED_STONE_U = new TexturedHead("http://textures.minecraft.net/texture/55a6e3ae5ae625923524838fac9fef5b42527f5027c9ca149e6c207792eb");
+    public static TexturedHead CARVED_STONE_V = new TexturedHead("http://textures.minecraft.net/texture/975121f7d9c68da0e5b6a96ac615298b12b2ee5bd19989436ee647879da5b");
+    public static TexturedHead CARVED_STONE_W = new TexturedHead("http://textures.minecraft.net/texture/67e165c3edc5541d4654c4728871e6908f613fc0ec46e823c96eac82ac62e62");
+    public static TexturedHead CARVED_STONE_X = new TexturedHead("http://textures.minecraft.net/texture/1919d1594bf809db7b44b3782bf90a69f449a87ce5d18cb40eb653fdec2722");
+    public static TexturedHead CARVED_STONE_Y = new TexturedHead("http://textures.minecraft.net/texture/e35424bb86305d7747604b13e924d74f1efe38906e4e458dd18dcc67b6ca48");
+    public static TexturedHead CARVED_STONE_Z = new TexturedHead("http://textures.minecraft.net/texture/4e91200df1cae51acc071f85c7f7f5b8449d39bb32f363b0aa51dbc85d133e");
+    public static TexturedHead CARVED_STONE_0 = new TexturedHead("http://textures.minecraft.net/texture/55a224807693978ed834355f9e5145f9c56ef68cf6f2c9e1734a46e246aae1");
+    public static TexturedHead CARVED_STONE_1 = new TexturedHead("http://textures.minecraft.net/texture/31a9463fd3c433d5e1d9fec6d5d4b09a83a970b0b74dd546ce67a73348caab");
+    public static TexturedHead CARVED_STONE_2 = new TexturedHead("http://textures.minecraft.net/texture/acb419d984d8796373c9646233c7a02664bd2ce3a1d3476dd9b1c5463b14ebe");
+    public static TexturedHead CARVED_STONE_3 = new TexturedHead("http://textures.minecraft.net/texture/f8ebab57b7614bb22a117be43e848bcd14daecb50e8f5d0926e4864dff470");
+    public static TexturedHead CARVED_STONE_4 = new TexturedHead("http://textures.minecraft.net/texture/62bfcfb489da867dce96e3c3c17a3db7c79cae8ac1f9a5a8c8ac95e4ba3");
+    public static TexturedHead CARVED_STONE_5 = new TexturedHead("http://textures.minecraft.net/texture/ef4ecf110b0acee4af1da343fb136f1f2c216857dfda6961defdbee7b9528");
+    public static TexturedHead CARVED_STONE_6 = new TexturedHead("http://textures.minecraft.net/texture/f331a6a6fcd6995b62088d353bfb68d9b89ae258325caf3f2886464f54a7329");
+    public static TexturedHead CARVED_STONE_7 = new TexturedHead("http://textures.minecraft.net/texture/d4ba6ac07d422377a855793f36dea2ed240223f52fd1648181612ecd1a0cfd5");
+    public static TexturedHead CARVED_STONE_8 = new TexturedHead("http://textures.minecraft.net/texture/c61a8a641437be9aea207253dd3f25440d954ea2b5866c552f386b29ac4d049");
+    public static TexturedHead CARVED_STONE_9 = new TexturedHead("http://textures.minecraft.net/texture/a1928e1bfd86a9b79397c4cb4b65ef99af49b7d5f7957ad62c0c699a622cfbe");
+    public static TexturedHead CARVED_STONE_RIGHT = new TexturedHead("http://textures.minecraft.net/texture/f2f3a2dfce0c3dab7ee10db385e5229f1a39534a8ba2646178e37c4fa93b");
+    public static TexturedHead CARVED_STONE_DOWN = new TexturedHead("http://textures.minecraft.net/texture/9b7ce683d0868aa4378aeb60caa5ea80596bcffdab6b5af2d12595837a84853");
+    public static TexturedHead CARVED_STONE_DOWN_LEFT = new TexturedHead("http://textures.minecraft.net/texture/52651ecd3780cf6e451ecaccdee69715c08cae7cd4509084462cdcd963a6b322");
+    public static TexturedHead CARVED_STONE_DOWN_RIGHT = new TexturedHead("http://textures.minecraft.net/texture/8e1ce9c0d33236f9921d22c4ec4bf509237aef676b5d1d2bacc93f5a819480");
+    public static TexturedHead CARVED_STONE_UP = new TexturedHead("http://textures.minecraft.net/texture/58fe251a40e4167d35d081c27869ac151af96b6bd16dd2834d5dc7235f47791d");
+    public static TexturedHead CARVED_STONE_UP_LEFT = new TexturedHead("http://textures.minecraft.net/texture/473e1fe0ffcd546c21b63eaa910ab5c93132a64e644179fccaa21dc8bc660");
+    public static TexturedHead CARVED_STONE_UP_RIGHT = new TexturedHead("http://textures.minecraft.net/texture/577ec44fb7503de6afe3bdd7e583c7b93979f59f6d634b6b6a5af7f3a1c58515");
+    public static TexturedHead CARVED_STONE_LEFT = new TexturedHead("http://textures.minecraft.net/texture/bb0f6e8af46ac6faf88914191ab66f261d6726a7999c637cf2e4159fe1fc477");
+    public static TexturedHead CARVED_STONE_EXCLAMATION_MARK = new TexturedHead("http://textures.minecraft.net/texture/87d19aabfcfd99ffaba4214caef299516ce52e6d13bf2dda125985e481b72f9");
+    public static TexturedHead CARVED_STONE_QUESTION_MARK = new TexturedHead("http://textures.minecraft.net/texture/d23eaefbd581159384274cdbbd576ced82eb72423f2ea887124f9ed33a6872c");
+    public static TexturedHead CARVED_STONE_PLUS = new TexturedHead("http://textures.minecraft.net/texture/0a21eb4c57750729a48b88e9bbdb987eb6250a5bc2157b59316f5f1887db5");
+    public static TexturedHead CARVED_STONE_HASH = new TexturedHead("http://textures.minecraft.net/texture/944c4df7e17db3c7e996cc67b17e8f8a97d62c81fe32f852e1a4779a9fc588b8");
+    public static TexturedHead CARVED_STONE_LESS_THAN = new TexturedHead("http://textures.minecraft.net/texture/d0b6a416a2d73d3df496eaf787267bceda28bf4fb5b46f98e1915ff1f4e5f13");
+    public static TexturedHead CARVED_STONE_GREATER_THAN = new TexturedHead("http://textures.minecraft.net/texture/d2a05a5cdff0ba9de4bd02085b3149d1532b127ff8c47a9c9481731190ff1e");
+
+    public static TexturedHead STONECUTTER = new TexturedHead("http://textures.minecraft.net/texture/8d2c19b442541351a6b81eeb6cbef41966ffb7dbe4c136b87f5baf9d14a");
+
 }

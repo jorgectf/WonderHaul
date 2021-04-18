@@ -16,25 +16,18 @@ public class SpecialRecipe {
 
     private String displayName;
 
-    private String reference;
-
     private List<Ingredient> ingredients;
 
     private ItemStack result;
 
-    public SpecialRecipe(String displayName, String reference, List<Ingredient> ingredients, ItemStack result) {
+    public SpecialRecipe(String displayName, List<Ingredient> ingredients, ItemStack result) {
         this.displayName = displayName;
-        this.reference = reference;
         this.ingredients = ingredients;
         this.result = result;
     }
 
     public String getDisplayName() {
         return displayName;
-    }
-
-    public String getReference() {
-        return reference;
     }
 
     public List<Ingredient> getIngredients() {
@@ -47,14 +40,12 @@ public class SpecialRecipe {
 
     public boolean canCraft(InventoryHolder player){
         Map<Ingredient, Integer> amount = new HashMap<>();
-        for(ItemStack i : player.getInventory()){
+        ingredients.forEach(i -> amount.put(i, 0));
+        for(ItemStack playerItem : player.getInventory()){
             Optional<Ingredient> validIngredient = ingredients.stream()
-                    .filter(g -> g.isValidIngredient(i))
+                    .filter(g -> g.isValidIngredient(playerItem))
                     .findAny();
-            if(validIngredient.isPresent()){
-                amount.putIfAbsent(validIngredient.get(), 0);
-                amount.put(validIngredient.get(), amount.get(validIngredient.get()) + i.getAmount());
-            }
+            validIngredient.ifPresent(ingredient -> amount.put(ingredient, amount.get(ingredient) + playerItem.getAmount()));
         }
         return amount.entrySet().stream()
                 .allMatch(e -> e.getValue() >= e.getKey().getAmount());

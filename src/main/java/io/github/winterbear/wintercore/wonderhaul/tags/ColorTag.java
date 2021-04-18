@@ -46,7 +46,17 @@ public class ColorTag implements Tag{
 
     @Override
     public String getInstructions() {
-        return "&7Right click with a piece of equipment to change the color of it's name!";
+        return "Right click with a piece of equipment to change the color of it's name!";
+    }
+
+    @Override
+    public String getDescription() {
+        return "A tattered piece of parchment, the writing on it shines with an odd hue.";
+    }
+
+    @Override
+    public ChatColor getColor() {
+        return ChatColor.DARK_PURPLE;
     }
 
     @Override

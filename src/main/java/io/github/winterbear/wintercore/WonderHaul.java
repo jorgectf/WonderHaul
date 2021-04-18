@@ -8,6 +8,7 @@ import io.github.winterbear.wintercore.Annotations.SpigotPlugin;
 import io.github.winterbear.wintercore.database.HibernateUtil;
 import io.github.winterbear.wintercore.particles.ParticleEngine;
 import io.github.winterbear.wintercore.utils.DelayUtils;
+import io.github.winterbear.wintercore.utils.EconomyUtils;
 import io.github.winterbear.wintercore.wonderhaul.MicroblockDataListener;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorage;
 import io.github.winterbear.wintercore.wonderhaul.data.PersistentDataHolder;
@@ -19,7 +20,7 @@ import io.github.winterbear.wintercore.wonderhaul.equipment.Prefixes;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.EnchantConfig;
 import io.github.winterbear.wintercore.wonderhaul.equipment.enchanting.Enchantments;
 import io.github.winterbear.wintercore.wonderhaul.equipment.gobblers.Gobblers;
-import io.github.winterbear.wintercore.wonderhaul.equipment.packs.ExperiencePackListener;
+import io.github.winterbear.wintercore.wonderhaul.packs.Packs;
 import io.github.winterbear.wintercore.wonderhaul.sockets.Sockets;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
 import io.github.winterbear.wintercore.wonderhaul.sockets.ornaments.Ornaments;
@@ -41,7 +42,7 @@ import java.util.Set;
  *    ██║    ██║██╔═══██╗████╗  ██║██╔══██╗██╔════╝██╔══██╗██║  ██║██╔══██╗██║   ██║██║       ██║ ██║
  *    ██║ █╗ ██║██║   ██║██╔██╗ ██║██║  ██║█████╗  ██████╔╝███████║███████║██║   ██║██║       ██║ ██║
  *    ██║███╗██║██║   ██║██║╚██╗██║██║  ██║██╔══╝  ██╔══██╗██╔══██║██╔══██║██║   ██║██║       ██║ ██║
- *    ╚███╔███╔╝╚██████╔╝██║ ╚████║██████╔╝███████╗██║  ██║██║  ██║██║  ██║╚██████╔╝███████╗  ██║ ██║
+ *    ╚███╔███╔╝╚████1██╔╝██║ ╚████║██████╔╝███████╗██║  ██║██║  ██║██║  ██║╚██████╔╝███████╗  ██║ ██║
  *     ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═══╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝  ╚═╝ ╚═╝
  *
  *     Created by WinterBear on 07/05/2017.
@@ -110,14 +111,15 @@ public class WonderHaul extends JavaPlugin {
         Tags.registerListeners(this);
         Sockets.registerListeners(this);
         new MobDropperListener(this);
-        new ExperiencePackListener(this);
         if(databaseConfigured) {
             DelayUtils.after(1, this::loadData, this);
         }
+        Packs.registerAll(this);
         Microblocks.registerAll(this);
         Infusions.registerAll(this);
         Ornaments.registerAll(this);
         Gobblers.registerAll(this);
+        EconomyUtils.setupEconomy();
         ParticleEngine.start(this);
     }
 

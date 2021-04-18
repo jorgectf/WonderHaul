@@ -1,4 +1,4 @@
-package io.github.winterbear.wintercore.wonderhaul.equipment.packs;
+package io.github.winterbear.wintercore.wonderhaul.packs;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.utils.InteractEventUtils;

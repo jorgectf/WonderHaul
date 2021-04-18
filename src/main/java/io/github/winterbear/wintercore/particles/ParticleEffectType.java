@@ -5,5 +5,6 @@ package io.github.winterbear.wintercore.particles;
  */
 public enum ParticleEffectType {
 
-    ESSENCE_COLLECTOR
+    ESSENCE_COLLECTOR,
+    CANDLE
 }

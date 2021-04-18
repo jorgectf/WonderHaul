@@ -15,7 +15,6 @@ import org.bukkit.inventory.ItemStack;
  */
 public class GoldSlotType implements SlotType {
 
-
     @Override
     public ItemStack getNewItem() {
         int gold = getGold();
@@ -36,6 +35,6 @@ public class GoldSlotType implements SlotType {
     @Override
     public void reward(Player player, ItemStack item) {
         ChatUtils.send(player, ChatColor.GOLD + "Won " + item.getItemMeta().getDisplayName() + " money!");
-        EconomyUtils.payPlayer(player, Double.valueOf(ChatUtils.uncolored(item.getItemMeta().getDisplayName())));
+        EconomyUtils.ECONOMY.depositPlayer(player, Double.parseDouble(ChatUtils.uncolored(item.getItemMeta().getDisplayName().replace("❄", ""))));
     }
 }

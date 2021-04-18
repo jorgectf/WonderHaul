@@ -4,14 +4,15 @@ import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.WinterCoreUtils.CommandRegistry;
 import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
+import io.github.winterbear.wintercore.wonderhaul.data.MobPools;
 import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generators;
-import io.github.winterbear.wintercore.wonderhaul.data.Pools;
 import org.bukkit.Chunk;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.EntityType;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class ItemDropper {
             return Collections.EMPTY_LIST;
         }
 
-        return Pools.getPools()
+        return MobPools.getPools()
                 .stream()
                 .filter(pool -> pool.getGlobalChance().roll()) //Global pool chance
                 .filter(pool -> pool.getEnabledBiomes().contains(biome)) //Biome is valid
@@ -96,7 +97,7 @@ public class ItemDropper {
                 return;
             }
 
-            Generator g = Generators.fromName(args[0]);
+            Generator g = Generators.fromName(String.join(" ", Arrays.copyOfRange(args, 0, args.length)));
             if(g == null){
                 ChatUtils.error(player, "No Generator by the name of " + args[0]);
                 return;

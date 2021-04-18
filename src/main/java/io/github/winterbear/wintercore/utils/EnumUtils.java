@@ -18,5 +18,9 @@ public class EnumUtils {
         return set;
     }
 
+    public static String getDisplayText(Enum e){
+        return LoreUtils.convertToTitleCase(e.toString());
+    }
+
 
 }

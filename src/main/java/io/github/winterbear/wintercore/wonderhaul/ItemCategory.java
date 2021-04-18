@@ -2,22 +2,25 @@ package io.github.winterbear.wintercore.wonderhaul;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
+import net.md_5.bungee.api.ChatColor;
 
 /**
  * Created by WinterBear on 27/09/2020.
  */
 public enum ItemCategory {
 
-    ARTIFACT("&6✦", "Artifact"),
+    ARTIFACT(ChatColor.of("#ffdd54") + "✦", "Artifact"),
     ORNAMENT(SocketType.ORNAMENT),
     INFUSION(SocketType.INFUSION),
-    DECORATION("&6✦", "Decoration"),
-    EQUIPMENT("&6✦", "Equipment"),
-    CRATE("&6✦", "Crate");
+    DECORATION(ChatColor.of("#ffdd54") + "✦", "Decoration"),
+    EQUIPMENT(ChatColor.of("#ffdd54") + "✦", "Equipment"),
+    TAG(ChatColor.of("#ffdd54") + "✦", "Tag"),
+    CRATE(ChatColor.of("#ffdd54") + "✦", "Crate"),
+    PACK(ChatColor.of("#6effb1") + "⚒", "Pack");
 
-    private String symbol;
+    private final String symbol;
 
-    private String displayName;
+    private final String displayName;
 
     ItemCategory(String symbol, String displayName){
         this.symbol = symbol;

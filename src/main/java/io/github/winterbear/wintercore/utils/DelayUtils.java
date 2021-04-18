@@ -18,7 +18,7 @@ public class DelayUtils {
 
     public static void after(int ticks, Runnable r, JavaPlugin plugin, int repeats){
         for(int i = 0; i < repeats; i++){
-            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, r, ticks*(i+1));
+            Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, r, (long) (ticks*(i+1)));
         }
     }
 }

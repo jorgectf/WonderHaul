@@ -12,6 +12,7 @@ import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.C
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIIGenerator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollectorGenerator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.RelicGenerator;
+import io.github.winterbear.wintercore.wonderhaul.packs.PackGenerator;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -179,6 +180,20 @@ public class DevTools {
     public static CommandWrapper getGobbler(){
         return CommandRegistry.createPlayerCommand("getGobbler", (player, command, label, args) -> {
             player.getInventory().addItem(new GobblerGenerator().create());
+        });
+    }
+
+    @Command(permission = "dev.getExperiencePack")
+    public static CommandWrapper getExperiencePack(){
+        return CommandRegistry.createPlayerCommand("getExperiencePack", (player, command, label, args) -> {
+            player.getInventory().addItem(PackGenerator.Packs.LARGE_EXP_HAUL.generate());
+        });
+    }
+
+    @Command(permission = "dev.getGoldHaul")
+    public static CommandWrapper getGoldHaul(){
+        return CommandRegistry.createPlayerCommand("getGoldHaul", (player, command, label, args) -> {
+            player.getInventory().addItem(PackGenerator.Packs.LARGE_GOLD_HAUL.generate());
         });
     }
 

@@ -17,8 +17,6 @@ public class WonderhaulIngredient extends NamedIngredient {
 
     ItemStack itemStack;
 
-    IngredientType type = IngredientType.NAME;
-
     int amount;
 
     public static boolean is(ItemStack itemStack){
@@ -49,11 +47,6 @@ public class WonderhaulIngredient extends NamedIngredient {
     public WonderhaulIngredient(String name, ItemStack itemStack){
         this.name = name;
         this.itemStack = ItemUtils.oneOf(itemStack);
-    }
-
-    @Override
-    public IngredientType getType() {
-        return type;
     }
 
     @Override

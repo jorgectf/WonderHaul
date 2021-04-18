@@ -2,6 +2,7 @@ package io.github.winterbear.wintercore.wonderhaul.tags;
 
 import io.github.winterbear.wintercore.utils.ItemUtils;
 import io.github.winterbear.wintercore.wonderhaul.equipment.MaterialGroup;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -23,11 +24,21 @@ public class MimicTag  implements Tag {
 
     @Override
     public String getDisplayName() {
-        return "&bMimic Tag";
+        return "Mimic Tag";
     }
 
     @Override
     public String getInstructions() {
-        return "&7Right click with a piece of equipment to duplicate it!";
+        return "Right click with a piece of equipment to duplicate it!";
+    }
+
+    @Override
+    public String getDescription() {
+        return "A rare piece of shimmering cloth with a symbol of a dazzling sun woven into the fabric. It doesn't look completely corporeal.";
+    }
+
+    @Override
+    public ChatColor getColor() {
+        return ChatColor.of("#c2fdff");
     }
 }

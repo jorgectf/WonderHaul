@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 public class ItemBuilder {
 
-    private TexturedHead texture;
+    private ItemStack baseItem;
     private String displayName;
     private ItemCategory itemCategory;
     private String itemType;
@@ -29,7 +29,17 @@ public class ItemBuilder {
 
     public static ItemBuilder newMicroblock(String itemType, ItemCategory itemCategory, ChatColor color, ColorLoreMode colorLoreMode, TexturedHead texturedHead){
         ItemBuilder builder = new ItemBuilder();
-        builder.texture = texturedHead;
+        builder.baseItem = texturedHead.get();
+        builder.itemType = itemType;
+        builder.itemCategory = itemCategory;
+        builder.color = color;
+        builder.colorLoreMode = colorLoreMode;
+        return builder;
+    }
+
+    public static ItemBuilder newItem(String itemType, ItemCategory itemCategory, ChatColor color, ColorLoreMode colorLoreMode, Material material){
+        ItemBuilder builder = new ItemBuilder();
+        builder.baseItem = new ItemStack(material);
         builder.itemType = itemType;
         builder.itemCategory = itemCategory;
         builder.color = color;
@@ -53,7 +63,7 @@ public class ItemBuilder {
     }
 
     public ItemStack build(){
-        ItemStack item = texture.get();
+        ItemStack item = baseItem.clone();
         String lore = ChatUtils.format(itemCategory.getSymbol() + " &7" + itemCategory.getDisplayName() + "&8: " + color + itemType);
         ChatColor loreColor = getLoreColor(color, colorLoreMode);
 

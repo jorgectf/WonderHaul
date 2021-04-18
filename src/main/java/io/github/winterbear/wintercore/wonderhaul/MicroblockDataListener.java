@@ -3,6 +3,7 @@ package io.github.winterbear.wintercore.wonderhaul;
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.ItemUtils;
+import io.github.winterbear.wintercore.utils.LightUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.RepeatingTaskUtils;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
@@ -62,6 +63,9 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
             metadata.setProperty("Owner", event.getPlayer().getUniqueId().toString());
             if(type.equals("Essence Collector")){
                 metadata.setProperty("ParticleEffect", ParticleEffectType.ESSENCE_COLLECTOR.toString());
+            } else if (type.equals("Candle")){
+                LightUtils.toggleLight(metadata);
+                metadata.setProperty("ParticleEffect", ParticleEffectType.CANDLE.toString());
             }
             blockStorage.setBlockMetadata(metadata);
 
@@ -134,6 +138,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
                             i.getItems().forEach(d -> ItemUtils.dropNaturally(blockLocation, d.getInternalItem()));
                     });
                 }
+                LightUtils.removeLight(blockMeta.get());
                 blockStorage.clearBlockMetadata(blockLocation);
             }
         }

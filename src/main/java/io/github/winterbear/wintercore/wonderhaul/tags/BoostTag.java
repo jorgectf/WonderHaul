@@ -3,6 +3,7 @@ package io.github.winterbear.wintercore.wonderhaul.tags;
 import io.github.winterbear.wintercore.utils.EnchantmentUtils;
 import io.github.winterbear.wintercore.utils.RandomUtils;
 import io.github.winterbear.wintercore.utils.SoundUtils;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -39,11 +40,21 @@ public class BoostTag implements Tag {
 
     @Override
     public String getDisplayName() {
-        return "&cBoost Tag";
+        return "Boost Tag";
     }
 
     @Override
     public String getInstructions() {
-        return "&7Use on an enchanted item to boost the level of one of its enchantments!";
+        return "Use on an enchanted item to boost the level of one of its enchantments!";
+    }
+
+    @Override
+    public String getDescription() {
+        return "A worn fragment of parchment, torn off from a greater whole. The runes written on it still hold some power.";
+    }
+
+    @Override
+    public ChatColor getColor() {
+        return ChatColor.of("#fc5e03");
     }
 }

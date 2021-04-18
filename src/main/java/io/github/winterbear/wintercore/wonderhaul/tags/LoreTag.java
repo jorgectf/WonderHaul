@@ -1,13 +1,13 @@
 package io.github.winterbear.wintercore.wonderhaul.tags;
 
-import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import de.tr7zw.nbtapi.NBTItem;
 import io.github.winterbear.wintercore.ConfigLoader;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.RandomUtils;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LoreTag implements Tag{
 
@@ -15,16 +15,12 @@ public class LoreTag implements Tag{
 
     @Override
     public boolean apply(ItemStack item, TagApplication application) {
-        List<String> tagLore = application.getTagItem().getItemMeta().getLore();
-        List<String> lore = tagLore.subList(1, tagLore.size())
-                .stream()
-                .map(l -> ChatUtils.uncolored(l))
-                .map(l -> getColor(item) + l)
-                .collect(Collectors.toList());
+        NBTItem nbt = new NBTItem(application.getTagItem());
+
         if(!item.getItemMeta().getLore().contains("")){
             LoreUtils.addBlankLine(item);
         }
-        LoreUtils.addLore(item, lore, application.getPlayer());
+        LoreUtils.addMultiLineLore(item, ChatColor.GRAY + "&o" + nbt.getString("Lore Tag"));
         sendMessage(application.getPlayer(), "Lore was added successfully!");
         return true;
 
@@ -37,18 +33,33 @@ public class LoreTag implements Tag{
 
     @Override
     public String getDisplayName() {
-        return "&eLore Tag";
+        return "Lore Tag";
     }
 
     @Override
     public String getInstructions() {
-        return "&7Right click with a piece of equipment to add lore to it!";
+        return "Right click with a piece of equipment to add lore to it!";
+    }
+
+    @Override
+    public String getDescription() {
+        return "A scrap of cloth covered with a mysterious script. Holding it reminds you of times long ago.";
+    }
+
+    @Override
+    public ChatColor getColor() {
+        return ChatColor.of("#9350b5");
     }
 
     @Override
     public ItemStack modify(ItemStack item){
-        LoreUtils.addMultiLineLore(item, "&7" + pickLore(item));
-        return item;
+        NBTItem nbt = new NBTItem(item);
+        String lore = pickLore(item);
+        nbt.setString("Lore Tag", lore);
+        ItemStack newItem = nbt.getItem();
+        LoreUtils.addBlankLine(newItem);
+        LoreUtils.addMultiLineLore(newItem, ChatColor.GRAY + "&o" + lore);
+        return newItem;
     }
 
     private String getColor(ItemStack item){

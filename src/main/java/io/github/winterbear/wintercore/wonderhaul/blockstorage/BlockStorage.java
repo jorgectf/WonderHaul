@@ -46,7 +46,7 @@ public class BlockStorage {
             return;
         }
 
-        if(data.getProperties().containsKey("ParticleEffect")){
+        if(data.getProperties().containsKey("ParticleEffect")) {
             ParticleEngine.registerEffect(data, ParticleEffectType.valueOf(data.getProperty("ParticleEffect").get()));
         }
 

@@ -23,7 +23,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Gobbler implements Listener {
 
-    private static final Map<Player, Long> clickCooldown = new ConcurrentHashMap<>();
+    private final Map<Player, Long> clickCooldown = new ConcurrentHashMap<>();
 
     private String displayName;
 
@@ -55,8 +55,7 @@ public class Gobbler implements Listener {
         if(event.getEntity() instanceof Player){
             Player player = (Player) event.getEntity();
             if(Arrays.stream(player.getInventory().getContents())
-                    .filter(itemStack -> itemStack != null && itemStack.getItemMeta() != null)
-                    .filter(item -> item.getItemMeta().getDisplayName().contains(displayName))
+                    .filter(this::itemIsGobbler)
                 .anyMatch(item -> LoreUtils.getTag(item, ItemCategory.EQUIPMENT.getDisplayName()).contains("Gobbler"))){
                 this.onPickup(event);
             }
@@ -67,10 +66,12 @@ public class Gobbler implements Listener {
     public void onInventoryClick(InventoryClickEvent event){
         if(event.isRightClick()){
             ItemStack item = event.getCurrentItem();
-            List<String> tags = LoreUtils.getTag(item, ItemCategory.EQUIPMENT.getDisplayName());
-            if(tags.contains("Inactive Gobbler") || tags.contains("Gobbler")){
-                event.getClickedInventory().setItem(event.getSlot(), toggle(item));
-                event.setCancelled(true);
+            if(itemIsGobbler(item)) {
+                List<String> tags = LoreUtils.getTag(item, ItemCategory.EQUIPMENT.getDisplayName());
+                if (tags.contains("Inactive Gobbler") || tags.contains("Gobbler")) {
+                    event.getClickedInventory().setItem(event.getSlot(), toggle(item));
+                    event.setCancelled(true);
+                }
             }
         }
 
@@ -79,14 +80,29 @@ public class Gobbler implements Listener {
 
     @EventHandler
     public void onInteractEvent(PlayerInteractEvent event) {
+        //ChatUtils.info("Detected possible gobbler event");
         if(InteractEventUtils.eventIsRightClickEvent(event, clickCooldown)){
+            //ChatUtils.info("Detected right click event");
             ItemStack itemInMainHand = event.getPlayer().getInventory().getItemInMainHand();
-            List<String> tags = LoreUtils.getTag(itemInMainHand, ItemCategory.EQUIPMENT.getDisplayName());
-            if(tags.contains("Inactive Gobbler") || tags.contains("Gobbler")){
-                event.getPlayer().getInventory().setItemInMainHand(toggle(itemInMainHand));
-                event.setCancelled(true);
+            if(itemIsGobbler(itemInMainHand)) {
+                //ChatUtils.info("Item is gobbler");
+                List<String> tags = LoreUtils.getTag(itemInMainHand, ItemCategory.EQUIPMENT.getDisplayName());
+                if (tags.contains("Inactive Gobbler") || tags.contains("Gobbler")) {
+                    //ChatUtils.info("Toggling...");
+                    event.getPlayer().getInventory().setItemInMainHand(toggle(itemInMainHand));
+                    event.setCancelled(true);
+                }
             }
         }
+    }
+
+    private boolean itemIsGobbler(ItemStack itemStack){
+        List<String> tags = LoreUtils.getTag(itemStack, ItemCategory.EQUIPMENT.getDisplayName());
+        return itemStack != null
+                && itemStack.getType() == Material.PLAYER_HEAD
+                && (tags.contains("Inactive Gobbler") || tags.contains("Gobbler"))
+                && (MicroblockUtils.getTextureUrl(itemStack).equals(openTexture.getTextureURL()) ||
+                MicroblockUtils.getTextureUrl(itemStack).equals(closedTexture.getTextureURL()));
     }
 
     public void onPickup(EntityPickupItemEvent event){
@@ -115,7 +131,7 @@ public class Gobbler implements Listener {
     }
 
     public String getDisplayName() {
-        return displayName;
+        return "☀ " + displayName;
     }
 
     public List<Material> getItems() {

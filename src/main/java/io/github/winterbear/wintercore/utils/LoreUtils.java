@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class LoreUtils {
 
-    private static final String WORD_SEPARATOR = " ";
+    private static final String WORD_SEPARATOR = "[\\s_]";
 
     public static String convertToTitleCase(String text) {
         if (text == null || text.isEmpty()) {
@@ -35,7 +35,7 @@ public class LoreUtils {
                         : Character.toTitleCase(word.charAt(0)) + word
                         .substring(1)
                         .toLowerCase())
-                .collect(Collectors.joining(WORD_SEPARATOR));
+                .collect(Collectors.joining(" "));
     }
 
     public static void clearLore(ItemStack item, Player player){
@@ -54,7 +54,9 @@ public class LoreUtils {
 
     public static void addLore(ItemStack item, List<String> lore, Player player){
         lore.forEach(l -> addLoreLine(item, l));
-        player.updateInventory();
+        if(player != null) {
+            player.updateInventory();
+        }
     }
 
     public static void addLoreLine(ItemStack item, String lore){
@@ -173,11 +175,13 @@ public class LoreUtils {
     }
 
     public static String getItemsAsVerbal(List<Material> objects){
+        if(objects.size() == 1){
+            return WordUtils.capitalizeFully(objects.get(0).toString().replace("_", " "));
+        }
         return getListAsVerbal(objects.stream()
                 .map(o -> o.toString().replace("_", " "))
                 .map(WordUtils::capitalizeFully)
                 .collect(Collectors.toList()));
-
     }
 
     public static String getListAsVerbal(List<? extends Object> objects){
