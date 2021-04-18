@@ -7,8 +7,6 @@ import org.bukkit.inventory.ItemStack;
  */
 public interface Ingredient {
 
-    IngredientType getType();
-
     String getName();
 
     ItemStack getItemStack();
@@ -16,9 +14,5 @@ public interface Ingredient {
     int getAmount();
 
     boolean isValidIngredient(ItemStack item);
-
-
-
-
 
 }

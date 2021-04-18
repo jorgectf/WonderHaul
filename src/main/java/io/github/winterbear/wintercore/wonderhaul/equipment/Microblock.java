@@ -1,6 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment;
 
 import io.github.winterbear.wintercore.WonderHaul;
+import io.github.winterbear.wintercore.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.InteractEventUtils;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 import org.bukkit.Material;
@@ -21,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class Microblock implements Listener  {
 
-    private static final List<Material> MICROBLOCK_TYPES = Arrays.asList(Material.PLAYER_HEAD, Material.PLAYER_WALL_HEAD);
+    public static final List<Material> MICROBLOCK_TYPES = Arrays.asList(Material.PLAYER_HEAD, Material.PLAYER_WALL_HEAD);
 
     private final Map<Player, Long> clickCooldown = new ConcurrentHashMap<>();
 
@@ -50,5 +51,14 @@ public abstract class Microblock implements Listener  {
 
 
     public abstract String getReference();
+
+
+    public boolean isLight(){
+        return false;
+    }
+
+    public ParticleEffectType getEffectType(){
+        return null;
+    }
 
 }

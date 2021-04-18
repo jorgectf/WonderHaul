@@ -10,22 +10,23 @@ import java.util.List;
 /**
  * Created by WinterBear on 17/06/2019.
  */
-public class Pools {
+public class MobPools {
 
-    public static List<Pool> getPools(){
+    public static List<MobPool> getPools(){
         return getDefaultPools();
     }
 
 
 
-    private static List<Pool> getDefaultPools(){
+    private static List<MobPool> getDefaultPools(){
 
-        List<Pool> defaultPools = new ArrayList<>();
+        List<MobPool> defaultPools = new ArrayList<>();
 
         defaultPools.add(PoolBuilder.create("Junk")
                 .setGenerator(Generators.JUNK)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
                 .setGlobalChance(new Chance(100.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.8)
                 .mobChance(EntityType.SPIDER, 0.8)
                 .mobChance(EntityType.CAVE_SPIDER, 0.8)
@@ -39,14 +40,14 @@ public class Pools {
                 .mobChance(EntityType.WITCH, 0.8)
                 .mobChance(EntityType.VEX, 0.8)
                 .mobChance(EntityType.ENDERMAN, 0.8)
-                .mobChance(EntityType.ZOMBIFIED_PIGLIN, 0.8)
-                .createPool());
+                .mobChance(EntityType.ZOMBIFIED_PIGLIN, 0.8));
 
 
         defaultPools.add(PoolBuilder.create("Ordinary")
                 .setGenerator(Generators.ORDINARY)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
                 .setGlobalChance(new Chance(100.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.35)
                 .mobChance(EntityType.SPIDER, 0.35)
                 .mobChance(EntityType.CAVE_SPIDER, 0.35)
@@ -72,13 +73,13 @@ public class Pools {
                 .mobChance(EntityType.EVOKER, 0.63)
                 .mobChance(EntityType.VINDICATOR, 0.63)
                 .mobChance(EntityType.SHULKER, 0.63)
-                .mobChance(EntityType.GIANT, 3.5)
-                .createPool());
+                .mobChance(EntityType.GIANT, 3.5));
 
         defaultPools.add(PoolBuilder.create("Unusual")
                 .setGenerator(Generators.UNUSUAL)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
                 .setGlobalChance(new Chance(75.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.14)
                 .mobChance(EntityType.SPIDER, 0.14)
                 .mobChance(EntityType.CAVE_SPIDER, 0.14)
@@ -106,13 +107,13 @@ public class Pools {
                 .mobChance(EntityType.VINDICATOR, 0.56)
                 .mobChance(EntityType.SHULKER, 0.56)
                 .mobChance(EntityType.RAVAGER, 0.56)
-                .mobChance(EntityType.GIANT, 2.5)
-                .createPool());
+                .mobChance(EntityType.GIANT, 2.5));
 
         defaultPools.add(PoolBuilder.create("Tags")
                 .setGenerator(Generators.TAG)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
                 .setGlobalChance(new Chance(75.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.14)
                 .mobChance(EntityType.SPIDER, 0.14)
                 .mobChance(EntityType.CAVE_SPIDER, 0.14)
@@ -141,13 +142,13 @@ public class Pools {
                 .mobChance(EntityType.ILLUSIONER, 0.36)
                 .mobChance(EntityType.SHULKER, 0.36)
                 .mobChance(EntityType.RAVAGER, 0.35)
-                .mobChance(EntityType.GIANT, 1.5)
-                .createPool());
+                .mobChance(EntityType.GIANT, 1.5));
 
         defaultPools.add(PoolBuilder.create("Rare_CommonBiomes")
                 .setGenerator(Generators.RARE)
                 .setEnabledBiomes(BiomeSets.COMMON_BIOMES)
                 .setGlobalChance(new Chance(75.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.025)
                 .mobChance(EntityType.SPIDER, 0.025)
                 .mobChance(EntityType.CAVE_SPIDER, 0.025)
@@ -178,13 +179,13 @@ public class Pools {
                 .mobChance(EntityType.RAVAGER, 0.36)
                 .mobChance(EntityType.GIANT, 1)
                 .mobChance(EntityType.WITHER, 1)
-                .mobChance(EntityType.ENDER_DRAGON, 100)
-                .createPool());
+                .mobChance(EntityType.ENDER_DRAGON, 100));
 
         defaultPools.add(PoolBuilder.create("Rare_RareBiomes")
                 .setGenerator(Generators.RARE)
                 .setEnabledBiomes(BiomeSets.RARE_BIOMES)
                 .setGlobalChance(new Chance(75.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.04)
                 .mobChance(EntityType.SPIDER, 0.04)
                 .mobChance(EntityType.SKELETON, 0.04)
@@ -214,14 +215,14 @@ public class Pools {
                 .mobChance(EntityType.RAVAGER, 0.45)
                 .mobChance(EntityType.GIANT, 1.5)
                 .mobChance(EntityType.WITHER, 1)
-                .mobChance(EntityType.ENDER_DRAGON, 100)
-                .createPool());
+                .mobChance(EntityType.ENDER_DRAGON, 100));
 
 
         defaultPools.add(PoolBuilder.create("Relics")
                 .setGenerator(Generators.RELIC)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
                 .setGlobalChance(new Chance(50.0))
+                .createMobPool()
                 .mobChance(EntityType.ZOMBIE, 0.005)
                 .mobChance(EntityType.SPIDER, 0.005)
                 .mobChance(EntityType.SKELETON, 0.005)
@@ -251,20 +252,106 @@ public class Pools {
                 .mobChance(EntityType.RAVAGER, 0.35)
                 .mobChance(EntityType.GIANT, 0.5)
                 .mobChance(EntityType.WITHER, 1)
-                .mobChance(EntityType.ENDER_DRAGON, 100)
-                .createPool());
+                .mobChance(EntityType.ENDER_DRAGON, 100));
 
         defaultPools.add(PoolBuilder.create("Bonus_Relic_1")
                 .setGenerator(Generators.RELIC)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
-                .mobChance(EntityType.ENDER_DRAGON, 50)
-                .createPool());
+                .setGlobalChance(new Chance(100.0))
+                .createMobPool()
+                .mobChance(EntityType.ENDER_DRAGON, 50));
 
         defaultPools.add(PoolBuilder.create("Bonus_Relic_2")
                 .setGenerator(Generators.RELIC)
                 .setEnabledBiomes(BiomeSets.ALL_BIOMES)
-                .mobChance(EntityType.ENDER_DRAGON, 25)
-                .createPool());
+                .setGlobalChance(new Chance(100.0))
+                .createMobPool()
+                .mobChance(EntityType.ENDER_DRAGON, 25));
+
+        defaultPools.add(PoolBuilder.create("Essence Collector")
+                .setGenerator(Generators.ESSENCE_COLLECTOR)
+                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
+                .setGlobalChance(new Chance(100.0))
+                .createMobPool()
+                .mobChance(EntityType.SHULKER, 0.36)
+                .mobChance(EntityType.RAVAGER, 0.36)
+                .mobChance(EntityType.GIANT, 1)
+                .mobChance(EntityType.WITHER, 1)
+                .mobChance(EntityType.ENDER_DRAGON, 25));
+
+        defaultPools.add(PoolBuilder.create("Crate_I")
+                .setGenerator(Generators.CRATE_I)
+                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
+                .setGlobalChance(new Chance(100.0))
+                .createMobPool()
+                .mobChance(EntityType.ZOMBIE, 0.025)
+                .mobChance(EntityType.SPIDER, 0.025)
+                .mobChance(EntityType.CAVE_SPIDER, 0.025)
+                .mobChance(EntityType.SKELETON, 0.025)
+                .mobChance(EntityType.SLIME, 0.025)
+                .mobChance(EntityType.BLAZE, 0.025)
+                .mobChance(EntityType.SILVERFISH, 0.025)
+                .mobChance(EntityType.CREEPER, 0.05)
+                .mobChance(EntityType.MAGMA_CUBE, 0.05)
+                .mobChance(EntityType.GUARDIAN, 0.05)
+                .mobChance(EntityType.WITCH, 0.05)
+                .mobChance(EntityType.VEX, 0.05)
+                .mobChance(EntityType.ENDERMAN, 0.05)
+                .mobChance(EntityType.PHANTOM, 0.05)
+                .mobChance(EntityType.PILLAGER, 0.05)
+                .mobChance(EntityType.HUSK, 0.05)
+                .mobChance(EntityType.STRAY, 0.05)
+                .mobChance(EntityType.DROWNED, 0.05)
+                .mobChance(EntityType.ZOMBIFIED_PIGLIN, 0.05)
+                .mobChance(EntityType.ENDERMITE, 0.36)
+                .mobChance(EntityType.GHAST, 0.36)
+                .mobChance(EntityType.WITHER_SKELETON, 0.36)
+                .mobChance(EntityType.ELDER_GUARDIAN, 0.36)
+                .mobChance(EntityType.EVOKER, 0.36)
+                .mobChance(EntityType.VINDICATOR, 0.36)
+                .mobChance(EntityType.ILLUSIONER, 0.36)
+                .mobChance(EntityType.SHULKER, 0.36)
+                .mobChance(EntityType.RAVAGER, 0.36)
+                .mobChance(EntityType.GIANT, 1)
+                .mobChance(EntityType.WITHER, 1)
+                .mobChance(EntityType.ENDER_DRAGON, 100));
+
+        defaultPools.add(PoolBuilder.create("Crate_II")
+                .setGenerator(Generators.CRATE_II)
+                .setEnabledBiomes(BiomeSets.ALL_BIOMES)
+                .setGlobalChance(new Chance(20.0))
+                .createMobPool()
+                .mobChance(EntityType.ZOMBIE, 0.025)
+                .mobChance(EntityType.SPIDER, 0.025)
+                .mobChance(EntityType.CAVE_SPIDER, 0.025)
+                .mobChance(EntityType.SKELETON, 0.025)
+                .mobChance(EntityType.SLIME, 0.025)
+                .mobChance(EntityType.BLAZE, 0.025)
+                .mobChance(EntityType.SILVERFISH, 0.025)
+                .mobChance(EntityType.CREEPER, 0.05)
+                .mobChance(EntityType.MAGMA_CUBE, 0.05)
+                .mobChance(EntityType.GUARDIAN, 0.05)
+                .mobChance(EntityType.WITCH, 0.05)
+                .mobChance(EntityType.VEX, 0.05)
+                .mobChance(EntityType.ENDERMAN, 0.05)
+                .mobChance(EntityType.PHANTOM, 0.05)
+                .mobChance(EntityType.PILLAGER, 0.05)
+                .mobChance(EntityType.HUSK, 0.05)
+                .mobChance(EntityType.STRAY, 0.05)
+                .mobChance(EntityType.DROWNED, 0.05)
+                .mobChance(EntityType.ZOMBIFIED_PIGLIN, 0.05)
+                .mobChance(EntityType.ENDERMITE, 0.36)
+                .mobChance(EntityType.GHAST, 0.36)
+                .mobChance(EntityType.WITHER_SKELETON, 0.36)
+                .mobChance(EntityType.ELDER_GUARDIAN, 0.36)
+                .mobChance(EntityType.EVOKER, 0.36)
+                .mobChance(EntityType.VINDICATOR, 0.36)
+                .mobChance(EntityType.ILLUSIONER, 0.36)
+                .mobChance(EntityType.SHULKER, 0.36)
+                .mobChance(EntityType.RAVAGER, 0.36)
+                .mobChance(EntityType.GIANT, 1)
+                .mobChance(EntityType.WITHER, 1)
+                .mobChance(EntityType.ENDER_DRAGON, 100));
 
         return defaultPools;
 

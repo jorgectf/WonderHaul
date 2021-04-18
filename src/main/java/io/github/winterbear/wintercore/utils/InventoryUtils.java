@@ -14,12 +14,12 @@ import java.util.*;
  */
 public class InventoryUtils {
 
-    private static final Map<UUID, WHInventoryType> OPEN_INVENTORIES = new HashMap<>();
+    private static final Map<UUID, String> OPEN_INVENTORIES = new HashMap<>();
 
-    public static Inventory openInventory(Player player, int rows, String displayName, WHInventoryType type){
+    public static Inventory openInventory(Player player, int rows, String displayName, String reference){
         Inventory inventory = Bukkit.createInventory(player, rows*9, displayName);
         player.openInventory(inventory);
-        OPEN_INVENTORIES.put(player.getUniqueId(), type);
+        OPEN_INVENTORIES.put(player.getUniqueId(), reference);
         return inventory;
     }
 
@@ -27,7 +27,7 @@ public class InventoryUtils {
         OPEN_INVENTORIES.remove(player.getUniqueId());
     }
 
-    public static Optional<WHInventoryType> getCurrentInventory(Player player){
+    public static Optional<String> getCurrentInventory(Player player){
         if(OPEN_INVENTORIES.containsKey(player.getUniqueId())){
             return Optional.of(OPEN_INVENTORIES.get(player.getUniqueId()));
         }

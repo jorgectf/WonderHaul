@@ -1,10 +1,14 @@
 package io.github.winterbear.wintercore.utils;
 
+import com.google.common.base.Joiner;
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
 import io.github.winterbear.wintercore.wonderhaul.sockets.SocketType;
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.WordUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,7 +21,7 @@ import java.util.stream.Collectors;
  */
 public class LoreUtils {
 
-    private static final String WORD_SEPARATOR = " ";
+    private static final String WORD_SEPARATOR = "[\\s_]";
 
     public static String convertToTitleCase(String text) {
         if (text == null || text.isEmpty()) {
@@ -31,7 +35,7 @@ public class LoreUtils {
                         : Character.toTitleCase(word.charAt(0)) + word
                         .substring(1)
                         .toLowerCase())
-                .collect(Collectors.joining(WORD_SEPARATOR));
+                .collect(Collectors.joining(" "));
     }
 
     public static void clearLore(ItemStack item, Player player){
@@ -50,7 +54,9 @@ public class LoreUtils {
 
     public static void addLore(ItemStack item, List<String> lore, Player player){
         lore.forEach(l -> addLoreLine(item, l));
-        player.updateInventory();
+        if(player != null) {
+            player.updateInventory();
+        }
     }
 
     public static void addLoreLine(ItemStack item, String lore){
@@ -59,9 +65,22 @@ public class LoreUtils {
         setLore(item, itemLore);
     }
 
+    public static void addBlankLine(ItemStack item){
+        List<String> itemLore = getLore(item);
+        itemLore.add("");
+        setLore(item, itemLore);
+    }
+
     public static void addMultiLineLore(ItemStack item, String lore){
         List<String> itemLore = getLore(item);
         itemLore.addAll(getMultiline(lore, 26, 0));
+        setLore(item, itemLore);
+    }
+
+    public static void addMultiLineLore(ItemStack item, net.md_5.bungee.api.ChatColor color, String lore){
+        List<String> itemLore = getLore(item);
+        List<String> split = getMultiline(lore, 26, 0);
+        split.forEach(l -> itemLore.add(color + ChatUtils.uncolored(l)));
         setLore(item, itemLore);
     }
 
@@ -155,13 +174,37 @@ public class LoreUtils {
         return itemLore;
     }
 
+    public static String getItemsAsVerbal(List<Material> objects){
+        if(objects.size() == 1){
+            return WordUtils.capitalizeFully(objects.get(0).toString().replace("_", " "));
+        }
+        return getListAsVerbal(objects.stream()
+                .map(o -> o.toString().replace("_", " "))
+                .map(WordUtils::capitalizeFully)
+                .collect(Collectors.toList()));
+    }
+
+    public static String getListAsVerbal(List<? extends Object> objects){
+        return Joiner.on(", ")
+                .join(objects.subList(0, objects.size() - 1))
+                .concat(", and ")
+                .concat(objects.get(objects.size() - 1).toString());
+
+    }
+
+    public static List<String> getLoreText(ItemStack item){
+        return LoreUtils.getLore(item).stream()
+                .filter(lore -> !ChatUtils.uncolored(lore).contains(":"))
+                .filter(lore -> !StringUtils.isBlank(lore))
+                .collect(Collectors.toList());
+    }
+
     public static List<String> getTag(ItemStack item, String tagType) {
         return LoreUtils.getLore(item).stream()
                 .filter(lore -> ChatUtils.uncolored(lore).contains(tagType + ":"))
                 .map(line -> line.substring(line.indexOf(':') + 2))
                 .map(type -> ChatUtils.uncolored(type.trim()))
                 .collect(Collectors.toList());
-
     }
 
     public static String getType(ItemStack item) {
@@ -181,7 +224,11 @@ public class LoreUtils {
                 .map(ChatUtils::uncolored)
                 .findFirst().orElse(null);
         if(tier != null){
-            return Optional.of(Tier.valueOf(tier.toUpperCase()));
+            try {
+                return Optional.of(Tier.valueOf(tier.toUpperCase()));
+            } catch (IllegalArgumentException ex){
+                return Optional.empty();
+            }
         }
         return Optional.empty();
 

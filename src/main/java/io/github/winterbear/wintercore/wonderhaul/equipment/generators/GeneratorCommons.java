@@ -43,6 +43,7 @@ public class GeneratorCommons {
         ItemStack item = generateDefault(mat, tier);
 
         //LoreUtils.addMultiLineLore();
+        //TODO
         return item;
     }
 

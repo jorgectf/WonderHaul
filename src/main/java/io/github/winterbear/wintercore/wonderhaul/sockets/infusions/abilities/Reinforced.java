@@ -10,7 +10,6 @@ import io.github.winterbear.wintercore.wonderhaul.sockets.TriggerType;
 import io.github.winterbear.wintercore.wonderhaul.sockets.abilitytypes.ToolAbility;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.block.BlockState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -102,9 +101,7 @@ public class Reinforced extends ToolAbility {
                     if (HOE_MATERIALS.contains(block.getType()) &&
                             !block.equals(event.getClickedBlock())) {
 
-                        BlockState blockState = block.getState();
-                        blockState.setType(Material.FARMLAND);
-                        blockState.update(true);
+                        BlockUtils.setBlock(block, Material.FARMLAND);
                     }
                 }
             }
@@ -120,9 +117,7 @@ public class Reinforced extends ToolAbility {
 
                 ItemUtils.dropNaturally(BlockUtils.getBlockCentre(block.getLocation()), block.getDrops());
 
-                BlockState blockState = block.getState();
-                blockState.setType(Material.AIR);
-                blockState.update(true);
+                BlockUtils.setBlock(block, Material.AIR);
             }
         }
     }
@@ -146,13 +141,13 @@ public class Reinforced extends ToolAbility {
 
                     ItemUtils.dropNaturally(BlockUtils.getBlockCentre(block.getLocation()), block.getDrops());
 
-                    BlockState blockState = block.getState();
-                    blockState.setType(Material.AIR);
-                    blockState.update(true);
+                    BlockUtils.setBlock(block, Material.AIR);
                 }
             }
         }
     }
+
+
 
     private String getDirection(Player player) {
         double rot = (player.getLocation().getYaw() - 90) % 360;
@@ -188,5 +183,10 @@ public class Reinforced extends ToolAbility {
     @Override
     public TriggerType getTriggerType() {
         return TriggerType.MAINHAND;
+    }
+
+    @Override
+    public String getDescription() {
+        return "Increases the range of your tools effect";
     }
 }

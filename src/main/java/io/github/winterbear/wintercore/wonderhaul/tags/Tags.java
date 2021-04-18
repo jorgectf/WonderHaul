@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore.wonderhaul.tags;
 
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ import java.util.Map;
  */
 public class Tags {
 
-    public static final String PREFIX = "&6✦ &7Tag&8: &7";
+    public static final String PREFIX = ChatColor.of("#ffdd54") + "✦ &7Tag&8: ";
 
     public static final Tag LORE = new LoreTag();
 

@@ -86,7 +86,7 @@ public class Relic extends Microblock {
                         BlockUtils.getBlockCentre(metadata.getInternalLocation()),
                         80,
                         0.3);
-                event.getClickedBlock().setType(Material.AIR);
+                metadata.getInternalLocation().getBlock().setType(Material.AIR);
                 WonderHaul.getBlockStorage().clearBlockMetadata(metadata.getInternalLocation());
             } else {
                 ChatUtils.send(event.getPlayer(), "&5Relic &8>> &7Sacrificed a " + tier.getColor() + tier.getName() + " tier &7item. It disintegrated into ash.");

@@ -1,8 +1,13 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.generators;
 
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIIGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.CandleRollingTableGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StoneCutterGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StuffedToyGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollectorGenerator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.RelicGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.decorations.StuffedToyGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.packs.PackGenerator;
+import io.github.winterbear.wintercore.wonderhaul.packs.PackGenerator;
 import io.github.winterbear.wintercore.wonderhaul.tags.TagGenerator;
 
 /**
@@ -26,6 +31,16 @@ public class Generators {
 
     public static Generator PACK = new PackGenerator();
 
+    public static Generator CRATE_I = new CrateIGenerator();
+
+    public static Generator CRATE_II = new CrateIIGenerator();
+
+    public static Generator ESSENCE_COLLECTOR = new EssenceCollectorGenerator();
+
+    public static Generator CANDLE_ROLLING_TABLE_GENERATOR = new CandleRollingTableGenerator();
+
+    public static Generator CARVING_STATION_GENERATOR = new StoneCutterGenerator();
+
     public static Generator fromName(String name){
         if(name.equalsIgnoreCase("junk")){
             return JUNK;
@@ -43,6 +58,12 @@ public class Generators {
             return PACK;
         } else if (name.equalsIgnoreCase("toy")){
             return STUFFED_TOY;
+        } else if (name.equalsIgnoreCase("essence collector")){
+            return ESSENCE_COLLECTOR;
+        } else if (name.equalsIgnoreCase("candle rolling table")){
+            return CANDLE_ROLLING_TABLE_GENERATOR;
+        } else if (name.equalsIgnoreCase("carving station")){
+            return CARVING_STATION_GENERATOR;
         }
         return null;
     }

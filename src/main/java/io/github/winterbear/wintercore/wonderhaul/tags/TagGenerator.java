@@ -4,8 +4,10 @@ import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.WinterCoreUtils.CommandRegistry;
 import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
+import io.github.winterbear.wintercore.utils.ColorLoreMode;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
 import io.github.winterbear.wintercore.utils.ItemUtils;
+import io.github.winterbear.wintercore.wonderhaul.ItemCategory;
 import io.github.winterbear.wintercore.wonderhaul.dropper.Chance;
 import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import org.apache.commons.lang.StringUtils;
@@ -36,7 +38,27 @@ public class TagGenerator implements Generator {
     }
 
     public static ItemStack generate(Tag tag){
-        return tag.modify(ItemBuilder.createItem(ChatUtils.format(tag.getDisplayName()), createLore(tag), Material.NAME_TAG));
+        return tag.modify(ItemBuilder.newItem(tag.getDisplayName(),
+                ItemCategory.TAG,
+                tag.getColor(),
+                ColorLoreMode.BRIGHTER,
+                Material.NAME_TAG)
+        .withDescription(tag.getDescription())
+        .withDisplayName(tag.getDisplayName())
+        .withUsage(tag.getInstructions())
+        .build());
+    }
+
+    public static int getLoreLength(Tag tag){
+        return ItemBuilder.newItem(tag.getDisplayName(),
+                ItemCategory.TAG,
+                tag.getColor(),
+                ColorLoreMode.BRIGHTER,
+                Material.NAME_TAG)
+                .withDescription(tag.getDescription())
+                .withDisplayName(tag.getDisplayName())
+                .withUsage(tag.getInstructions())
+                .build().getItemMeta().getLore().size();
     }
 
     private static String createLore(Tag tag){

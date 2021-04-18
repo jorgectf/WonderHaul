@@ -12,6 +12,8 @@ import io.github.winterbear.wintercore.wonderhaul.sockets.ornaments.Ornaments;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -22,7 +24,10 @@ public class SocketGenerator implements Generator {
 
     @Override
     public ItemStack create() {
-        ISocketable infusion = RandomUtils.getRandomElementOf(Infusions.INFUSIONS);
+        List<ISocketable> sockets = new ArrayList<>();
+        sockets.addAll(Infusions.INFUSIONS);
+        sockets.addAll(Ornaments.ORNAMENTS);
+        ISocketable infusion = RandomUtils.getRandomElementOf(sockets);
         return infusion.getItem();
     }
 

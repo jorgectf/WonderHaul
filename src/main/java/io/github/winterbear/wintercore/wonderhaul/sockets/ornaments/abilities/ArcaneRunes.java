@@ -28,4 +28,9 @@ public class ArcaneRunes extends XPAbility {
     public TriggerType getTriggerType() {
         return TriggerType.ARMOR;
     }
+
+    @Override
+    public String getDescription() {
+        return "Increases your XP gain from all sources";
+    }
 }

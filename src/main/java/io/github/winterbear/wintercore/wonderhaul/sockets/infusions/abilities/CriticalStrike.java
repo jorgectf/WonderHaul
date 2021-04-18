@@ -28,6 +28,11 @@ public class CriticalStrike extends OffensiveAbility {
     }
 
     @Override
+    public String getDescription() {
+        return "Adds a chance to do double damage";
+    }
+
+    @Override
     public void onAttack(Player attacker, EntityDamageByEntityEvent event, int socketLevel) {
         double chance = 10.0;
         if(socketLevel > 2){

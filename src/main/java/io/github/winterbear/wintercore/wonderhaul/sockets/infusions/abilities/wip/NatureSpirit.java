@@ -55,6 +55,11 @@ public class NatureSpirit extends BlockBreakAbility {
         return TriggerType.MAINHAND;
     }
 
+    @Override
+    public String getDescription() {
+        return null;
+    }
+
     //@Override
     //public ChatColor getColor() {
     //    return ChatColor.of("#ffca61");

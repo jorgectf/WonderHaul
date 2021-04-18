@@ -1,14 +1,16 @@
 package io.github.winterbear.wintercore.wonderhaul;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
-import io.github.winterbear.wintercore.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.ItemUtils;
+import io.github.winterbear.wintercore.utils.LightUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.RepeatingTaskUtils;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorage;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockStorageCommands;
 import io.github.winterbear.wintercore.wonderhaul.data.PersistentDataHolder;
+import io.github.winterbear.wintercore.wonderhaul.equipment.Microblock;
+import io.github.winterbear.wintercore.wonderhaul.equipment.Microblocks;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -21,7 +23,6 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,8 +30,6 @@ import java.util.Optional;
  * Created by WinterBear on 24/05/2020.
  */
 public class MicroblockDataListener implements Listener, PersistentDataHolder {
-
-    private static final List<Material> MICROBLOCK_TYPES = Arrays.asList(Material.PLAYER_HEAD, Material.PLAYER_WALL_HEAD);
 
     private BlockStorage blockStorage = new BlockStorage();
 
@@ -55,19 +54,18 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
     @EventHandler
     public void onPlace(BlockPlaceEvent event) {
-
-        if(MICROBLOCK_TYPES.contains(event.getItemInHand().getType())){
+        if(Microblock.MICROBLOCK_TYPES.contains(event.getItemInHand().getType())){
             String type = LoreUtils.getType(event.getItemInHand());
             BlockMetadata metadata = new BlockMetadata(event.getBlockPlaced(), ItemUtils.oneOf(event.getItemInHand()), type);
             metadata.setProperty("Owner", event.getPlayer().getUniqueId().toString());
-            if(type.equals("Essence Collector")){
-                metadata.setProperty("ParticleEffect", ParticleEffectType.ESSENCE_COLLECTOR.toString());
+            if(Microblocks.get(type).isLight()){
+                LightUtils.toggleLight(metadata);
+            }
+            if(Microblocks.get(type).getEffectType() != null){
+                metadata.setProperty("ParticleEffect", Microblocks.get(type).getEffectType().toString());
             }
             blockStorage.setBlockMetadata(metadata);
-
-
         }
-
     }
 
     @EventHandler
@@ -117,7 +115,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
         Location blockLocation = event.getBlock().getLocation();
 
-        if(MICROBLOCK_TYPES.contains(event.getBlock().getType())){
+        if(Microblock.MICROBLOCK_TYPES.contains(event.getBlock().getType())){
 
             Optional<BlockMetadata> blockMeta = blockStorage.get(blockLocation);
 
@@ -134,6 +132,7 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
                             i.getItems().forEach(d -> ItemUtils.dropNaturally(blockLocation, d.getInternalItem()));
                     });
                 }
+                LightUtils.removeLight(blockMeta.get());
                 blockStorage.clearBlockMetadata(blockLocation);
             }
         }

@@ -28,6 +28,11 @@ public class Frostbitten extends OffensiveAbility {
         return TriggerType.MAINHAND;
     }
 
+    @Override
+    public String getDescription() {
+        return "Has a chance to freeze enemies, slowing them down";
+    }
+
 
     @Override
     public void onAttack(Player attacker, EntityDamageByEntityEvent event, int socketLevel) {

@@ -1,11 +1,11 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic;
 
-import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.utils.ColorLoreMode;
 import io.github.winterbear.wintercore.utils.ItemBuilder;
-import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.TexturedHeads;
-import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
+import io.github.winterbear.wintercore.wonderhaul.ItemCategory;
 import io.github.winterbear.wintercore.wonderhaul.equipment.Tier;
+import io.github.winterbear.wintercore.wonderhaul.equipment.generators.Generator;
 import org.bukkit.inventory.ItemStack;
 
 /**
@@ -19,25 +19,19 @@ public class RelicGenerator implements Generator {
     @Override
     public ItemStack create() {
 
-        ItemStack relic = TexturedHeads.RELIC.get();
+        String displayName = tier.getColor() + "Ancient Relic";
+        String description = "&7A relic of some ancient culture. It seems to contain an item, but requires a worthy sacrifice to open.";
+        String usage = "Place then right click with items to sacrifice them";
 
-        String displayName = ChatUtils.format(tier.getColor() + "Relic");
-        String lore = tier.getColouredLore("Artifact", "Relic");
-        String loreText1 = "  &7&oSacrifice items for";
-        String loreText2 = "  &7&oa chance to get a better";
-        String loreText3 = "  &7&oitem";
-
-        LoreUtils.addLoreLine(relic, lore);
-        LoreUtils.addLoreLine(relic, "");
-        LoreUtils.addLoreLine(relic, loreText1);
-        LoreUtils.addLoreLine(relic, loreText2);
-        LoreUtils.addLoreLine(relic, loreText3);
-        LoreUtils.addLoreLine(relic, "");
-
-        ItemBuilder.setDisplayName(relic, displayName);
-
-
-        return relic;
+        return ItemBuilder.newMicroblock("Relic",
+                ItemCategory.ARTIFACT,
+                tier.getColor(),
+                ColorLoreMode.DARKER,
+                TexturedHeads.RELIC_NEW)
+                .withDescription(description)
+                .withDisplayName(displayName)
+                .withUsage(usage)
+                .build();
     }
 
     @Override

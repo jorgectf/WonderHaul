@@ -6,11 +6,9 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Created by WinterBear on 02/09/2017.
  */
-public class SimpleIngredient extends MaterialDataIngredient {
+public class SimpleIngredient implements Ingredient {
 
     private ItemStack stack;
-
-    private IngredientType type = IngredientType.METADATA;
 
     int amount;
 
@@ -19,11 +17,7 @@ public class SimpleIngredient extends MaterialDataIngredient {
         this.amount = amount;
     }
 
-    @Override
-    public IngredientType getType() {
-        return type;
-    }
-
+    //TODO this wont work
     @Override
     public String getName() {
         return stack.getItemMeta().getDisplayName();

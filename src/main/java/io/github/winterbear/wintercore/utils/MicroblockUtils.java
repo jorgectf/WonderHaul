@@ -26,7 +26,12 @@ public class MicroblockUtils {
         Collection<Property> properties = ReflectionUtils.getField(headMetaClass, "profile", GameProfile.class, 0).get(headMeta).getProperties().get("textures");
         String encodedTexture = properties.stream().filter(p -> p.getName().equals("textures")).findFirst().get().getValue();
         String decoded = new String(base64.decode(encodedTexture));
-        String url = decoded.substring(decoded.indexOf("\"url\":\"") + 7);
+        String url;
+        if(decoded.contains("\"url\":\"")) {
+            url = decoded.substring(decoded.indexOf("\"url\":\"") + 7);
+        } else {
+            url = decoded.substring(decoded.indexOf("url:\"") + 5);
+        }
         url = url.substring(0, url.indexOf("\""));
         return url;
 

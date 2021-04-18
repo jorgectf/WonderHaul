@@ -1,5 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.dropper;
 
+import io.github.winterbear.wintercore.Annotations.Dependency;
+import io.github.winterbear.wintercore.Annotations.DependencyType;
 import io.github.winterbear.wintercore.utils.EventUtils;
 import io.github.winterbear.wintercore.utils.SoundUtils;
 import me.lorinth.rpgmobs.LorinthsRpgMobs;
@@ -21,6 +23,7 @@ import java.util.Optional;
 /**
  * Created by WinterBear on 13/06/2019.
  */
+@Dependency(name = "LorinthsRpgMobs", type = DependencyType.SOFT)
 public class MobDropperListener implements Listener {
 
     public MobDropperListener(JavaPlugin plugin){

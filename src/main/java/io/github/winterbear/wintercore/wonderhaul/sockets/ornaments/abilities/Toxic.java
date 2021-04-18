@@ -31,4 +31,9 @@ public class Toxic extends DefensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.ARMOR;
     }
+
+    @Override
+    public String getDescription() {
+        return "Poisons those who attack you";
+    }
 }

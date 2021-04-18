@@ -1,7 +1,8 @@
 package io.github.winterbear.wintercore.utils;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
-import org.bukkit.ChatColor;
+import io.github.winterbear.wintercore.wonderhaul.ItemCategory;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -14,6 +15,92 @@ import java.util.stream.Collectors;
  * Created by WinterBear on 30/09/2018.
  */
 public class ItemBuilder {
+
+    private ItemStack baseItem;
+    private String displayName;
+    private ItemCategory itemCategory;
+    private String itemType;
+    private ChatColor color;
+    private ColorLoreMode colorLoreMode;
+    private String description;
+    private String usage;
+
+
+
+    public static ItemBuilder newMicroblock(String itemType, ItemCategory itemCategory, ChatColor color, ColorLoreMode colorLoreMode, TexturedHead texturedHead){
+        ItemBuilder builder = new ItemBuilder();
+        builder.baseItem = texturedHead.get();
+        builder.itemType = itemType;
+        builder.itemCategory = itemCategory;
+        builder.color = color;
+        builder.colorLoreMode = colorLoreMode;
+        return builder;
+    }
+
+    public static ItemBuilder newItem(String itemType, ItemCategory itemCategory, ChatColor color, ColorLoreMode colorLoreMode, Material material){
+        ItemBuilder builder = new ItemBuilder();
+        builder.baseItem = new ItemStack(material);
+        builder.itemType = itemType;
+        builder.itemCategory = itemCategory;
+        builder.color = color;
+        builder.colorLoreMode = colorLoreMode;
+        return builder;
+    }
+
+    public ItemBuilder withDisplayName(String displayName){
+        this.displayName = displayName;
+        return this;
+    }
+
+    public ItemBuilder withDescription(String description){
+        this.description = description;
+        return this;
+    }
+
+    public ItemBuilder withUsage(String usage){
+        this.usage = usage;
+        return this;
+    }
+
+    public ItemStack build(){
+        ItemStack item = baseItem.clone();
+        String lore = ChatUtils.format(itemCategory.getSymbol() + " &7" + itemCategory.getDisplayName() + "&8: " + color + itemType);
+        ChatColor loreColor = getLoreColor(color, colorLoreMode);
+
+        setDisplayName(item, displayName != null ? color + displayName : color + itemType);
+        LoreUtils.addLoreLine(item, lore);
+        if(description != null) {
+            LoreUtils.addBlankLine(item);
+            LoreUtils.addMultiLineLore(item, description);
+        }
+        if(usage != null) {
+            LoreUtils.addBlankLine(item);
+            LoreUtils.addMultiLineLore(item, loreColor, usage);
+        }
+
+        return item;
+    }
+
+    private ChatColor getLoreColor(ChatColor color, ColorLoreMode loreMode){
+        switch (loreMode) {
+            case DARKER:
+                return ChatColor.of(color.getColor().darker());
+            case BRIGHTER:
+                return ChatColor.of(color.getColor().brighter());
+            case DOUBLEDARK:
+                return ChatColor.of(color.getColor().darker().darker());
+            case DOUBLEBRIGHT:
+                return ChatColor.of(color.getColor().brighter().brighter());
+            default:
+                return color;
+        }
+    }
+
+
+
+
+
+
 
     public static ItemStack createItem(String name, Material mat){
         return createItem(name, null, mat);

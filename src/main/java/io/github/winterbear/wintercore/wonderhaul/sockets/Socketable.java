@@ -1,5 +1,6 @@
 package io.github.winterbear.wintercore.wonderhaul.sockets;
 
+import io.github.winterbear.wintercore.utils.TexturedHead;
 import io.github.winterbear.wintercore.wonderhaul.sockets.application.SocketApplication;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
@@ -8,14 +9,13 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Collection;
-import java.util.function.Supplier;
 
 /**
  * Created by WinterBear on 06/09/2020.
  */
 public class Socketable implements ISocketable{
 
-    private Supplier<ItemStack> texture;
+    private TexturedHead texture;
 
     private String itemName;
 
@@ -29,7 +29,11 @@ public class Socketable implements ISocketable{
 
     private Sound sound;
 
-    public Socketable(JavaPlugin plugin, Supplier<ItemStack> texture, String itemName,Ability ability, ChatColor color, SocketType socketType, Collection<Material> applicableItems, Sound sound) {
+    private String description;
+
+    private String lore;
+
+    public Socketable(JavaPlugin plugin, TexturedHead texture, String itemName,Ability ability, ChatColor color, SocketType socketType, Collection<Material> applicableItems, Sound sound, String description, String lore) {
         this.texture = texture;
         this.itemName = itemName;
         this.ability = ability;
@@ -37,10 +41,12 @@ public class Socketable implements ISocketable{
         this.socketType = socketType;
         this.applicableItems = applicableItems;
         this.sound = sound;
+        this.description = description;
+        this.lore = lore;
     }
 
     @Override
-    public Supplier<ItemStack> getTexture() {
+    public TexturedHead getTexture() {
         return texture;
     }
 
@@ -92,5 +98,15 @@ public class Socketable implements ISocketable{
     @Override
     public Sound getSound() {
         return sound;
+    }
+
+    @Override
+    public String getDescription() {
+        return description;
+    }
+
+    @Override
+    public Ability getAbility() {
+        return ability;
     }
 }

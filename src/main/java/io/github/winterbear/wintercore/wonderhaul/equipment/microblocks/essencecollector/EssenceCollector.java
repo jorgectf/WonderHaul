@@ -1,6 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.ItemUtils;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.SoundUtils;
@@ -179,5 +180,10 @@ public class EssenceCollector extends Microblock {
     @Override
     public String getReference() {
         return "Essence Collector";
+    }
+
+    @Override
+    public ParticleEffectType getEffectType(){
+        return ParticleEffectType.ESSENCE_COLLECTOR;
     }
 }

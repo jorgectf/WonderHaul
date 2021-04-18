@@ -7,8 +7,12 @@ import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
 import io.github.winterbear.wintercore.utils.LoreUtils;
 import io.github.winterbear.wintercore.utils.MicroblockUtils;
+import io.github.winterbear.wintercore.wonderhaul.equipment.gobblers.GobblerGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIGenerator;
+import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIIGenerator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollectorGenerator;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.RelicGenerator;
+import io.github.winterbear.wintercore.wonderhaul.packs.PackGenerator;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -139,9 +143,6 @@ public class DevTools {
 
             ChatUtils.send(player, textureUrl);
             ChatUtils.info(textureUrl);
-            return;
-
-
         });
     }
 
@@ -149,7 +150,6 @@ public class DevTools {
     public static CommandWrapper getRelic(){
         return CommandRegistry.createPlayerCommand("getRelic", (player, command, label, args) -> {
             player.getInventory().addItem(new RelicGenerator().create());
-            return;
 
 
         });
@@ -159,9 +159,42 @@ public class DevTools {
     public static CommandWrapper getEssenceCollector(){
         return CommandRegistry.createPlayerCommand("getEssenceCollector", (player, command, label, args) -> {
             player.getInventory().addItem(new EssenceCollectorGenerator().create());
-            return;
         });
     }
 
+    @Command(permission = "dev.getCrate1")
+    public static CommandWrapper getCrate1(){
+        return CommandRegistry.createPlayerCommand("getCrate1", (player, command, label, args) -> {
+            player.getInventory().addItem(new CrateIGenerator().create());
+        });
+    }
+
+    @Command(permission = "dev.getCrate2")
+    public static CommandWrapper getCrate2(){
+        return CommandRegistry.createPlayerCommand("getCrate2", (player, command, label, args) -> {
+            player.getInventory().addItem(new CrateIIGenerator().create());
+        });
+    }
+
+    @Command(permission = "dev.getGobbler")
+    public static CommandWrapper getGobbler(){
+        return CommandRegistry.createPlayerCommand("getGobbler", (player, command, label, args) -> {
+            player.getInventory().addItem(new GobblerGenerator().create());
+        });
+    }
+
+    @Command(permission = "dev.getExperiencePack")
+    public static CommandWrapper getExperiencePack(){
+        return CommandRegistry.createPlayerCommand("getExperiencePack", (player, command, label, args) -> {
+            player.getInventory().addItem(PackGenerator.Packs.LARGE_EXP_HAUL.generate());
+        });
+    }
+
+    @Command(permission = "dev.getGoldHaul")
+    public static CommandWrapper getGoldHaul(){
+        return CommandRegistry.createPlayerCommand("getGoldHaul", (player, command, label, args) -> {
+            player.getInventory().addItem(PackGenerator.Packs.LARGE_GOLD_HAUL.generate());
+        });
+    }
 
 }

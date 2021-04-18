@@ -36,4 +36,9 @@ public class Fireproof extends DefensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.OFFHAND;
     }
+
+    @Override
+    public String getDescription() {
+        return "Prevents fire damage when blocking with a shield";
+    }
 }

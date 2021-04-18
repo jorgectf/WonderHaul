@@ -40,4 +40,9 @@ public class Vicious extends OffensiveAbility {
     public TriggerType getTriggerType() {
         return TriggerType.MAINHAND;
     }
+
+    @Override
+    public String getDescription() {
+        return "Does massive damage to low health enemies";
+    }
 }

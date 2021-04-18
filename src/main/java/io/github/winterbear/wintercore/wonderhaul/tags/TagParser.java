@@ -1,6 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.tags;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
+import io.github.winterbear.wintercore.utils.LoreUtils;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Optional;
@@ -13,18 +14,12 @@ public class TagParser {
     private static final String TAG_KEY = ChatUtils.format(Tags.PREFIX);
 
     public static Optional<Tag> parse(ItemStack item){
-        if(item.getItemMeta() != null && item.getItemMeta().getLore() != null){
-            Optional<String> loreLine = item.getItemMeta().getLore().stream().filter(line -> line.contains(TAG_KEY)).findFirst();
-            if(loreLine.isPresent()){
-                String tagName = ChatUtils.uncolored(loreLine.get().substring(TAG_KEY.length()));
-                if(Tags.get(tagName) == null){
-                    ChatUtils.warn("No Tag by the name of " + tagName + " could be found.");
-                    return Optional.empty();
-                }
-                return Optional.of(Tags.get(tagName));
-            }
+        Optional<String> tagName = LoreUtils.getTag(item, "Tag").stream().findFirst();
+        if(tagName.isPresent() && Tags.get(tagName.get()) == null){
+            ChatUtils.warn("No Tag by the name of " + tagName + " could be found.");
+            return Optional.empty();
         }
-        return Optional.empty();
+        return Optional.of(Tags.get(tagName.get()));
     }
 
 

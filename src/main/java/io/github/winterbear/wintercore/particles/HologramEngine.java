@@ -1,6 +1,8 @@
 package io.github.winterbear.wintercore.particles;
 
 import com.gmail.filoghost.holographicdisplays.api.Hologram;
+import io.github.winterbear.wintercore.Annotations.Dependency;
+import io.github.winterbear.wintercore.Annotations.DependencyType;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 
 import java.util.HashMap;
@@ -9,6 +11,7 @@ import java.util.Map;
 /**
  * Created by WinterBear on 15/08/2020.
  */
+@Dependency(name = "HolographicDisplays", type = DependencyType.HARD)
 public class HologramEngine {
 
     public static Map<BlockMetadata, Hologram> hologramMap = new HashMap<>();
