@@ -58,6 +58,8 @@ public class Generators {
             return PACK;
         } else if (name.equalsIgnoreCase("toy")){
             return STUFFED_TOY;
+        } else if (name.equalsIgnoreCase("essence collector")){
+            return ESSENCE_COLLECTOR;
         } else if (name.equalsIgnoreCase("candle rolling table")){
             return CANDLE_ROLLING_TABLE_GENERATOR;
         } else if (name.equalsIgnoreCase("carving station")){

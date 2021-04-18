@@ -1,9 +1,10 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations;
 
+import io.github.winterbear.wintercore.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.LightUtils;
 import io.github.winterbear.wintercore.utils.SoundUtils;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
-import io.github.winterbear.wintercore.wonderhaul.equipment.Microblock;
+import io.github.winterbear.wintercore.wonderhaul.equipment.LightMicroblock;
 import org.bukkit.Sound;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,7 +12,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * Created by WinterBear on 16/04/2021.
  */
-public class Candle extends Microblock {
+public class Candle extends LightMicroblock {
 
     public Candle(JavaPlugin plugin) {
         super(plugin);
@@ -34,4 +35,10 @@ public class Candle extends Microblock {
     public String getReference() {
         return "Candle";
     }
+
+    @Override
+    public ParticleEffectType getEffectType(){
+        return ParticleEffectType.CANDLE;
+    }
+
 }

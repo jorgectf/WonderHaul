@@ -80,15 +80,11 @@ public class Gobbler implements Listener {
 
     @EventHandler
     public void onInteractEvent(PlayerInteractEvent event) {
-        //ChatUtils.info("Detected possible gobbler event");
         if(InteractEventUtils.eventIsRightClickEvent(event, clickCooldown)){
-            //ChatUtils.info("Detected right click event");
             ItemStack itemInMainHand = event.getPlayer().getInventory().getItemInMainHand();
             if(itemIsGobbler(itemInMainHand)) {
-                //ChatUtils.info("Item is gobbler");
                 List<String> tags = LoreUtils.getTag(itemInMainHand, ItemCategory.EQUIPMENT.getDisplayName());
                 if (tags.contains("Inactive Gobbler") || tags.contains("Gobbler")) {
-                    //ChatUtils.info("Toggling...");
                     event.getPlayer().getInventory().setItemInMainHand(toggle(itemInMainHand));
                     event.setCancelled(true);
                 }

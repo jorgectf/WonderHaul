@@ -24,9 +24,9 @@ public abstract class InventoryAwareMicroblock extends Microblock {
 
     @EventHandler
     public void onInventoryClickItem(InventoryClickEvent event) {
-        Optional<WHInventoryType> inventoryReference = InventoryUtils.getCurrentInventory((Player) event.getWhoClicked());
+        Optional<String> inventoryReference = InventoryUtils.getCurrentInventory((Player) event.getWhoClicked());
         if(event.getClickedInventory() != null &&
-                inventoryReference.isPresent() && inventoryReference.get().equals(getInventoryType())) {
+                inventoryReference.isPresent() && inventoryReference.get().equals(getReference())) {
             if (event.getClickedInventory().getType() != InventoryType.CHEST) {
                 handleClickOutsideChest(event);
                 return;
@@ -41,14 +41,12 @@ public abstract class InventoryAwareMicroblock extends Microblock {
 
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent event){
-        Optional<WHInventoryType> inventoryType = InventoryUtils.getCurrentInventory((Player) event.getPlayer());
-        if(inventoryType.isPresent() && inventoryType.get().equals(getInventoryType())) {
+        Optional<String> inventoryType = InventoryUtils.getCurrentInventory((Player) event.getPlayer());
+        if(inventoryType.isPresent() && inventoryType.get().equals(getReference())) {
             onClose(event);
             InventoryUtils.closeInventory((Player) event.getPlayer());
         }
     }
-
-    public abstract WHInventoryType getInventoryType();
 
     public abstract void handleClick(InventoryClickEvent event);
 

@@ -36,19 +36,7 @@ public class ParticleEngine {
     public static boolean processRepeatingEffects(JavaPlugin plugin){
 
         for(BlockMetadata metadata : effectQueue.keySet()){
-
-            switch(effectQueue.get(metadata)){
-                case ESSENCE_COLLECTOR:
-                    EssenceCollectorParticleEffect.render(metadata, plugin);
-                    break;
-                case CANDLE:
-                    CandleParticleEffect.render(metadata, plugin);
-                    break;
-                default:
-                    throw new UnsupportedOperationException("Missing effect handler for " + effectQueue.get(metadata));
-
-            }
-
+            effectQueue.get(metadata).render(metadata, plugin);
         }
         return true;
 

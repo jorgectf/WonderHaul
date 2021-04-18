@@ -22,9 +22,9 @@ public class BlockUtils {
         return WATER_BLOCKS.contains(world.getBlockAt(location).getType());
     }
 
-    public static void setBlock(Block block, Material air) {
+    public static void setBlock(Block block, Material material) {
         BlockState blockState = block.getState();
-        blockState.setType(air);
+        blockState.setType(material);
         blockState.update(true);
     }
 

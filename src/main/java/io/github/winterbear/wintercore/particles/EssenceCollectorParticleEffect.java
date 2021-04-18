@@ -13,10 +13,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * Created by WinterBear on 15/08/2020.
  */
-public class EssenceCollectorParticleEffect {
+public class EssenceCollectorParticleEffect implements ParticleEffect {
 
 
-    public static void render(BlockMetadata metadata, JavaPlugin plugin){
+    public void render(BlockMetadata metadata, JavaPlugin plugin){
         double essenceCount = 0;
         double cost = 0;
 

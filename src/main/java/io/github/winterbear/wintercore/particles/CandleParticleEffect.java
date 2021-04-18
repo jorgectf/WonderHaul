@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 /**
  * Created by WinterBear on 16/04/2021.
  */
-public class CandleParticleEffect {
+public class CandleParticleEffect implements ParticleEffect {
 
-    public static void render(BlockMetadata metadata, JavaPlugin plugin){
+    public void render(BlockMetadata metadata, JavaPlugin plugin){
         if(metadata.getProperty("light").isPresent() && metadata.getProperty("light").get().equalsIgnoreCase("true")){
             Location loc = BlockUtils.getBlockCentre(metadata.getInternalLocation());
             loc.setY(loc.getY() + 0.2d);

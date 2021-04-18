@@ -11,25 +11,33 @@ import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencec
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.Relic;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by WinterBear on 30/08/2020.
  */
 public class Microblocks {
 
-    public static final Set<Microblock> MICROBLOCKS = new HashSet<>();
+    public static final Map<String, Microblock> MICROBLOCKS = new HashMap<>();
 
     public static void registerAll(JavaPlugin plugin){
-        MICROBLOCKS.add(new Relic(plugin));
-        MICROBLOCKS.add(new EssenceCollector(plugin));
-        MICROBLOCKS.add(new VerticalCrate(new CrateI(), plugin));
-        MICROBLOCKS.add(new VerticalCrate(new CrateII(), plugin));
-        MICROBLOCKS.add(new StuffedToy(plugin));
-        MICROBLOCKS.add(new Candle(plugin));
-        MICROBLOCKS.add(new CandleRollingTable(plugin));
-        MICROBLOCKS.add(new Stonecutter(plugin));
+        load(new Relic(plugin));
+        load(new EssenceCollector(plugin));
+        load(new VerticalCrate(new CrateI(), plugin));
+        load(new VerticalCrate(new CrateII(), plugin));
+        load(new StuffedToy(plugin));
+        load(new Candle(plugin));
+        load(new CandleRollingTable(plugin));
+        load(new Stonecutter(plugin));
+    }
+
+    private static void load(Microblock microblock){
+        MICROBLOCKS.put(microblock.getReference(), microblock);
+    }
+
+    public static Microblock get(String reference){
+        return MICROBLOCKS.get(reference);
     }
 
 

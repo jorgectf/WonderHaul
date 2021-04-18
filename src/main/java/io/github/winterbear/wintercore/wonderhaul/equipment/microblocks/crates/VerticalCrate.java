@@ -45,7 +45,7 @@ public class VerticalCrate extends InventoryAwareMicroblock {
 
     @Override
     public boolean interact(PlayerInteractEvent event, BlockMetadata metadata) {
-        InventoryUtils.openInventory(event.getPlayer(), 3, getReference(), WHInventoryType.CRATE);
+        InventoryUtils.openInventory(event.getPlayer(), 3, getReference(), getReference());
         InventoryView inventoryView = event.getPlayer().getOpenInventory();
 
         crateType.getSlotSize().getBlankColumns().forEach(column -> setBlankColumn(column, inventoryView));
@@ -132,11 +132,6 @@ public class VerticalCrate extends InventoryAwareMicroblock {
     @Override
     public String getReference() {
         return crateType.getLore();
-    }
-
-    @Override
-    public WHInventoryType getInventoryType() {
-        return WHInventoryType.CRATE;
     }
 
     @Override

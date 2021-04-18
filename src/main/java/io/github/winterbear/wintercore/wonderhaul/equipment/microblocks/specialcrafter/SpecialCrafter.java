@@ -41,7 +41,7 @@ public abstract class SpecialCrafter extends InventoryAwareMicroblock {
         if(getRecipes().size() % 9 > 0){
             rows++;
         }
-        InventoryUtils.openInventory(player, rows, getDisplayName(), getInventoryType());
+        InventoryUtils.openInventory(player, rows, getDisplayName(), getReference());
         int slot = 0;
         for(SpecialRecipe recipe : getRecipes().values()){
             ItemStack displayItem = recipe.getResult().clone();

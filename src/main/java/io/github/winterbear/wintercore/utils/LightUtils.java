@@ -1,5 +1,7 @@
 package io.github.winterbear.wintercore.utils;
 
+import io.github.winterbear.wintercore.Annotations.Dependency;
+import io.github.winterbear.wintercore.Annotations.DependencyType;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 import org.bukkit.Location;
 import ru.beykerykt.lightapi.LightAPI;
@@ -11,6 +13,7 @@ import java.util.Optional;
 /**
  * Created by WinterBear on 16/04/2021.
  */
+@Dependency(name = "LightAPI", type = DependencyType.HARD)
 public class LightUtils {
 
     public static boolean toggleLight(BlockMetadata blockMetadata){

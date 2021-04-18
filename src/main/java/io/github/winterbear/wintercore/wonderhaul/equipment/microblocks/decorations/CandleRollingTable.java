@@ -1,6 +1,5 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations;
 
-import io.github.winterbear.wintercore.utils.WHInventoryType;
 import io.github.winterbear.wintercore.wonderhaul.crafting.MaterialIngredient;
 import io.github.winterbear.wintercore.wonderhaul.crafting.SpecialRecipe;
 import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.specialcrafter.SpecialCrafter;
@@ -42,11 +41,6 @@ public class CandleRollingTable extends SpecialCrafter {
         }
 
         return display;
-    }
-
-    @Override
-    public WHInventoryType getInventoryType() {
-        return WHInventoryType.SPECIAL_CRAFTER;
     }
 
     @Override
