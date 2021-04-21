@@ -6,7 +6,7 @@ import io.github.winterbear.WinterCoreUtils.CommandWrapper;
 import io.github.winterbear.wintercore.Annotations.Command;
 import io.github.winterbear.wintercore.Annotations.SpigotPlugin;
 import io.github.winterbear.wintercore.database.HibernateUtil;
-import io.github.winterbear.wintercore.particles.ParticleEngine;
+import io.github.winterbear.wintercore.wonderhaul.particles.ParticleEngine;
 import io.github.winterbear.wintercore.utils.DelayUtils;
 import io.github.winterbear.wintercore.utils.EconomyUtils;
 import io.github.winterbear.wintercore.wonderhaul.MicroblockDataListener;
@@ -25,6 +25,7 @@ import io.github.winterbear.wintercore.wonderhaul.sockets.Sockets;
 import io.github.winterbear.wintercore.wonderhaul.sockets.infusions.Infusions;
 import io.github.winterbear.wintercore.wonderhaul.sockets.ornaments.Ornaments;
 import io.github.winterbear.wintercore.wonderhaul.tags.Tags;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
@@ -59,15 +60,43 @@ public class WonderHaul extends JavaPlugin {
     @Override
     public void onEnable() {
         ChatUtils.info("Loading WonderHaul");
-        saveDefaultConfig();
-        ChatUtils.info("Registering WonderHaul commands");
-        loadCommands();
-        ChatUtils.info("Registering WonderHaul event listeners");
-        loadListeners();
-        ChatUtils.info("Registering WonderHaul configuration entities");
-        loadConfigEntities();
-        ChatUtils.info("Loading WonderHaul config files");
-        loadConfigs();
+        if(checkDependencies()){
+            saveDefaultConfig();
+            ChatUtils.info("Registering WonderHaul commands");
+            loadCommands();
+            ChatUtils.info("Registering WonderHaul event listeners");
+            loadListeners();
+            ChatUtils.info("Registering WonderHaul configuration entities");
+            loadConfigEntities();
+            ChatUtils.info("Loading WonderHaul config files");
+            loadConfigs();
+        } else {
+            ChatUtils.error("Missing required dependencies. Disabling...");
+            Bukkit.getServer().getPluginManager().disablePlugin(this);
+        }
+    }
+
+    private boolean checkDependencies(){
+        boolean enable = true;
+        if(Bukkit.getServer().getPluginManager().getPlugin("Vault") == null){
+            ChatUtils.error("This plugin requires Vault to function.");
+            enable = false;
+        }
+
+        if(Bukkit.getServer().getPluginManager().getPlugin("LightAPI") == null){
+            ChatUtils.error("This plugin requires LightAPI to function.");
+            enable = false;
+        }
+
+        if(Bukkit.getServer().getPluginManager().getPlugin("HolographicDisplays") == null){
+            ChatUtils.warn("Holographic Displays was not found. Holograms will not work.");
+        }
+
+        if(Bukkit.getServer().getPluginManager().getPlugin("LorinthsRpgMobs") == null){
+            ChatUtils.warn("LorinthsRpgMobs not found. Mob Level drop boosts will not work.");
+        }
+
+        return enable;
     }
 
 

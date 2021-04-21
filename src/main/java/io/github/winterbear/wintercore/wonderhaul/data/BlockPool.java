@@ -16,7 +16,7 @@ import java.util.Map;
 public class BlockPool extends BasicPool<Block> {
 
 
-    private Map<Material, Chance> blockChances = new HashMap<>();
+    private final Map<Material, Chance> blockChances = new HashMap<>();
 
     public BlockPool(String name, Chance globalChance, List<String> enabledWorlds, BiomeSet enabledBiomes, Generator generator) {
         this.globalChance = globalChance;

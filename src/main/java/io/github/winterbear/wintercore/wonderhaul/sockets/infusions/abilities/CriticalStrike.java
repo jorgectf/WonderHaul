@@ -1,6 +1,6 @@
 package io.github.winterbear.wintercore.wonderhaul.sockets.infusions.abilities;
 
-import io.github.winterbear.wintercore.particles.ParticleEngine;
+import io.github.winterbear.wintercore.wonderhaul.particles.ParticleEngine;
 import io.github.winterbear.wintercore.utils.SoundUtils;
 import io.github.winterbear.wintercore.wonderhaul.dropper.Chance;
 import io.github.winterbear.wintercore.wonderhaul.sockets.TriggerType;

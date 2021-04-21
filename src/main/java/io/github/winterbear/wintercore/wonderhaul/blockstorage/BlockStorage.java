@@ -2,9 +2,9 @@ package io.github.winterbear.wintercore.wonderhaul.blockstorage;
 
 import io.github.winterbear.WinterCoreUtils.ChatUtils;
 import io.github.winterbear.wintercore.database.BlockMetadataDAO;
-import io.github.winterbear.wintercore.particles.HologramEngine;
-import io.github.winterbear.wintercore.particles.ParticleEffectType;
-import io.github.winterbear.wintercore.particles.ParticleEngine;
+import io.github.winterbear.wintercore.wonderhaul.particles.HologramEngine;
+import io.github.winterbear.wintercore.wonderhaul.particles.ParticleEffectType;
+import io.github.winterbear.wintercore.wonderhaul.particles.ParticleEngine;
 import org.bukkit.Chunk;
 import org.bukkit.Location;
 
@@ -18,9 +18,9 @@ import java.util.stream.Stream;
  */
 public class BlockStorage {
 
-    private BlockMetadataDAO blockMetadataDAO = new BlockMetadataDAO();
+    private final BlockMetadataDAO blockMetadataDAO = new BlockMetadataDAO();
 
-    private Map<String, Map<String, BlockMetadata>> metadata;
+    private final Map<String, Map<String, BlockMetadata>> metadata;
 
     private List<BlockMetadata> deleted = new ArrayList<>();
 

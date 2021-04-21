@@ -12,20 +12,18 @@ import org.hibernate.service.ServiceRegistry;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.Properties;
 
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
-    private static Optional<PluginConfig> configHolder = Optional.empty();
+    private static PluginConfig config = null;
 
     public static SessionFactory getSessionFactory() {
 
-        if (sessionFactory == null && configHolder.isPresent()) {
+        if (sessionFactory == null && config != null) {
 
-            PluginConfig config = configHolder.get();
             try {
 
                 Configuration configuration = new Configuration();
@@ -61,7 +59,7 @@ public class HibernateUtil {
     }
 
     public static void setConfig(PluginConfig config){
-        configHolder = Optional.of(config);
+        HibernateUtil.config = config;
     }
 
     public static void setupDatabase(){
@@ -70,8 +68,6 @@ public class HibernateUtil {
 
     private static List<Class<?>> getDatabaseEntities(){
         return Arrays.asList(BlockMetadata.class, PersistedInventory.class, PersistedItem.class);
-
-
     }
 
 }
