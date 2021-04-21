@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class BlockUtils {
 
-    private static Set<Material> WATER_BLOCKS = EnumSet.of(Material.WATER);
+    private static final Set<Material> WATER_BLOCKS = EnumSet.of(Material.WATER);
 
     public static boolean isUnderwater(Location location){
         World world = location.getWorld();

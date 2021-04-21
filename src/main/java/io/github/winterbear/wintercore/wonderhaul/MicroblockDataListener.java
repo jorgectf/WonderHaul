@@ -33,12 +33,9 @@ public class MicroblockDataListener implements Listener, PersistentDataHolder {
 
     private BlockStorage blockStorage = new BlockStorage();
 
-    private final JavaPlugin plugin;
-
     public MicroblockDataListener(JavaPlugin plugin){
-        this.plugin = plugin;
         BlockStorageCommands.setStorage(this.blockStorage);
-        this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
         blockStorage.loadFromDB();
         RepeatingTaskUtils.everyMinutes(5, this::saveBlockStorage, plugin);
     }

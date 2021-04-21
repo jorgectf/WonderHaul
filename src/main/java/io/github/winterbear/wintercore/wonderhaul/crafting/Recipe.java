@@ -20,7 +20,7 @@ public class Recipe {
     private List<ItemStack> result;
 
     //Given a list of items, calculate what items would be left after crafting this recipe
-    //Note - make sure to handle buckets
+    //Note - make sure to handle buckets and bottles
     public List<ItemStack> craft(List<ItemStack> items){
         //TODO implement
 

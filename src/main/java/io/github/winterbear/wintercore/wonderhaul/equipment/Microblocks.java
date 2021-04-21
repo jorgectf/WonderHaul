@@ -1,14 +1,14 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment;
 
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateI;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateII;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.VerticalCrate;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.Candle;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.CandleRollingTable;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.Stonecutter;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StuffedToy;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollector;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.Relic;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.crates.CrateI;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.crates.CrateII;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.crates.VerticalCrate;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.Candle;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.CandleRollingTable;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.Stonecutter;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.StuffedToy;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.essencecollector.EssenceCollector;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.relic.Relic;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;

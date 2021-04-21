@@ -4,7 +4,6 @@ import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BlockMetadataDAO {
@@ -53,7 +52,7 @@ public class BlockMetadataDAO {
 
 
     public List<BlockMetadata> getMetadata(){
-        List<BlockMetadata> blockMetadata = new ArrayList<>();
+        List<BlockMetadata> blockMetadata;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             blockMetadata = session.createQuery("from BlockMetadata", BlockMetadata.class).list();

@@ -1,7 +1,7 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment;
 
 import io.github.winterbear.wintercore.WonderHaul;
-import io.github.winterbear.wintercore.particles.ParticleEffectType;
+import io.github.winterbear.wintercore.wonderhaul.particles.ParticleEffectType;
 import io.github.winterbear.wintercore.utils.InteractEventUtils;
 import io.github.winterbear.wintercore.wonderhaul.blockstorage.BlockMetadata;
 import org.bukkit.Material;

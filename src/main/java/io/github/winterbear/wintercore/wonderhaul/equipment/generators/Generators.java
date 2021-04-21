@@ -1,12 +1,12 @@
 package io.github.winterbear.wintercore.wonderhaul.equipment.generators;
 
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.crates.CrateIIGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.CandleRollingTableGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StoneCutterGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.decorations.StuffedToyGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.essencecollector.EssenceCollectorGenerator;
-import io.github.winterbear.wintercore.wonderhaul.equipment.microblocks.relic.RelicGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.crates.CrateIGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.crates.CrateIIGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.CandleRollingTableGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.StoneCutterGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.decorations.StuffedToyGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.essencecollector.EssenceCollectorGenerator;
+import io.github.winterbear.wintercore.wonderhaul.microblocks.relic.RelicGenerator;
 import io.github.winterbear.wintercore.wonderhaul.packs.PackGenerator;
 import io.github.winterbear.wintercore.wonderhaul.tags.TagGenerator;
 

@@ -16,16 +16,14 @@ import java.util.UUID;
  */
 public class MicroblockUtils {
 
-
-
-    private static Base64 base64 = new Base64();
+    private static final Base64 BASE_64 = new Base64();
 
     public static String getTextureUrl(ItemStack head){
         ItemMeta headMeta = head.getItemMeta();
         Class<?> headMetaClass = headMeta.getClass();
         Collection<Property> properties = ReflectionUtils.getField(headMetaClass, "profile", GameProfile.class, 0).get(headMeta).getProperties().get("textures");
         String encodedTexture = properties.stream().filter(p -> p.getName().equals("textures")).findFirst().get().getValue();
-        String decoded = new String(base64.decode(encodedTexture));
+        String decoded = new String(BASE_64.decode(encodedTexture));
         String url;
         if(decoded.contains("\"url\":\"")) {
             url = decoded.substring(decoded.indexOf("\"url\":\"") + 7);
@@ -44,7 +42,7 @@ public class MicroblockUtils {
         if (propertyMap == null) {
             throw new IllegalStateException("Profile doesn't contain a property map");
         }
-        byte[] encodedData = base64.encode(String.format("{textures:{SKIN:{url:\"%s\"}}}", url).getBytes());
+        byte[] encodedData = BASE_64.encode(String.format("{textures:{SKIN:{url:\"%s\"}}}", url).getBytes());
         propertyMap.put("textures", new Property("textures", new String(encodedData)));
         ItemStack head = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
         ItemMeta headMeta = head.getItemMeta();
